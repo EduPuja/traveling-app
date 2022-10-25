@@ -4,5 +4,5 @@ public enum TipusBillet
 {
     TURISTA,
     BUISSNES,
-    PREMIUM
+    PREMIUM;
 }
