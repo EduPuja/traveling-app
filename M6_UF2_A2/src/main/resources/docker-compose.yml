@@ -2,11 +2,16 @@ version: "3.8"
 services:
     db:
       build: ./db
-      container_name: m6_uf2_a2_EduDani
-      environment:
-        MYSQL_ROOT_PASSWORD: '123asd123'
-        MYSQL_USER: 'edu'
+      container_name: Database_Mysql
+      image: mysql
       ports:
         - "3306:3306"
+      environment:
+        MYSQL_DATABASE: m6_uf2_a2_edudani
+        MYSQL_USER: 'admin'
+        MYSQL_ROOT_PASSWORD: '123asd123'
+        MYSQL_PASSWORD: '1234'
+
+
 
 
