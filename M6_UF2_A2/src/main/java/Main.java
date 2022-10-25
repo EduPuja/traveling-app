@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main
+public class Main
 {
     public static Scanner lector = new Scanner(System.in);
 
