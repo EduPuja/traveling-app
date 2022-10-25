@@ -1,3 +1,6 @@
+import Funcions.FuncionsUsuari;
+import Funcions.FuncionsViatjes;
+
 import java.util.Scanner;
 
 public class Main
@@ -52,13 +55,13 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    altaUser();
+                    FuncionsUsuari.altaUser();
                     break;
                 case 2:
-                    baixaUser();
+                    FuncionsUsuari.baixaUser();
                     break;
                 case 3:
-                    modificacioUser();
+                    FuncionsUsuari.modificacioUser();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -69,20 +72,6 @@ public class Main
             }
         }while(!menu);
     }
-
-    private static void altaUser()
-    {
-    }
-
-    private static void baixaUser()
-    {
-    }
-
-    private static void modificacioUser()
-    {
-    }
-
-
     private static void menuViatges()
     {
         boolean menu = false;
@@ -98,13 +87,13 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    nouViatje();
+                    FuncionsViatjes.nouViatje();
                     break;
                 case 2:
-                    eliminarViatje();
+                    FuncionsViatjes.eliminarViatje();
                     break;
                 case 3:
-                    modificarViatje();
+                    FuncionsViatjes.modificarViatje();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -114,18 +103,6 @@ public class Main
                     break;
             }
         }while(!menu);
-    }
-
-    private static void nouViatje()
-    {
-    }
-
-    private static void eliminarViatje()
-    {
-    }
-
-    private static void modificarViatje()
-    {
     }
 
     private static void menuBitllets()
