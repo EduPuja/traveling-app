@@ -5,7 +5,7 @@ services:
       container_name: m6_uf2_a2_EduDani
       environment:
         MYSQL_ROOT_PASSWORD: '123asd123'
-        MYSQL_USER: 'root'
+        MYSQL_USER: 'edu'
       ports:
         - "3306:3306"
 
