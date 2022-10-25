@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    db:
+      build: ./db
+      container_name: m6_uf2_a2_EduDani
+      environment:
+        MYSQL_ROOT_PASSWORD: 1234
+        MYSQL_DATABASE: m6_uf2_a2_edudani
+      ports:
+        - "3206:3206"
+      return: always
+
