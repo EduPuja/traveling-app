@@ -8,6 +8,10 @@ public class Equipatge
     double pesKg;
     int numMaletes;
 
+    public Equipatge()
+    {
+    }
+
     public Equipatge(int idEquipatge, int numFactura, int liniaFactura, double pesKg, int numMaletes)
     {
         this.idEquipatge = idEquipatge;

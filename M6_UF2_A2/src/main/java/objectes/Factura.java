@@ -9,6 +9,9 @@ public class Factura
     double preuTotal;
     Date data;
 
+    public Factura(){
+
+    }
     public Factura(int numFactura, int idPersona, double preuTotal, Date data)
     {
         this.numFactura = numFactura;

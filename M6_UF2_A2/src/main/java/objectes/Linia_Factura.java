@@ -6,6 +6,9 @@ public class Linia_Factura
     int idPersona;
     double preu;
 
+    public Linia_Factura(){
+
+    }
     public Linia_Factura(int numLinia, int idPersona, double preu)
     {
         this.numLinia = numLinia;

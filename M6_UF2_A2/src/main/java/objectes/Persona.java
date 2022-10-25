@@ -8,6 +8,10 @@ public class Persona
     String dni;
     String nom;
     Date data_naix;
+
+    public Persona(){
+
+    }
     public Persona(int idPersona, String dni, String nom, Date data_naix)
     {
         this.idPersona = idPersona;
