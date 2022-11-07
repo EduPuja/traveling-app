@@ -1,17 +1,30 @@
 package objectes;
 
+import javax.swing.plaf.PanelUI;
 import java.util.Date;
 
 public class Factura
 {
-    int numFactura;
-    int idPersona;
-    double preuTotal;
-    Date data;
+    private int numFactura;
+    private int idPersona;
+    private double preuTotal;
+    private Date data;
 
-    public Factura(){
+    /**
+     * Builder empty
+     */
+    public Factura()
+    {
 
     }
+
+    /**
+     * Builder with params
+     * @param numFactura
+     * @param idPersona
+     * @param preuTotal
+     * @param data
+     */
     public Factura(int numFactura, int idPersona, double preuTotal, Date data)
     {
         this.numFactura = numFactura;
@@ -20,41 +33,64 @@ public class Factura
         this.data = data;
     }
 
+    /**
+     * Metode general per entrar totes les dades de una factura
+     * @param numFactura
+     * @param idPersona
+     * @param preuTotal
+     * @param data
+     */
+    public void setAllFactura(int numFactura, int idPersona, double preuTotal, Date data)
+    {
+        this.numFactura = numFactura;
+        this.idPersona = idPersona;
+        this.preuTotal = preuTotal;
+        this.data = data;
+
+    }
+
+    /**
+     * metode que et retorna tota la info de un objecte
+     * @return
+     */
+    public String getInfoFactura()
+    {
+        return "NUMERO FACTURA: "+this.numFactura +" \nID PERSONA: "+this.idPersona+"\nPREU TOTAL: "+this.preuTotal+"\nDATA: "+this.data;
+    }
+
+
+    //** GETS **//
     public int getNumFactura()
     {
         return numFactura;
     }
-
-    public void setNumFactura(int numFactura)
-    {
-        this.numFactura = numFactura;
-    }
-
     public int getIdPersona()
     {
         return idPersona;
     }
-
-    public void setIdPersona(int idPersona)
-    {
-        this.idPersona = idPersona;
-    }
-
     public double getPreuTotal()
     {
         return preuTotal;
     }
-
-    public void setPreuTotal(double preuTotal)
-    {
-        this.preuTotal = preuTotal;
-    }
-
     public Date getData()
     {
         return data;
     }
 
+
+    // ** SETS **//
+    public void setNumFactura(int numFactura)
+    {
+        this.numFactura = numFactura;
+    }
+    public void setIdPersona(int idPersona)
+    {
+        this.idPersona = idPersona;
+    }
+    public void setPreuTotal(double preuTotal)
+    {
+        this.preuTotal = preuTotal;
+    }
     public void setData(Date data)
     {
         this.data = data;
