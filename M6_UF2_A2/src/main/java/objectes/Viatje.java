@@ -54,7 +54,7 @@ public class Viatje
      */
     public String getInfoViatge()
     {
-        return this.idViatge+" "+this.idOrigen +" "+this.idOrigen+" "+this.pais;
+        return "ID_VIATGE: "+this.idViatge+"\nID_ORIGEN: "+this.idOrigen +"\nID_DESTI: "+this.idDesti+"\nPAIS: "+this.pais;
     }
 
 
