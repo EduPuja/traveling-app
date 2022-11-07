@@ -36,7 +36,7 @@ public class Billet
 
     public String getInfoBillet()
     {
-        return "ID_Billet: "+idBillet+" TIPUS_BILLET: "+tipusBillet.toString()+" PREU_BILLET: "+preuBillet+" NUM_PERSONES: "+this.maxPersones;
+        return "ID BILLET: "+idBillet+"\nTIPUS_BILLET: "+tipusBillet.toString()+"\nPREU_BILLET: "+preuBillet+"\nNUM_PERSONES: "+this.maxPersones;
     }
 
     // ** METODES GET  ** //
