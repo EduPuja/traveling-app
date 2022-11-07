@@ -55,7 +55,7 @@ public class Persona
      */
     public String getInfoPersona()
     {
-        return this.idPersona+" "+this.dni+" "+this.nom+" "+this.data_naix;
+        return "ID_PERSONA: "+this.idPersona+"\nDNI: "+this.dni+"\nNOM: "+this.nom+"\nDATA_NAIX: "+this.data_naix;
     }
 
 
