@@ -49,7 +49,7 @@ public class Viatje
     }
 
     /**
-     * Metode que te retorna tota la informacio 
+     * Metode que te retorna tota la informacio
      * @return
      */
     public String getInfoViatge()
