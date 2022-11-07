@@ -56,7 +56,7 @@ public class Equipatge
      */
     public String getInfoEquipatge()
     {
-        return this.idEquipatge+" "+this.numFactura+" "+this.liniaFactura+" "+this.pesKg+" "+this.numMaletes;
+        return "ID_EQUIPATGE: "+this.idEquipatge+"\nNUMERO FACTURA:"+this.numFactura+"\nLINIA FACTURA: "+this.liniaFactura+"\nPES_KG: "+this.pesKg+"\nNUM MALETES: "+this.numMaletes;
     }
 
     // ** GETS ** //
