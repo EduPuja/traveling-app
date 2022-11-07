@@ -39,41 +39,39 @@ public class Billet
         return "ID_Billet: "+idBillet+" TIPUS_BILLET: "+tipusBillet.toString()+" PREU_BILLET: "+preuBillet+" NUM_PERSONES: "+this.maxPersones;
     }
 
+    // ** METODES GET  ** //
+
     public int getIdBillet()
     {
         return idBillet;
     }
-
-    public void setIdBillet(int idBillet)
-    {
-        this.idBillet = idBillet;
-    }
-
     public TipusBillet getTipusBillet()
     {
         return tipusBillet;
     }
-
-    public void setTipusBillet(TipusBillet tipusBillet)
-    {
-        this.tipusBillet = tipusBillet;
-    }
-
     public double getPreuBillet()
     {
         return preuBillet;
     }
-
-    public void setPreuBillet(double preuBillet)
-    {
-        this.preuBillet = preuBillet;
-    }
-
     public int getMaxPersones()
     {
         return maxPersones;
     }
 
+
+    // ** METODES SET ** //
+    public void setIdBillet(int idBillet)
+    {
+        this.idBillet = idBillet;
+    }
+    public void setTipusBillet(TipusBillet tipusBillet)
+    {
+        this.tipusBillet = tipusBillet;
+    }
+    public void setPreuBillet(double preuBillet)
+    {
+        this.preuBillet = preuBillet;
+    }
     public void setMaxPersones(int maxPersones)
     {
         this.maxPersones = maxPersones;
