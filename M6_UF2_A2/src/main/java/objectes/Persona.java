@@ -4,7 +4,7 @@ import Interfaces.InterfaceUsuari;
 
 import java.util.Date;
 
-public class Persona implements InterfaceUsuari
+public class Persona
 {
     int idPersona;
     String dni;
@@ -59,25 +59,5 @@ public class Persona implements InterfaceUsuari
     public void setData_naix(Date data_naix)
     {
         this.data_naix = data_naix;
-    }
-
-    @Override
-    public void altaUser() {
-
-    }
-
-    @Override
-    public void baixaUser() {
-
-    }
-
-    @Override
-    public void modificacioUser() {
-
-    }
-
-    @Override
-    public void llistarUser() {
-
     }
 }

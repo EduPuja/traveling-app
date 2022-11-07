@@ -1,16 +1,19 @@
 package Funcions;
 
-import objectes.Persona;
+import objectes.Billet;
 
 public class DadesBitllet {
 
-    public static Persona formCompraBitllet()
+    public static Billet formCompraBitllet()
     {
         return null;
     }
-    public static Persona formEliminarBitllet()
+    public static Billet formEliminarBitllet()
     {
         return null;
     }
+    public static void formLlistarBitllets()
+    {
 
+    }
 }

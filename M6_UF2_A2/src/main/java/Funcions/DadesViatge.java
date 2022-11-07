@@ -1,17 +1,17 @@
 package Funcions;
 
-import objectes.Persona;
+import objectes.Viatje;
 
 public class DadesViatge {
-    public static Persona formNouViatge()
+    public static Viatje formNouViatge()
     {
         return null;
     }
-    public static Persona formEliminarViatge()
+    public static Viatje formEliminarViatge()
     {
         return null;
     }
-    public static Persona formUpdateViatge()
+    public static Viatje formUpdateViatge()
     {
         return null;
     }
