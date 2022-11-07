@@ -21,7 +21,8 @@ public class Main
 {
     public static Scanner lector = new Scanner(System.in);
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception
+    {
         String nom = "";
         String password = "";
         boolean admin = false;
@@ -37,12 +38,14 @@ public class Main
             password = lector.nextLine();
             System.out.println("------------------------------------");
 
-            if(nom.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234")){
+            if(nom.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
+            {
                 admin = true;
                 menuGeneral(admin);
             }
             userExist = ImplementsUsuari.comprovarUser(nom,password,admin);
-            if(userExist){
+            if(userExist)
+            {
                 menuGeneral(admin);
                 menu = true;
             }
@@ -52,7 +55,8 @@ public class Main
         // falta un else if comprovant que el usuari existeix.
 
     }
-    private static void menuUsuaris() throws Exception {
+    private static void menuUsuaris() throws Exception
+    {
         InterfaceUsuari daoU = new ImplementsUsuari();
         boolean menu = false;
         do{
@@ -65,7 +69,8 @@ public class Main
             int opcio = lector.nextInt();
             lector.nextLine();
 
-            switch (opcio){
+            switch (opcio)
+            {
                 case 1:
                     Persona uAlta = DadesUser.formAltaUser();
                     daoU.altaUser(uAlta);
@@ -88,10 +93,12 @@ public class Main
             }
         }while(!menu);
     }
-    private static void menuViatges() throws Exception {
+    private static void menuViatges() throws Exception
+    {
         InterfaceViatjes daoV = new ImplementsViatjes();
         boolean menu = false;
-        do{
+        do
+        {
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Nou Viatje");
             System.out.println("2 - Eliminar Viatje");
@@ -101,7 +108,8 @@ public class Main
             int opcio = lector.nextInt();
             lector.nextLine();
 
-            switch (opcio){
+            switch (opcio)
+            {
                 case 1:
                     Viatje vNou = DadesViatge.formNouViatge();
                     daoV.nouViatje(vNou);
@@ -124,10 +132,12 @@ public class Main
             }
         }while(!menu);
     }
-    private static void menuBitllets(Boolean admin) throws Exception {
+    private static void menuBitllets(Boolean admin) throws Exception
+    {
         InterfaceBitllets daoB = new ImplementsBitllets();
         boolean menu = false;
-        do{
+        do
+        {
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Llista Bitllets");
             if(!admin) System.out.println("2 - Compra Bitllets");
@@ -146,7 +156,8 @@ public class Main
                     daoB.compraBitllets(bCompra);
                     break;
                 case 3:
-                    if(admin){
+                    if(admin)
+                    {
                         Billet bElimina = DadesBitllet.formEliminarBitllet();
                         daoB.eliminarBitllets(bElimina);
                     }
@@ -162,11 +173,14 @@ public class Main
             }
         }while(!menu);
     }
-    public static void menuGeneral(Boolean admin) throws Exception {
+    public static void menuGeneral(Boolean admin) throws Exception
+    {
         boolean menu = false;
-        do{
+        do
+        {
             System.out.println("Entra una opcio: ");
-            if(admin){
+            if(admin)
+            {
                 System.out.println("1 - Gestio de Bitllets");
                 System.out.println("2 - Gestio d'Usuaris");
                 System.out.println("3 - Gestio de Viatges");
@@ -177,7 +191,8 @@ public class Main
             int opcio = lector.nextInt();
             lector.nextLine();
 
-            switch (opcio){
+            switch (opcio)
+            {
                 case 1:
                     menuBitllets(admin);
                     break;
