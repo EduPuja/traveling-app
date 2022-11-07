@@ -142,7 +142,11 @@ public class Main
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Llista Bitllets");
             if(!admin) System.out.println("2 - Compra Bitllets");
-            if(admin) System.out.println("3 - Eliminar Bittlets");
+            if(admin)
+            {
+                System.out.println("3 - Eliminar Bittlets");
+                System.out.println("4 - Crear Bittlets");
+            }
             System.out.println("0 - Sortir");
             int opcio = lector.nextInt();
             lector.nextLine();
@@ -161,6 +165,14 @@ public class Main
                     {
                         Billet bElimina = DadesBitllet.formEliminarBitllet();
                         daoB.eliminarBitllets(bElimina);
+                    }
+                    else System.out.println("Opcio incorrecta, Torna a intentar.");
+                    break;
+                case 4:
+                    if(admin)
+                    {
+                        Billet bCrea = DadesBitllet.formCreaBitllet();
+                        daoB.eliminarBitllets(bCrea);
                     }
                     else System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;

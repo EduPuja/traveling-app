@@ -14,24 +14,9 @@ public class DadesBitllet
     public static Billet formCompraBitllet()
     {
 
-        Billet billet= new Billet();
-
-        System.out.println("Digues el numero del teu billet");
-        int idBillet = lector.nextInt();
-        lector.nextLine();
 
 
-        boolean okaBillet = ImplementsBitllets.comprovarBillet(idBillet);
-        if(okaBillet)
-        {
-            System.out.println("Billet entrat Correctament");
-        }
-        else System.out.println("Billet REPETIT! ");
-
-
-
-
-        return billet;
+        return null;
     }
     public static Billet formEliminarBitllet()
     {
@@ -40,5 +25,26 @@ public class DadesBitllet
     public static void formLlistarBitllets()
     {
 
+    }
+
+    public static Billet formCreaBitllet() {
+        Billet billet= new Billet();
+
+        System.out.println("Digues el numero del bitllet a comprar: ");
+        int idBillet = lector.nextInt();
+        lector.nextLine();
+
+
+        boolean okaBillet = ImplementsBitllets.comprovarBillet(idBillet);
+        if(!okaBillet)
+        {
+            System.out.println("Billet entrat Correctament");
+            //continuar preguntant les coses de un bitllet.
+        }
+        else System.out.println("Billet REPETIT! ");
+
+
+
+        return billet;
     }
 }

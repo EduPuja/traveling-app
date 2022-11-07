@@ -21,6 +21,11 @@ public class ImplementsBitllets implements InterfaceBitllets
     {
         ConnexioBDD.conexioDB();
     }
+
+    public void creaBitllets(Billet bCrea) throws Exception {
+        ConnexioBDD.conexioDB();
+    }
+
     public static boolean comprovarBillet(int idBillet)
     {
         try
@@ -31,8 +36,8 @@ public class ImplementsBitllets implements InterfaceBitllets
 
             ResultSet resultSet = statement.executeQuery(query);
 
-            if(resultSet.getInt("id_billet") == idBillet) return false;
-            else return true;
+            if(resultSet.getInt("id_billet") == idBillet) return true;
+            else return false;
 
         }
         catch (Exception e)
