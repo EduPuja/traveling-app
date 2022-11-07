@@ -59,7 +59,8 @@ public class Main
     {
         InterfaceUsuari daoU = new ImplementsUsuari();
         boolean menu = false;
-        do{
+        do
+        {
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Alta Usuari");
             System.out.println("2 - Baixa Usuari");

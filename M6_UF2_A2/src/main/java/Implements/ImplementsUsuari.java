@@ -11,6 +11,7 @@ public class ImplementsUsuari implements InterfaceUsuari
 {
     public void altaUser(Persona u) throws Exception {
         ConnexioBDD.conexioDB();
+
     }
     public void baixaUser(Persona u) throws Exception {
         ConnexioBDD.conexioDB();
