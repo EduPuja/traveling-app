@@ -14,13 +14,19 @@ public class DadesUser {
         Persona p = new Persona();
         String auxDni = "";
         String nom = "";
-        boolean menuDNI = false;
-        do{
-            System.out.println("Entra el dni de l'Usuari: ");
-            auxDni = lector.nextLine();
-            menuDNI = comprovaDNI(auxDni);
-            if(!menuDNI) System.out.println("DNI incorrecte.");
-        }while(!menuDNI);
+        boolean menu = false;
+        do
+        {
+            boolean menuDNI = false;
+            do{
+                System.out.println("Entra el dni de l'Usuari: ");
+                auxDni = lector.nextLine();
+                menuDNI = comprovaDNI(auxDni);
+                if(!menuDNI) System.out.println("DNI incorrecte.");
+            }while(!menuDNI);
+            if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(auxDni))System.out.println("Aquest DNI ja existeix.");
+            else menu = true;
+        }while(!menu);
 
         System.out.println("Entra el nom de l'Usuari: ");
         nom = lector.nextLine();
@@ -69,9 +75,14 @@ public class DadesUser {
         boolean menu = false;
         do
         {
-            System.out.println("Entra el DNI de l'Usuari que vos donar de baixa: ");
-            dniB = lector.nextLine();
-            if(ImplementsUsuari.comprovarUserBaixa_Update(dniB))menu = true;
+            boolean menuDNI = false;
+            do{
+                System.out.println("Entra el DNI de l'Usuari que vos donar de baixa: ");
+                dniB = lector.nextLine();
+                menuDNI = comprovaDNI(dniB);
+                if(!menuDNI) System.out.println("DNI incorrecte.");
+            }while(!menuDNI);
+            if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(dniB))menu = true;
             else System.out.println("Aquest DNI no existeix.");
         }while(!menu);
         return dniB;
@@ -79,13 +90,22 @@ public class DadesUser {
     public static String formUpdateUser()
     {
         String dades = "";
+        String dni = "";
+        String nom = "";
+        String auxData_naix = "";
         boolean menu = false;
         boolean menu2 = false;
+        boolean menu3 = false;
         do
         {
-            System.out.println("Entra el DNI de l'Usuari que vos modificar: ");
-            dades = lector.nextLine();
-            if(ImplementsUsuari.comprovarUserBaixa_Update(dades))menu = true;
+            boolean menuDNI = false;
+            do{
+                System.out.println("Entra el DNI de l'Usuari que vos modificar: ");
+                dades = lector.nextLine();
+                menuDNI = comprovaDNI(dades);
+                if(!menuDNI) System.out.println("DNI incorrecte.");
+            }while(!menuDNI);
+            if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(dades))menu = true;
             else System.out.println("Aquest DNI no existeix.");
         }while(!menu);
         if(menu)
@@ -95,8 +115,45 @@ public class DadesUser {
                 System.out.println("1 - Modificar el DNI.");
                 System.out.println("2 - Modificar el NOM.");
                 System.out.println("3 - Modificar la DATA DE NAIXEMENT.");
+                System.out.println("0 - Sortir.");
+                int opcio = lector.nextInt();
+                lector.nextLine();
+                switch(opcio){
+                    case 1:
+
+                        do
+                        {
+                            boolean menuDNI = false;
+                            do{
+                                System.out.println("Entra el dni nou de l'Usuari: ");
+                                dni = lector.nextLine();
+                                menuDNI = comprovaDNI(dni);
+                                if(!menuDNI) System.out.println("DNI incorrecte.");
+                            }while(!menuDNI);
+                            if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(dni))System.out.println("Aquest DNI ja existeix.");
+                            else menu3 = true;
+                        }while(!menu3);
+                        dades = dades + "/" + dni + "/dni";
+                        break;
+                    case 2:
+                        System.out.println("Entra el nom nou de l'Usuari: ");
+                        nom = lector.nextLine();
+                        dades = dades + "/" + nom + "/nom";
+                        break;
+                    case 3:
+                        System.out.println("Entra la data de naixement nova de l'Usuari: ");
+                        auxData_naix = lector.nextLine();
+                        dades = dades + "/" + auxData_naix + "/data_naix";
+                        break;
+                    case 4:
+                        menu2 = true;
+                        dades = "no";
+                        break;
+                    default:
+                        break;
+                }
             }while(!menu2);
         }
-        return dades;
+        return dades;// dades esta format en el seguent format (dni/dade modificada/tipo de dada);
     }
 }

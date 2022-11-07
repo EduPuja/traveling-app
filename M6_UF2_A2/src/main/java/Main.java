@@ -81,8 +81,8 @@ public class Main
                     daoU.baixaUser(dniUser);
                     break;
                 case 3:
-                    Persona uUpdate = DadesUser.formUpdateUser();
-                    daoU.modificacioUser(uUpdate);
+                    String dades = DadesUser.formUpdateUser();
+                    daoU.modificacioUser(dades);
                     break;
                 case 0:
                     System.out.println("Adeu.");
