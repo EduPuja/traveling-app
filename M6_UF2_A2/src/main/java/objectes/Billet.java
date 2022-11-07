@@ -1,6 +1,8 @@
 package objectes;
 
-public class Billet
+import Interfaces.InterfaceBitllets;
+
+public class Billet implements InterfaceBitllets
 {
     int idBillet;
 
@@ -75,5 +77,15 @@ public class Billet
     public void setMaxPersones(int maxPersones)
     {
         this.maxPersones = maxPersones;
+    }
+
+    @Override
+    public void llistarBitllets() {
+
+    }
+
+    @Override
+    public void compraBitllets() {
+
     }
 }

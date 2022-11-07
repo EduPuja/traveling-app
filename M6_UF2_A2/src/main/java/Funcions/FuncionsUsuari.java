@@ -1,16 +1,21 @@
 package Funcions;
 
-public class FuncionsUsuari
+import Interfaces.InterfaceUsuari;
+
+public class FuncionsUsuari implements InterfaceUsuari
 {
-    public static void altaUser()
+    public void altaUser()
     {
     }
 
-    public static void baixaUser()
+    public void baixaUser()
     {
     }
 
     public static void modificacioUser()
     {
+    }
+    public void llistarUser(){
+
     }
 }

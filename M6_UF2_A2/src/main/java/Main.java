@@ -1,5 +1,12 @@
+import Funcions.FuncionsBitllets;
 import Funcions.FuncionsUsuari;
 import Funcions.FuncionsViatjes;
+import Funcions.InterfaceBitllets;
+import Funcions.InterfaceUsuari;
+import Funcions.InterfaceViatjes;
+import objectes.Billet;
+import objectes.Persona;
+import objectes.Viatje;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,6 +55,7 @@ public class Main
     {
         boolean menu = false;
         do{
+            Persona p = new Persona();
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Alta Usuari");
             System.out.println("2 - Baixa Usuari");
@@ -59,13 +67,13 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    FuncionsUsuari.altaUser();
+                    p.altaUser();
                     break;
                 case 2:
-                    FuncionsUsuari.baixaUser();
+                    p.baixaUser();
                     break;
                 case 3:
-                    FuncionsUsuari.modificacioUser();
+                    p.modificacioUser();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -80,6 +88,7 @@ public class Main
     {
         boolean menu = false;
         do{
+            Viatje v = new Viatje();
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Nou Viatje");
             System.out.println("2 - Eliminar Viatje");
@@ -91,13 +100,13 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    FuncionsViatjes.nouViatje();
+                    v.nouViatje();
                     break;
                 case 2:
-                    FuncionsViatjes.eliminarViatje();
+                    v.eliminarViatje();
                     break;
                 case 3:
-                    FuncionsViatjes.modificarViatje();
+                    v.modificarViatje();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -111,6 +120,32 @@ public class Main
 
     private static void menuBitllets()
     {
+        boolean menu = false;
+        do{
+            Billet b = new Billet();
+            System.out.println("Entra una opcio: ");
+            System.out.println("1 - Llista Bitllets");
+            System.out.println("2 - Compra Bitllets");
+            System.out.println("0 - Sortir");
+
+            int opcio = lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio){
+                case 1:
+                    b.llistarBitllets();
+                    break;
+                case 2:
+                    b.compraBitllets();
+                    break;
+                case 0:
+                    System.out.println("Adeu.");
+                    menu = true;
+                    break;
+                default:
+                    break;
+            }
+        }while(!menu);
     }
 
     private static void conexioDB() throws Exception
@@ -124,7 +159,7 @@ public class Main
         ResultSet rs = statement.executeQuery("Select * from persones");
 
         while(rs.next()){
-            
+
         }
     }
 }

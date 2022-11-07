@@ -1,17 +1,19 @@
 package Funcions;
 
-public class FuncionsViatjes
+import Interfaces.InterfaceViatjes;
+
+public class FuncionsViatjes implements InterfaceViatjes
 {
-
-    public static void nouViatje()
+    public void nouViatje()
     {
     }
-
-    public static void eliminarViatje()
+    public void eliminarViatje()
     {
     }
-
-    public static void modificarViatje()
+    public void modificarViatje()
     {
+    }
+    public void llistarViatje(){
+
     }
 }
