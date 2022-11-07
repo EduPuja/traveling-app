@@ -1,10 +1,10 @@
 package Funcions;
 
+import Implements.ImplementsUsuari;
 import objectes.Persona;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class DadesUser {
@@ -36,18 +36,67 @@ public class DadesUser {
         p.setDni(auxDni);
         p.setNom(nom);
         p.setData_naix(data_naixD);
+
         return p;
     }
     private static boolean comprovaDNI(String auxDni)
     {
-        return false;
+        String codiValidacioDNI="TRWAGMYFPDXBNJZSQVHLCKE";
+
+        boolean valid=true;
+
+        if (auxDni.length()==9) {
+            //primer mirem si hi ha 8 nombres
+            int i=0;
+            while(valid&&i<8) {
+                if(!Character.isDigit(auxDni.charAt(i))) valid=false;
+                else i++;
+            }
+
+            //i ara comprovem la lletra
+            long valorDniLong=(Long.parseLong(auxDni.substring(0,8)))%23;// els 8 numeros del dni son massa per integer, hem de fer servir long
+            int valorDni=(int)valorDniLong;	// Ara convertim el resultat a enter.
+            if(!(auxDni.charAt(8)==codiValidacioDNI.charAt(valorDni))) valid=false;
+        }
+        else valid = false;
+
+        return valid;
+
     }
-    public static Persona formBaixaUser()
+    public static String formBaixaUser()
     {
-        return null;
+        String dniB = "";
+        boolean menu = false;
+        do
+        {
+            System.out.println("Entra el DNI de l'Usuari que vos donar de baixa: ");
+            dniB = lector.nextLine();
+            if(ImplementsUsuari.comprovarUserBaixa_Update(dniB))menu = true;
+            else System.out.println("Aquest DNI no existeix.");
+        }while(!menu);
+        return dniB;
     }
-    public static Persona formUpdateUser()
+    public static String formUpdateUser()
     {
-        return null;
+        String dades = "";
+        boolean menu = false;
+        boolean menu2 = false;
+        do
+        {
+            System.out.println("Entra el DNI de l'Usuari que vos modificar: ");
+            dades = lector.nextLine();
+            if(ImplementsUsuari.comprovarUserBaixa_Update(dades))menu = true;
+            else System.out.println("Aquest DNI no existeix.");
+        }while(!menu);
+        if(menu)
+        {
+            do{
+                System.out.println("Entra una opcio:");
+                System.out.println("1 - Modificar el DNI.");
+                System.out.println("2 - Modificar el NOM.");
+                System.out.println("3 - Modificar la DATA DE NAIXEMENT.");
+            }while(!menu2);
+        }
+        return dades;
     }
 }

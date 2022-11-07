@@ -77,8 +77,8 @@ public class Main
                     daoU.altaUser(uAlta);
                     break;
                 case 2:
-                    Persona uBaixa = DadesUser.formBaixaUser();
-                    daoU.baixaUser(uBaixa);
+                    String dniUser = DadesUser.formBaixaUser();
+                    daoU.baixaUser(dniUser);
                     break;
                 case 3:
                     Persona uUpdate = DadesUser.formUpdateUser();

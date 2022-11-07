@@ -2,19 +2,17 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceUsuari;
-import com.sun.tools.javac.Main;
 import objectes.Persona;
-
-import static com.sun.tools.javac.Main.*;
 
 public class ImplementsUsuari implements InterfaceUsuari
 {
     public void altaUser(Persona u) throws Exception {
         ConnexioBDD.conexioDB();
-
+        //fer alta de l'usuari
     }
-    public void baixaUser(Persona u) throws Exception {
+    public void baixaUser(String dniUser) throws Exception {
         ConnexioBDD.conexioDB();
+        //fer la baixa de l'usuai
     }
     public void modificacioUser(Persona u) throws Exception {
         ConnexioBDD.conexioDB();
@@ -23,6 +21,11 @@ public class ImplementsUsuari implements InterfaceUsuari
         ConnexioBDD.conexioDB();
     }
     public static Boolean comprovarUser(String nom, String password, boolean admin)
+    {
+        //comprovarUser en la bdd.
+        return true;
+    }
+    public static Boolean comprovarUserBaixa_Update(String dni)
     {
         //comprovarUser en la bdd.
         return true;
