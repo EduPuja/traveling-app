@@ -1,11 +1,13 @@
-import Funcions.FuncionsBitllets;
-import Funcions.FuncionsUsuari;
-import Funcions.FuncionsViatjes;
-import Funcions.InterfaceBitllets;
-import Funcions.InterfaceUsuari;
-import Funcions.InterfaceViatjes;
+import Implements.ImplementsBitllets;
+import Implements.ImplementsUsuari;
+import Implements.ImplementsViatjes;
+import Implements.InterfaceBitllets;
+import Implements.InterfaceUsuari;
+import Implements.InterfaceViatjes;
+import Interfaces.InterfaceBitllets;
+import Interfaces.InterfaceUsuari;
+import Interfaces.InterfaceViatjes;
 import objectes.Billet;
-import objectes.Persona;
 import objectes.Viatje;
 
 import java.sql.Connection;
@@ -53,9 +55,9 @@ public class Main
     }
     private static void menuUsuaris()
     {
+        InterfaceUsuari daoU = new ImplementsUsuari();
         boolean menu = false;
         do{
-            Persona p = new Persona();
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Alta Usuari");
             System.out.println("2 - Baixa Usuari");
@@ -67,13 +69,14 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    p.altaUser();
+
+                    daoU.altaUser(U);
                     break;
                 case 2:
-                    p.baixaUser();
+                    daoU.baixaUser();
                     break;
                 case 3:
-                    p.modificacioUser();
+                    daoU.modificacioUser();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -86,6 +89,7 @@ public class Main
     }
     private static void menuViatges()
     {
+        InterfaceViatjes daoV = new ImplementsViatjes();
         boolean menu = false;
         do{
             Viatje v = new Viatje();
@@ -100,13 +104,13 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    v.nouViatje();
+                    daoV.nouViatje();
                     break;
                 case 2:
-                    v.eliminarViatje();
+                    daoV.eliminarViatje();
                     break;
                 case 3:
-                    v.modificarViatje();
+                    daoV.modificarViatje();
                     break;
                 case 0:
                     System.out.println("Adeu.");
@@ -118,14 +122,16 @@ public class Main
         }while(!menu);
     }
 
-    private static void menuBitllets()
+    private static void menuBitllets(Boolean admin)
     {
+        InterfaceBitllets daoB = new ImplementsBitllets();
         boolean menu = false;
         do{
             Billet b = new Billet();
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Llista Bitllets");
             System.out.println("2 - Compra Bitllets");
+            if(admin) System.out.println("3 - Eliminar Bittlets");
             System.out.println("0 - Sortir");
 
             int opcio = lector.nextInt();
@@ -133,16 +139,21 @@ public class Main
 
             switch (opcio){
                 case 1:
-                    b.llistarBitllets();
+                    daoB.llistarBitllets();
                     break;
                 case 2:
-                    b.compraBitllets();
+                    daoB.compraBitllets();
+                    break;
+                case 3:
+                    if(admin)daoB.eliminarBitllets();
+                    else System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;
                 case 0:
                     System.out.println("Adeu.");
                     menu = true;
                     break;
                 default:
+                    System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;
             }
         }while(!menu);

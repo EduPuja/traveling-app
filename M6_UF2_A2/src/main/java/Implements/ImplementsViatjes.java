@@ -1,8 +1,8 @@
-package Funcions;
+package Implements;
 
 import Interfaces.InterfaceViatjes;
 
-public class FuncionsViatjes implements InterfaceViatjes
+public class ImplementsViatjes implements InterfaceViatjes
 {
     public void nouViatje()
     {
@@ -13,7 +13,7 @@ public class FuncionsViatjes implements InterfaceViatjes
     public void modificarViatje()
     {
     }
-    public void llistarViatje(){
-
+    public void llistarViatje()
+    {
     }
 }
