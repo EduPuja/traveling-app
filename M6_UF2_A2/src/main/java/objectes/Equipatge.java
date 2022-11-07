@@ -2,16 +2,27 @@ package objectes;
 
 public class Equipatge
 {
-    int idEquipatge;
-    int numFactura;
-    int liniaFactura;
-    double pesKg;
-    int numMaletes;
+    private int idEquipatge;
+    private int numFactura;
+    private int liniaFactura;
+    private double pesKg;
+    private int numMaletes;
 
+    /**
+     * Construcotr buit
+     */
     public Equipatge()
     {
     }
 
+    /**
+     * Constructor amb parametres
+     * @param idEquipatge
+     * @param numFactura
+     * @param liniaFactura
+     * @param pesKg
+     * @param numMaletes
+     */
     public Equipatge(int idEquipatge, int numFactura, int liniaFactura, double pesKg, int numMaletes)
     {
         this.idEquipatge = idEquipatge;
@@ -21,51 +32,73 @@ public class Equipatge
         this.numMaletes = numMaletes;
     }
 
+
+    /**
+     * Set general paara crear un solo equipage
+     * @param idEquipatge
+     * @param numFactura
+     * @param liniaFactura
+     * @param pesKg
+     * @param numMaletes
+     */
+    public void setAllEquipatge(int idEquipatge, int numFactura, int liniaFactura, double pesKg, int numMaletes)
+    {
+        this.idEquipatge = idEquipatge;
+        this.numFactura = numFactura;
+        this.liniaFactura = liniaFactura;
+        this.pesKg = pesKg;
+        this.numMaletes = numMaletes;
+    }
+
+    /**
+     * Metode que te devuelve toda la inforamcio de un equipaje
+     * @return
+     */
+    public String getInfoEquipatge()
+    {
+        return this.idEquipatge+" "+this.numFactura+" "+this.liniaFactura+" "+this.pesKg+" "+this.numMaletes;
+    }
+
+    // ** GETS ** //
     public int getIdEquipatge()
     {
         return idEquipatge;
     }
-
-    public void setIdEquipatge(int idEquipatge)
-    {
-        this.idEquipatge = idEquipatge;
-    }
-
     public int getNumFactura()
     {
         return numFactura;
     }
-
-    public void setNumFactura(int numFactura)
-    {
-        this.numFactura = numFactura;
-    }
-
     public int getLiniaFactura()
     {
         return liniaFactura;
     }
-
-    public void setLiniaFactura(int liniaFactura)
-    {
-        this.liniaFactura = liniaFactura;
-    }
-
     public double getPesKg()
     {
         return pesKg;
     }
-
-    public void setPesKg(double pesKg)
-    {
-        this.pesKg = pesKg;
-    }
-
     public int getNumMaletes()
     {
         return numMaletes;
     }
 
+    //** SETS **//
+
+    public void setIdEquipatge(int idEquipatge)
+    {
+        this.idEquipatge = idEquipatge;
+    }
+    public void setNumFactura(int numFactura)
+    {
+        this.numFactura = numFactura;
+    }
+    public void setLiniaFactura(int liniaFactura)
+    {
+        this.liniaFactura = liniaFactura;
+    }
+    public void setPesKg(double pesKg)
+    {
+        this.pesKg = pesKg;
+    }
     public void setNumMaletes(int numMaletes)
     {
         this.numMaletes = numMaletes;
