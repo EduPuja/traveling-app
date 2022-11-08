@@ -64,11 +64,11 @@ public class ImplementsUsuari implements InterfaceUsuari
     public static Boolean comprovarUser(String nom, String password, boolean admin)
     {
         //comprovarUser en la bdd.
-        return true;
+        return false;
     }
     public static Boolean comprovarUserBaixa_Update_Alta(String dni)
     {
         //comprovarUser en la bdd.
-        return true;
+        return false;
     }
 }
