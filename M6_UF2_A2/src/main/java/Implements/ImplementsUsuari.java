@@ -4,11 +4,22 @@ import Funcions.ConnexioBDD;
 import Interfaces.InterfaceUsuari;
 import objectes.Persona;
 
+import java.sql.Statement;
+import java.util.Date;
+
 public class ImplementsUsuari implements InterfaceUsuari
 {
     public void altaUser(Persona u) throws Exception {
-        ConnexioBDD.conexioDB();
-        //fer alta de l'usuari
+
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String dni = u.getDni();
+        String nom = u.getNom();
+        Date data_naix = u.getData_naix();
+
+
+
+
     }
     public void baixaUser(String dniUser) throws Exception {
         ConnexioBDD.conexioDB();
