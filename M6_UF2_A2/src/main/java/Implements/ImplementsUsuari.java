@@ -63,7 +63,19 @@ public class ImplementsUsuari implements InterfaceUsuari
         else System.out.println("Modificacio Cancelada.");
     }
     public void llistarUser() throws Exception {
-        ConnexioBDD.conexioDB();
+        Statement statement = ConnexioBDD.conexioDB();
+        String query = "SELECT * FROM `persona`";
+
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next())
+        {
+            System.out.println("ID_PERSONA: "+rs.getString("id_persona"));
+            System.out.println("DNI: "+rs.getString("dni"));
+            System.out.println("NOM: "+rs.getString("nom"));
+            System.out.println("DATA_NAIX: "+rs.getDate("data_naix").toString());
+            System.out.println("");
+        }
+        statement.close();
     }
     public static boolean comprovarUser(String dni, String password) throws Exception {
         //comprovarUser en la bdd.

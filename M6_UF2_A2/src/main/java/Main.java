@@ -117,7 +117,9 @@ public class Main
                     String dades = DadesUser.formUpdateUser();
                     daoU.modificacioUser(dades);
                     break;
-
+                case 4:
+                    daoU.llistarUser();
+                    break;
                 case 0:
                     System.out.println("Toranras al menu Admin\n");
                     menu = true;

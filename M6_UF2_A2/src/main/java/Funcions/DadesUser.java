@@ -24,7 +24,6 @@ public class DadesUser {
                 menuDNI = comprovaDNI(auxDni);
                 if(!menuDNI) System.out.println("DNI incorrecte.");
             }while(!menuDNI);
-            //TODO MIRAR PORQUE ESTO PETA
             if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(auxDni))System.out.println("Aquest DNI ja existeix.");
             else menu = true;
         }while(!menu);
