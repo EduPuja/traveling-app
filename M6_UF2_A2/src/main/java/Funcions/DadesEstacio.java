@@ -56,9 +56,20 @@ public class DadesEstacio
     /**
      * Metode per donar de baixa una estacio
      */
-    public static int fromBaixaEstacio()
+    public static int fromBaixaEstacio() throws Exception
     {
-        return -1;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Digues la ID de la estacio");
+        int idEstacio = lector.nextInt();
+        lector.nextLine();
+
+        if(ImplementsEstacio.comprovarEstacio(idEstacio))
+        {
+            return idEstacio;
+        }
+        else return -1;
+
+
     }
 
     /**
