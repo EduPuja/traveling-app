@@ -27,7 +27,8 @@ public class DadesBitllet
         if(resporsta.equalsIgnoreCase("si")) return idBitllet;
         else return -1;
     }
-    public static int formEliminarBitllet() throws Exception {
+    public static int formEliminarBitllet() throws Exception
+    {
         boolean menu = false;
         int idBitllet;
         do{
