@@ -2,7 +2,6 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceBitllets;
-import com.sun.javafx.image.BytePixelSetter;
 import objectes.Billet;
 
 import java.sql.ResultSet;
@@ -14,27 +13,27 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void llistarBitllets() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
-        String query = "SELECT * FROM `persona`";
+        String query = "SELECT * FROM `bitllets`";
 
         ResultSet rs = statement.executeQuery(query);
         while (rs.next())
         {
-            System.out.println("ID_BITLLET: "+rs.getString("id_persona"));
-            System.out.println("ID_VIATGE: "+rs.getString("dni"));
-            System.out.println("TIPUS BITLLET: "+rs.getString("nom"));
-            System.out.println("PREU BITLLET: "+rs.getDate("data_naix").toString());
-            System.out.println("MAXIM DE PERSONES: "+rs.getDate("data_naix").toString());
+            System.out.println("ID_BITLLET: "+rs.getString("id_billet"));
+            System.out.println("ID_VIATGE: "+rs.getString("id_viatge"));
+            System.out.println("TIPUS BITLLET: "+rs.getString("tipus_billet"));
+            System.out.println("PREU BITLLET: "+rs.getDate("preu").toString());
+            System.out.println("MAXIM DE PERSONES: "+rs.getDate("max_billets_tipus").toString());
             System.out.println("");
         }
         statement.close();
-
     }
     public void compraBitllets(Billet bCompra) throws Exception
     {
         Scanner lector = new Scanner(System.in);
         Statement con =ConnexioBDD.conexioDB();
 
-        int pagar=-1;
+        String query = "SELECT * FROM billet WHERE ";
+        int aPagar = bCompra.getPreuBillet();
         int canvi=-1;
         // comprovar en la base de dades
         if(comprovarBillet(bCompra.getIdBillet()))
@@ -112,40 +111,25 @@ public class ImplementsBitllets implements InterfaceBitllets
 
 
     }
-    public static boolean comprovarBillet(int idBillet)
-    {
+    public static boolean comprovarBillet(int idBillet) throws Exception {
         // billet  num 1
         // billet entrat 2  -ok
         // billet entrat 1  --esta repetit
-        try
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String query = "select `id_billet` from `billets` where `id_billet` ="+idBillet;
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if(resultSet.next())
         {
-            Statement statement = ConnexioBDD.conexioDB();
-
-            String query = "select id_billet from billets where id_billet ="+idBillet;
-
-            ResultSet resultSet = statement.executeQuery(query);
-
-            if(resultSet.getInt("id_billet") == idBillet)
-            {
-                statement.close();
-                return true;
-            }
-            else
-            {
-                statement.close();
-                return false;
-
-            }
-
+            statement.close();
+            return true;
         }
-        catch (Exception e)
+        else
         {
-            e.printStackTrace();
+            statement.close();
+            return false;
         }
-
-
-        return false;
-
-
     }
 }

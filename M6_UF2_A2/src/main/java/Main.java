@@ -11,10 +11,6 @@ import objectes.Billet;
 import objectes.Persona;
 import objectes.Viatje;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main
@@ -211,7 +207,7 @@ public class Main
                     break;
                 case 4:
                     Billet bCrea = DadesBitllet.formCreaBitllet();
-                    daoB.eliminarBitllets(bCrea);
+                    daoB.creaBitllets(bCrea);
                     break;
                 case 0:
                     System.out.println("Toranras al menu admin\n");

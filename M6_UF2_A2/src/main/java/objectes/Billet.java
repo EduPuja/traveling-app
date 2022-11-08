@@ -79,4 +79,5 @@ public class Billet
     {
         this.maxPersones = maxPersones;
     }
+    public void setIdViatge(int idViatge){this.idViatge = idViatge;}
 }

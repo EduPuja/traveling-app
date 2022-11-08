@@ -4,10 +4,13 @@ import Funcions.ConnexioBDD;
 import Interfaces.InterfaceViatjes;
 import objectes.Viatje;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ImplementsViatjes implements InterfaceViatjes
 {
+
     public void nouViatje(Viatje vNou) throws Exception
     {
        Statement con =ConnexioBDD.conexioDB();
@@ -26,4 +29,23 @@ public class ImplementsViatjes implements InterfaceViatjes
     {
         Statement statement =ConnexioBDD.conexioDB();
     }
+    public static boolean comprovarViatge(int idViatge) throws Exception {
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String query = "select `id_viatge` from `viatges` where `id_viatge` ="+idViatge;
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if(resultSet.next())
+        {
+            statement.close();
+            return true;
+        }
+        else
+        {
+            statement.close();
+            return false;
+        }
+    }
+
 }
