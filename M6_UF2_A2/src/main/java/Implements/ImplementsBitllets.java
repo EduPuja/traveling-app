@@ -20,10 +20,27 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void eliminarBitllets(Billet bElimina) throws Exception
     {
         ConnexioBDD.conexioDB();
+
+        Statement con = ConnexioBDD.conexioDB();
+        //String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
+
+       // con.executeQuery(query);
+
+        System.out.println("SE HA ELIMIANT UN BILLET A LA BBDD");
+        con.close();
     }
 
-    public void creaBitllets(Billet bCrea) throws Exception {
-        ConnexioBDD.conexioDB();
+    public void creaBitllets(Billet bCrea) throws Exception
+    {
+        Statement con = ConnexioBDD.conexioDB();
+        String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
+
+        con.executeQuery(query);
+
+        System.out.println("SE HA CREAT UN BILLET A LA BBDD");
+        con.close();
+
+
     }
 
     public static boolean comprovarBillet(int idBillet)
@@ -36,8 +53,17 @@ public class ImplementsBitllets implements InterfaceBitllets
 
             ResultSet resultSet = statement.executeQuery(query);
 
-            if(resultSet.getInt("id_billet") == idBillet) return true;
-            else return false;
+            if(resultSet.getInt("id_billet") == idBillet)
+            {
+                statement.close();
+                return true;
+            }
+            else
+            {
+                statement.close();
+                return false;
+
+            }
 
         }
         catch (Exception e)
@@ -50,6 +76,7 @@ public class ImplementsBitllets implements InterfaceBitllets
         // billet  num 1
         // billet entrat 2  -ok
         // billet entrat 1  --esta repetit
+
 
 
     }

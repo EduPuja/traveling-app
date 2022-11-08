@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2022 a las 15:08:25
+-- Tiempo de generación: 08-11-2022 a las 15:03:09
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -120,7 +120,8 @@ CREATE TABLE `viatges` (
 -- Indices de la tabla `billets`
 --
 ALTER TABLE `billets`
-  ADD PRIMARY KEY (`id_billet`);
+  ADD PRIMARY KEY (`id_billet`),
+  ADD KEY `id_viatge` (`id_viatge`);
 
 --
 -- Indices de la tabla `equipatge`
@@ -140,20 +141,23 @@ ALTER TABLE `estacio`
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`num_factura`);
+  ADD PRIMARY KEY (`num_factura`),
+  ADD KEY `id_personaFk` (`id_persona`);
 
 --
 -- Indices de la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
   ADD PRIMARY KEY (`linia_factura`),
-  ADD KEY `fk_num_factura` (`num_factura`);
+  ADD KEY `fk_num_factura` (`num_factura`),
+  ADD KEY `fk_id_persona` (`id_persona`);
 
 --
 -- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD PRIMARY KEY (`id_persona`);
+  ADD PRIMARY KEY (`id_persona`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- Indices de la tabla `viatges`
@@ -214,6 +218,12 @@ ALTER TABLE `viatges`
 --
 
 --
+-- Filtros para la tabla `billets`
+--
+ALTER TABLE `billets`
+  ADD CONSTRAINT `id_viatge` FOREIGN KEY (`id_viatge`) REFERENCES `viatges` (`id_viatge`);
+
+--
 -- Filtros para la tabla `equipatge`
 --
 ALTER TABLE `equipatge`
@@ -221,9 +231,16 @@ ALTER TABLE `equipatge`
   ADD CONSTRAINT `fk_num_linia` FOREIGN KEY (`num_factura`) REFERENCES `factura` (`num_factura`);
 
 --
+-- Filtros para la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `id_personaFk` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`);
+
+--
 -- Filtros para la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
+  ADD CONSTRAINT `fk_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   ADD CONSTRAINT `fk_num_factura` FOREIGN KEY (`num_factura`) REFERENCES `factura` (`num_factura`);
 
 --
