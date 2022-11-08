@@ -10,31 +10,22 @@ public class DadesBitllet
 {
     // intentar cerrar
     static  Scanner lector = new Scanner(System.in);
-    public static String formCompraBitllet()
-    {
-
-        /*Billet billet= new Billet();
-
-        System.out.println("Digues el numero del bitllet a comprar: ");
-        int idBillet = lector.nextInt();
-        lector.nextLine();
-
-
-        boolean okaBillet = implementsBillets.comprovarBillet(idBillet);
-        if(!okaBillet)
-        {
-            System.out.println("Billet entrat Correctament");
-            //continuar preguntant les coses de un bitllet.
-        }
-        else System.out.println("Billet REPETIT! ");*/
-
-
-
-        return null;
+    public static int formCompraBitllet() throws Exception {
+        boolean menu = false;
+        int idBitllet;
+        do{
+            System.out.println("Entra el id de el bitllet que vos comprar: ");
+            idBitllet = lector.nextInt();
+            lector.nextLine();
+            if(ImplementsBitllets.comprovarBillet(idBitllet)) menu = true;
+            else System.out.println("Aquest bitllet no existeix.");
+        }while (!menu);
+        System.out.println("");
+        return idBitllet;
     }
-    public static String formEliminarBitllet()
+    public static int formEliminarBitllet()
     {
-        return null;
+        return 23;
     }
     public static Billet formCreaBitllet() throws Exception {
        Billet billet = new Billet();

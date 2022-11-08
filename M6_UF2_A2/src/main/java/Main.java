@@ -238,12 +238,12 @@ public class Main
                     daoB.llistarBitllets();
                     break;
                 case 2:
-                    //int bIdCompra = DadesBitllet.formCompraBitllet();
-                    //daoB.compraBitllets(bIdCompra);
+                    int bIdCompra = DadesBitllet.formCompraBitllet();
+                    daoB.compraBitllets(bIdCompra);
                     break;
                 case 3:
-                    //int bIdElimina = DadesBitllet.formEliminarBitllet();
-                    //daoB.eliminarBitllets(bIdElimina);
+                    int bIdElimina = DadesBitllet.formEliminarBitllet();
+                    daoB.eliminarBitllets(bIdElimina);
                     break;
                 case 4:
                     Billet bCrea = DadesBitllet.formCreaBitllet();

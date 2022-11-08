@@ -27,70 +27,20 @@ public class ImplementsBitllets implements InterfaceBitllets
         }
         statement.close();
     }
-    public void compraBitllets(Billet bCompra) throws Exception
+    public void compraBitllets(int bCompra) throws Exception
     {
-        Scanner lector = new Scanner(System.in);
-        Statement con =ConnexioBDD.conexioDB();
 
-        String query = "SELECT * FROM billet WHERE ";
-        int aPagar = bCompra.getPreuBillet();
-        int canvi=-1;
-        // comprovar en la base de dades
-        if(comprovarBillet(bCompra.getIdBillet()))
-        {
-            System.out.println("Numero del billet :" + bCompra.getIdBillet());
-            // si exgisteix doncs se ha de guardar la COMPRA
-            // en la base de dades
-
-            boolean okPagat= false;
-            // mientras el precio no sea mes petit que el preu
-            /*while (!okPagat && pagar< bCompra.getPreuBillet())
-            {
-                System.out.println("El preu del billet és :" +bCompra.getPreuBillet());
-                pagar=lector.nextInt();
-                lector.nextLine();
-
-                if(pagar< bCompra.getPreuBillet())
-                {
-                    System.out.println("Et falta ");
-                }
-
-                if(pagar>=bCompra.getPreuBillet())
-                {
-                    canvi= pagar- bCompra.getPreuBillet();
-                    System.out.println("El canvi és de: "+canvi);
-                    okPagat=true;
-                }
-                else
-                {
-                    System.out.println("Preu oka");
-                    okPagat=true;
-                }
-            }*/
-
-        }
-        else
-        {
-            System.out.println("No s'ha trobat el billet ");
-        }
     }
-    public void eliminarBitllets(Billet bElimina) throws Exception
+    public void eliminarBitllets(int bIDElimina) throws Exception
     {
-
-
         Statement con = ConnexioBDD.conexioDB();
-        String query = "DELETE FROM billets WHERE id_billet="+bElimina.getIdBillet();
-
-
+        String query = "DELETE FROM billets WHERE id_billet="+bIDElimina;
         // con.executeQuery
         if(con.executeUpdate(query) == 1)
         {
             System.out.println("Se ha elimiant el billet!");
         }
-        else System.out.println("No se ha eliminat el billet ;( ");
-
-
-
+        else System.out.println("No se ha eliminat el billet.");
         con.close();    // cierro la conexion
     }
     public void creaBitllets(Billet bCrea) throws Exception
