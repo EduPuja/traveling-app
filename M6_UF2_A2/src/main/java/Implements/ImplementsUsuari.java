@@ -61,12 +61,20 @@ public class ImplementsUsuari implements InterfaceUsuari
     public void llistarUser() throws Exception {
         ConnexioBDD.conexioDB();
     }
-    public static Boolean comprovarUser(String nom, String password, boolean admin)
-    {
+    public static boolean comprovarUser(String dni, String password, boolean admin) throws Exception {
         //comprovarUser en la bdd.
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String query = "SELECT * FROM `persona` WHERE `dni`= '" + dni + "'";
+
+        if(statement.executeUpdate(query) == 1){
+            System.out.println("Usuari entrat.");
+        }
+        else System.out.println("Usuari no entrat.");
+        statement.close();
         return false;
     }
-    public static Boolean comprovarUserBaixa_Update_Alta(String dni)
+    public static boolean comprovarUserBaixa_Update_Alta(String dni)
     {
         //comprovarUser en la bdd.
         return true;
