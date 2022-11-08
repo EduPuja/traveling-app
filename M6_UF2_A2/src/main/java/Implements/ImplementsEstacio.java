@@ -15,13 +15,13 @@ public class ImplementsEstacio implements InterfaceEstacio
     {
         Statement con = ConnexioBDD.conexioDB();
 
-        String query = "INSERT INTO `estacio`(`id_estacio`, `descrip`) VALUES ("+eNou.getIdEstacio()+","+eNou.getDescripco()+")";
-        if(con.executeUpdate(query) ==1)
+        String query = "INSERT INTO `estacio`(`id_estacio`, `descrip`) VALUES ("+eNou.getIdEstacio()+",'"+eNou.getDescripco()+"')";
+        if(con.executeUpdate(query) == 1)
         {
-            System.out.println("Estacio insertada correctament");
-
+            System.out.println("Insertat");
         }
-        else System.out.println("Estacio NO insertada <");
+        else System.out.println("error");
+
 
         con.close();
     }
