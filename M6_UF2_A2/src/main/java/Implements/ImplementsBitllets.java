@@ -7,20 +7,59 @@ import objectes.Billet;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class ImplementsBitllets implements InterfaceBitllets
 {
     public void llistarBitllets() throws Exception
     {
-        ConnexioBDD.conexioDB();
+        Statement statement= ConnexioBDD.conexioDB();
+
     }
     public void compraBitllets(Billet bCompra) throws Exception
     {
+        Scanner lector = new Scanner(System.in);
         Statement con =ConnexioBDD.conexioDB();
 
+        int pagar=-1;
+        int canvi=-1;
+        // comprovar en la base de dades
         if(comprovarBillet(bCompra.getIdBillet()))
         {
             System.out.println("Numero del billet :" + bCompra.getIdBillet());
+            // si exgisteix doncs se ha de guardar la COMPRA
+            // en la base de dades
+
+            boolean okPagat= false;
+            // mientras el precio no sea mes petit que el preu
+            /*while (!okPagat && pagar< bCompra.getPreuBillet())
+            {
+                System.out.println("El preu del billet és :" +bCompra.getPreuBillet());
+                pagar=lector.nextInt();
+                lector.nextLine();
+
+                if(pagar< bCompra.getPreuBillet())
+                {
+                    System.out.println("Et falta ");
+                }
+
+                if(pagar>=bCompra.getPreuBillet())
+                {
+                    canvi= pagar- bCompra.getPreuBillet();
+                    System.out.println("El canvi és de: "+canvi);
+                    okPagat=true;
+                }
+                else
+                {
+                    System.out.println("Preu oka");
+                    okPagat=true;
+                }
+            }*/
+
+        }
+        else
+        {
+            System.out.println("No s'ha trobat el billet ");
         }
     }
     public void eliminarBitllets(Billet bElimina) throws Exception
