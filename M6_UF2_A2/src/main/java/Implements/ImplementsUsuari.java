@@ -17,7 +17,7 @@ public class ImplementsUsuari implements InterfaceUsuari
         String nom = u.getNom();
         Date data_naix = u.getData_naix();
 
-        String query = "Insert Into persona('dni','nom','data_naix') values('"+ dni + "','" + nom + "','" + data_naix + "')";
+        String query = "Insert Into persona ('dni','nom','data_naix') values('"+ dni + "','" + nom + "','" + data_naix + "')";
 
         if(statement.executeUpdate(query) == 1){
             System.out.println("Usuari entrat.");

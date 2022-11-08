@@ -12,14 +12,14 @@ public class ConnexioBDD
     {
         // url on esta la base de dades
 
-
+        //Class.forName("com.mysql.jdbc.Driver").newInstance();
         String url = "jdbc:mysql://localhost:3306/m6_uf2_a2_edudani";
         // usuari base de dades
         String user = "admin";
         // contrasenya base de dades
         String password = "123asd123";
         // Driver
-        Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(url, user, password);
         Statement statement = connection.createStatement();
 
