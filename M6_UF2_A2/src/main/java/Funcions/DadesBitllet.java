@@ -48,7 +48,6 @@ public class DadesBitllet
        boolean menu = false;
        boolean menu2 = false;
        boolean menu3 = false;
-       int idBillet;
        int idViatge;
        int preuBillet;
        String auxTipusBitllet;
@@ -58,13 +57,6 @@ public class DadesBitllet
        TipusBillet finalTip = null;
        int maxPersones;
 
-       do{
-           System.out.println("Entra el id del bitllet que vos comprar: ");
-           idBillet = lector.nextInt();
-           lector.nextLine();
-           if(ImplementsBitllets.comprovarBillet(idBillet)) menu = true;
-           else System.out.println("Aquest bitllet no existeix.");
-       }while(!menu);
        do{
            System.out.println("Entra el id de el Viatge de el bitllet: ");
            idViatge = lector.nextInt();
@@ -76,19 +68,19 @@ public class DadesBitllet
        preuBillet = lector.nextInt();
        lector.nextLine();
        do{
-           System.out.println("Entra de quin tipus sera el bitllet: (turista,bussines,premium)");
+           System.out.println("Entra de quin tipus sera el bitllet: (TURISTA,BUISSNES,PREMIUM)");
            auxTipusBitllet = lector.nextLine();
-           if(auxTipusBitllet.equalsIgnoreCase(String.valueOf(turista))){
-               menu3 = true;
+           if(auxTipusBitllet.equals(turista.toString())){
                finalTip = turista;
-           }
-           else if(auxTipusBitllet.equalsIgnoreCase(String.valueOf(bussines))){
                menu3 = true;
+           }
+           else if(auxTipusBitllet.equals(bussines.toString())){
                finalTip = bussines;
-           }
-           else if(auxTipusBitllet.equalsIgnoreCase(String.valueOf(premium))){
                menu3 = true;
+           }
+           else if(auxTipusBitllet.equals(premium.toString())){
                finalTip = premium;
+               menu3 = true;
            }
            else System.out.println("Aquest tipus no existeix.");
        }while(!menu3);
@@ -97,7 +89,6 @@ public class DadesBitllet
        maxPersones = lector.nextInt();
        lector.nextLine();
 
-       billet.setIdBillet(idBillet);
        billet.setIdViatge(idViatge);
        billet.setPreuBillet(preuBillet);
        billet.setTipusBillet(finalTip);

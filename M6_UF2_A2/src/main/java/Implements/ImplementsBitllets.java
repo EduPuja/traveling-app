@@ -12,7 +12,7 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void llistarBitllets() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
-        String query = "SELECT * FROM `bitllets`";
+        String query = "SELECT * FROM `billets`";
 
         ResultSet rs = statement.executeQuery(query);
         while (rs.next())
@@ -20,8 +20,8 @@ public class ImplementsBitllets implements InterfaceBitllets
             System.out.println("ID_BITLLET: "+rs.getString("id_billet"));
             System.out.println("ID_VIATGE: "+rs.getString("id_viatge"));
             System.out.println("TIPUS BITLLET: "+rs.getString("tipus_billet"));
-            System.out.println("PREU BITLLET: "+rs.getDate("preu").toString());
-            System.out.println("MAXIM DE PERSONES: "+rs.getDate("max_billets_tipus").toString());
+            System.out.println("PREU BITLLET: "+rs.getInt("preu"));
+            System.out.println("MAXIM DE PERSONES: "+rs.getInt("max_billets_tipus"));
             System.out.println("");
         }
         statement.close();
@@ -47,7 +47,7 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void creaBitllets(Billet bCrea) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
+        String query = "INSERT INTO `billets`(`id_viatge`,`tipus_billet`,`preu`,`max_billets_tipus`) VALUES ("+bCrea.getIdViatge()+",'"+bCrea.getTipusBillet().toString()+"',"+bCrea.getPreuBillet()+","+bCrea.getMaxPersones()+")";
 
        // con.executeQuery(query);
         if(con.executeUpdate(query) == 1)
