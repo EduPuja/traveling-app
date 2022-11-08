@@ -48,20 +48,23 @@ public class Main
                 System.out.println("     Entra el password d'Usurai:    ");
                 password = lector.nextLine();
                 System.out.println("------------------------------------");
-                userExist = ImplementsUsuari.comprovarUser(dni,password);
+
                 if(dni.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
                 {
                 /*admin = true;
                 menuGeneral(admin);*/
                     menuAdmin();
                 }
-                else if (userExist)
-                {
-                    menuUser();
-                }
-                else
-                {
-                    System.out.println("Usuari Incorrecte.");
+                else{
+                    userExist = ImplementsUsuari.comprovarUser(dni,password);
+                    if (userExist)
+                    {
+                        menuUser();
+                    }
+                    else
+                    {
+                        System.out.println("Usuari Incorrecte.");
+                    }
                 }
             }
 
