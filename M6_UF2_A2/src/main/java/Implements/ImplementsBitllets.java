@@ -17,8 +17,8 @@ public class ImplementsBitllets implements InterfaceBitllets
         ResultSet rs = statement.executeQuery(query);
         while (rs.next())
         {
-            System.out.println("ID_BITLLET: "+rs.getString("id_billet"));
-            System.out.println("ID_VIATGE: "+rs.getString("id_viatge"));
+            System.out.println("ID_BITLLET: "+rs.getInt("id_billet"));       // esto era string .-. !!
+            System.out.println("ID_VIATGE: "+rs.getInt("id_viatge"));        // esto era string .-. !!
             System.out.println("TIPUS BITLLET: "+rs.getString("tipus_billet"));
             System.out.println("PREU BITLLET: "+rs.getInt("preu"));
             System.out.println("MAXIM DE PERSONES: "+rs.getInt("max_billets_tipus"));
