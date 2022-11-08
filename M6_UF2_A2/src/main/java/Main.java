@@ -68,16 +68,9 @@ public class Main
                 }
             }
 
-            /*userExist = ImplementsUsuari.comprovarUser(nom,password,admin);
-            if(userExist)
-            {
-                menuGeneral(admin);
-                menu = true;
-            }
-            else System.out.println("Usuari Incorrecte.");*/
         }while (!menu);
 
-        // falta un else if comprovant que el usuari existeix.
+
 
     }
 
