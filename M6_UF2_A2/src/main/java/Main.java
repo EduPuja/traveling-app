@@ -224,7 +224,8 @@ public class Main
                     estacioDao.deleteEstacio(idEstacio);
                     break;
                 case 3:
-                    //TODO MODIFICAR
+                    String dades = DadesEstacio.fromUpdateEstacio();
+                    estacioDao.modificarEstacio(dades);
                     break;
                 default:
                     System.out.println("No tenim aquesta opcio");

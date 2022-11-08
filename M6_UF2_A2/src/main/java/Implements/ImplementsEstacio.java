@@ -3,7 +3,6 @@ package Implements;
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceEstacio;
 import objectes.Estacio;
-import objectes.Viatje;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,8 +24,6 @@ public class ImplementsEstacio implements InterfaceEstacio
 
         con.close();
     }
-
-
     public void deleteEstacio(int idEstacio) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -43,34 +40,25 @@ public class ImplementsEstacio implements InterfaceEstacio
 
         con.close();
     }
-
-    public void modificarEstacio(Estacio eUpdate) throws Exception
+    public void modificarEstacio(String dades) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
 
-        if(comprovarEstacio(eUpdate.getIdEstacio()))
-        {
-            String query = "UPDATE `estacio` SET `descrip`='"+ eUpdate.getDescripco()+"' WHERE id_estacio= "+ eUpdate.getIdEstacio();
+        String taula [] = dades.split("/");
+        int idEstacio = Integer.parseInt(taula[0]);
+        String desNou = taula[1];
 
-            if(statement.executeUpdate(query) == 1)
-            {
-               System.out.println("La descrip De la estacio ha sigut modificada");
-            }
-            else System.out.println("Descrip NOT MODED ");
-        }
-        else System.out.println("Aquesta estacio no esta registrada D:");
+        String query = "UPDATE `estacio` SET `descrip`='"+ desNou+"' WHERE `id_estacio`= "+ idEstacio;
 
-
-
+        if(statement.executeUpdate(query) == 1) System.out.println("Modificat Correcatament.");
+        else System.out.println("Modificat Incorrectament.");
         statement.close();
     }
-
     public void llistarEstacio() throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
 
     }
-
     /**
      * Metode per comprovar si una estacio esta insertada a la base de dades
      * @param idEstacio
@@ -97,6 +85,4 @@ public class ImplementsEstacio implements InterfaceEstacio
         }
 
     }
-
-
 }
