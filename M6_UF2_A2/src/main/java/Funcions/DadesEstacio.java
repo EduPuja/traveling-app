@@ -11,34 +11,44 @@ public class DadesEstacio
     /**
      * Metode per entrar una estacio
      */
-    public static void fromAltaEstacio() throws Exception
+    public static Estacio fromAltaEstacio() throws Exception
     {
         Scanner lector = new Scanner(System.in);
 
 
 
         boolean okaEstacio = false;
-
+        int idEstacio=-1;
+        String descrip="";
         while (!okaEstacio)
         {
             System.out.println("Digues el idEstacio que vols crear");
-            int idEstacio = lector.nextInt();
+             idEstacio = lector.nextInt();
             lector.nextLine();
 
 
             if (!ImplementsEstacio.comprovarEstacio(idEstacio))
             {
                 System.out.println("Escriu una petita descripcio");
-                String descrip = lector.nextLine();
+                descrip = lector.nextLine();
 
-                Estacio estacio = new Estacio(idEstacio,descrip);
+
+
+
+
 
                 okaEstacio = true;
             } else System.out.println("Aquesta estacio ja exgisteix torna a escriure");
 
 
         }
-        lector.close();
+        if(okaEstacio)
+        {
+            Estacio estacio = new Estacio();
+            estacio.setAllEstacio(idEstacio,descrip);
+            return estacio;
+        }
+        return null;
 
 
     }
