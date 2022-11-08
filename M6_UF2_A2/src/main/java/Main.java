@@ -1,13 +1,17 @@
 import Funcions.DadesBitllet;
+import Funcions.DadesEstacio;
 import Funcions.DadesUser;
 import Funcions.DadesViatge;
 import Implements.ImplementsBitllets;
+import Implements.ImplementsEstacio;
 import Implements.ImplementsUsuari;
 import Implements.ImplementsViatjes;
 import Interfaces.InterfaceBitllets;
+import Interfaces.InterfaceEstacio;
 import Interfaces.InterfaceUsuari;
 import Interfaces.InterfaceViatjes;
 import objectes.Billet;
+import objectes.Estacio;
 import objectes.Persona;
 import objectes.Viatje;
 
@@ -95,8 +99,8 @@ public class Main
             System.out.println("MENU ADMIN\n");
             System.out.println("1.Gestio Users");
             System.out.println("2.Gestio Billets");
-            System.out.println("3.Equipatge Stuff");
-            System.out.println("4.Factura Stuff");
+            System.out.println("3.Gestio Equipatge");
+            System.out.println("4.Gestio Factura");
             System.out.println("5.Gestio Viatge");
             System.out.println("6.Gestio Estacio");
             System.out.println("0.Log out");
@@ -191,9 +195,43 @@ public class Main
     /**
      * Metode que el que fa es gestiona les estacions
      */
-    private static void gestioEstacio()
+    private static void gestioEstacio() throws Exception
     {
-        System.out.println("GESTIO ESTACIONS\n");
+        // interfece de dao estacio
+        InterfaceEstacio estacioDao = new ImplementsEstacio();
+        boolean menu =false;
+        int opcio = -1;
+
+        do
+        {
+            System.out.println("GESTIO ESTACIONS\n");
+            System.out.println("1.Crear una estacio");
+            System.out.println("2.Baixa estacio");
+            System.out.println("3.Modificar estacions");
+            System.out.println("0.Turn back");
+
+            opcio =lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    //TODO CREAR
+                    Estacio estacio = DadesEstacio.fromAltaEstacio();
+                    estacioDao.novaEstacio(estacio);
+                    break;
+                case 2:
+                    //TODO BAIXA
+                    break;
+                case 3:
+                    //TODO MODIFICAR
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcio!=0);
+
     }
 
     /**
