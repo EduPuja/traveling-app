@@ -77,6 +77,11 @@ public class Main
         // falta un else if comprovant que el usuari existeix.
 
     }
+
+    /**
+     * Gestio usuaris
+     * @throws Exception
+     */
     private static void gestioUsuaris() throws Exception
     {
         InterfaceUsuari daoU = new ImplementsUsuari();
@@ -119,7 +124,12 @@ public class Main
             }
         }while(!menu && opcio!=0);
     }
-    private static void menuViatges() throws Exception
+
+    /**
+     * Gestio viatges
+     * @throws Exception
+     */
+    private static void gestioViatges() throws Exception
     {
         InterfaceViatjes daoV = new ImplementsViatjes();
         boolean menu = false;
@@ -158,25 +168,30 @@ public class Main
             }
         }while(!menu);
     }
-    private static void menuBitllets(Boolean admin) throws Exception
+
+    /**
+     * Gestio billets
+     * @throws Exception
+     */
+    private static void gestioBillets() throws Exception
     {
         InterfaceBitllets daoB = new ImplementsBitllets();
         boolean menu = false;
+        int opcio=-1;
         do
         {
+            System.out.println("GESTIO BILLETS\n");
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Llista Bitllets");
-            if(!admin) System.out.println("2 - Compra Bitllets");
-            if(admin)
-            {
-                System.out.println("3 - Eliminar Bittlets");
-                System.out.println("4 - Crear Bittlets");
-            }
-            System.out.println("0 - Sortir");
-            int opcio = lector.nextInt();
+            System.out.println("2 - Compra Bitllets");
+            System.out.println("3 - Eliminar Bittlets");
+            System.out.println("4 - Crear Bittlets");
+            System.out.println("0 - Turn Back");
+            opcio = lector.nextInt();
             lector.nextLine();
 
-            switch (opcio){
+            switch (opcio)
+            {
                 case 1:
                     DadesBitllet.formLlistarBitllets();
                     daoB.llistarBitllets();
@@ -186,70 +201,22 @@ public class Main
                     daoB.compraBitllets(bCompra);
                     break;
                 case 3:
-                    if(admin)
-                    {
-                        Billet bElimina = DadesBitllet.formEliminarBitllet();
-                        daoB.eliminarBitllets(bElimina);
-                    }
-                    else System.out.println("Opcio incorrecta, Torna a intentar.");
+                    Billet bElimina = DadesBitllet.formEliminarBitllet();
+                    daoB.eliminarBitllets(bElimina);
                     break;
                 case 4:
-                    if(admin)
-                    {
-                        Billet bCrea = DadesBitllet.formCreaBitllet();
-                        daoB.eliminarBitllets(bCrea);
-                    }
-                    else System.out.println("Opcio incorrecta, Torna a intentar.");
+                    Billet bCrea = DadesBitllet.formCreaBitllet();
+                    daoB.eliminarBitllets(bCrea);
                     break;
                 case 0:
-                    System.out.println("Adeu.");
+                    System.out.println("Toranras al menu admin\n");
                     menu = true;
                     break;
                 default:
                     System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;
             }
-        }while(!menu);
-    }
-    public static void menuGeneral(Boolean admin) throws Exception
-    {
-        boolean menu = false;
-        do
-        {
-            System.out.println("Entra una opcio: ");
-            if(admin)
-            {
-                System.out.println("1 - Gestio de Bitllets");
-                System.out.println("2 - Gestio d'Usuaris");
-                System.out.println("3 - Gestio de Viatges");
-            }
-            else System.out.println("1 - Compra Bitllets");
-            System.out.println("0 - Sortir");
-
-            int opcio = lector.nextInt();
-            lector.nextLine();
-
-            switch (opcio)
-            {
-                case 1:
-                    menuBitllets(admin);
-                    break;
-                case 2:
-                    if(admin) gestioUsuaris();
-                    else System.out.println("Opcio incorrecta, Torna a intentar.");
-                    break;
-                case 3:
-                    if(admin) menuViatges();
-                    else System.out.println("Opcio incorrecta, Torna a intentar.");
-                    break;
-                case 0:
-                    System.out.println("Adeu.");
-                    menu = true;
-                    break;
-                default:
-                    break;
-            }
-        }while(!menu);
+        }while(!menu && opcio!=0);
     }
 
 
@@ -266,10 +233,10 @@ public class Main
             System.out.println("Benvingut Admin! \n");
             System.out.println("MENU ADMIN\n");
             System.out.println("1.Gestio Users");
-            System.out.println("2.Billets Stuff");
+            System.out.println("2.Gestio Billets");
             System.out.println("3.Equipatge Stuff");
             System.out.println("4.Factura Stuff");
-            System.out.println("5.Viatge Stuff");
+            System.out.println("5.Gestio Viatge");
             System.out.println("0.Log out");
 
             opcioMenu= lector.nextInt();
@@ -281,7 +248,7 @@ public class Main
                     gestioUsuaris();
                     break;
                 case 2:
-                    //TODO getsio billets
+                    gestioBillets();
                     break;
                 case 3:
                     //TODO GESTIO EQUIPATGE
@@ -290,7 +257,7 @@ public class Main
                     //TODO GESTIO FACTURA
                     break;
                 case 5:
-                    //TODO GESTIO VIATGE
+                    gestioViatges();
                     break;
 
                 case 0:
