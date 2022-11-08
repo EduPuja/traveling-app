@@ -120,7 +120,6 @@ public class DadesUser {
                 lector.nextLine();
                 switch(opcio){
                     case 1:
-
                         do
                         {
                             boolean menuDNI = false;
@@ -134,16 +133,19 @@ public class DadesUser {
                             else menu3 = true;
                         }while(!menu3);
                         dades = dades + "/" + dni + "/dni";
+                        menu2 = true;
                         break;
                     case 2:
                         System.out.println("Entra el nom nou de l'Usuari: ");
                         nom = lector.nextLine();
                         dades = dades + "/" + nom + "/nom";
+                        menu2 = true;
                         break;
                     case 3:
                         System.out.println("Entra la data de naixement nova de l'Usuari: ");
                         auxData_naix = lector.nextLine();
                         dades = dades + "/" + auxData_naix + "/data_naix";
+                        menu2 = true;
                         break;
                     case 4:
                         menu2 = true;

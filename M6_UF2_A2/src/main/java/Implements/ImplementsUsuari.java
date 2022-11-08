@@ -17,7 +17,7 @@ public class ImplementsUsuari implements InterfaceUsuari
         String nom = u.getNom();
         Date data_naix = u.getData_naix();
 
-        String query = "Insert Into persona ('dni','nom','data_naix') values('"+ dni + "','" + nom + "','" + data_naix + "')";
+        String query = "INSERT INTO `persona` (`dni`,`nom`,`data_naix`) VALUES('"+ dni + "','" + nom + "','" + data_naix + "')";
 
         if(statement.executeUpdate(query) == 1){
             System.out.println("Usuari entrat.");
@@ -29,7 +29,7 @@ public class ImplementsUsuari implements InterfaceUsuari
     {
         Statement statement = ConnexioBDD.conexioDB();
 
-        String query = "Delete FROM persona WHERE dni = '" + dniUser + "'";
+        String query = "DELETE FROM `persona` WHERE `dni` = '" + dniUser + "'";
 
         if(statement.executeUpdate(query) == 1){
             System.out.println("Baixa de l'usuari completada.");
@@ -48,7 +48,7 @@ public class ImplementsUsuari implements InterfaceUsuari
             String novaInfo = taula[1];
             String tipoInfo = taula[2];
 
-            String query = "Update persona SET " + tipoInfo + " ='" + novaInfo +"' WHERE dni = '" + dni + "'";
+            String query = "UPDATE `persona` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `dni` = '" + dni + "'";
 
             if(statement.executeUpdate(query) == 1){
                 System.out.println("Modificacio de " + tipoInfo + " de l'usuari completada.");
@@ -69,6 +69,6 @@ public class ImplementsUsuari implements InterfaceUsuari
     public static Boolean comprovarUserBaixa_Update_Alta(String dni)
     {
         //comprovarUser en la bdd.
-        return false;
+        return true;
     }
 }
