@@ -77,6 +77,188 @@ public class Main
 
     }
 
+
+
+
+
+    /**
+     * menu de admin nomes pot accedir l'admin :D
+     * */
+    private static void menuAdmin() throws Exception
+    {
+        boolean menu = false;
+        int opcioMenu =-1;
+
+        do
+        {
+            System.out.println("Benvingut Admin! \n");
+            System.out.println("MENU ADMIN\n");
+            System.out.println("1.Gestio Users");
+            System.out.println("2.Gestio Billets");
+            System.out.println("3.Equipatge Stuff");
+            System.out.println("4.Factura Stuff");
+            System.out.println("5.Gestio Viatge");
+            System.out.println("6.Gestio Estacio");
+            System.out.println("0.Log out");
+
+            opcioMenu= lector.nextInt();
+            lector.nextLine();
+
+            switch (opcioMenu)
+            {
+                case 1:
+                    gestioUsuaris();
+                    break;
+                case 2:
+                    gestioBillets();
+                    break;
+                case 3:
+                    gestioEquipatge();
+                    break;
+                case 4:
+                    gestioFactura();
+                    break;
+                case 5:
+                    gestioViatges();
+                    break;
+                case 6:
+                    gestioEstacio();
+                    break;
+
+                case 0:
+                    menu= true;
+                    System.out.println("Has tencat la sessio Admin");
+                    break;
+
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcioMenu!=0);
+    }
+
+
+
+    /**
+     * MENU DEL USUARI
+     */
+    private static void menuUser() throws Exception
+    {
+        boolean menu = false;
+        int opcioMenu =-1;
+
+        do
+        {
+            System.out.println("Benvingut User! \n");
+            System.out.println("MENU USER\n");
+            System.out.println("1.Listar Viatges");
+            System.out.println("2.Comprar Billets");
+            System.out.println("0.Log out");
+
+            opcioMenu= lector.nextInt();
+            lector.nextLine();
+
+            switch (opcioMenu)
+            {
+                case 1:
+                        //TODO LLISTAR VIATGES
+                    break;
+                case 2:
+                    //TODO COMPRAR BILLETS
+                    break;
+                case 0:
+                    menu= true;
+                    System.out.println("Has tencat la sessio admin");
+
+                    //lector.close();
+                    break;
+
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcioMenu!=0);
+
+    }
+
+
+    // ************ METODES GESTIO *****////////
+
+
+
+
+
+    /**
+     * Metode que el que fa es gestiona les estacions
+     */
+    private static void gestioEstacio()
+    {
+        System.out.println("GESTIO ESTACIONS\n");
+    }
+
+    /**
+     * gestio equipatge
+     */
+    private static void gestioEquipatge()
+    {
+        
+    }
+
+    /**
+     * gestio factura
+     */
+    private static void gestioFactura()
+    {
+    }
+
+    /**
+     * Gestio billets
+     * @throws Exception
+     */
+    private static void gestioBillets() throws Exception
+    {
+        InterfaceBitllets daoB = new ImplementsBitllets();
+        boolean menu = false;
+        int opcio=-1;
+        do
+        {
+            System.out.println("GESTIO BILLETS\n");
+            System.out.println("Entra una opcio: ");
+            System.out.println("1 - Llista Bitllets");
+            System.out.println("2 - Compra Bitllets");
+            System.out.println("3 - Eliminar Bittlets");
+            System.out.println("4 - Crear Bittlets");
+            System.out.println("0 - Turn Back");
+            opcio = lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    daoB.llistarBitllets();
+                    break;
+                case 2:
+                    //int bIdCompra = DadesBitllet.formCompraBitllet();
+                    //daoB.compraBitllets(bIdCompra);
+                    break;
+                case 3:
+                    //int bIdElimina = DadesBitllet.formEliminarBitllet();
+                    //daoB.eliminarBitllets(bIdElimina);
+                    break;
+                case 4:
+                    Billet bCrea = DadesBitllet.formCreaBitllet();
+                    daoB.creaBitllets(bCrea);
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin\n");
+                    menu = true;
+                    break;
+                default:
+                    System.out.println("Opcio incorrecta, Torna a intentar.");
+                    break;
+            }
+        }while(!menu && opcio!=0);
+    }
     /**
      * Gestio usuaris Ja esta fet
      * @throws Exception
@@ -127,6 +309,7 @@ public class Main
         }while(!menu && opcio!=0);
     }
 
+
     /**
      * Gestio viatges
      * @throws Exception
@@ -171,147 +354,5 @@ public class Main
         }while(!menu);
     }
 
-    /**
-     * Gestio billets
-     * @throws Exception
-     */
-    private static void gestioBillets() throws Exception
-    {
-        InterfaceBitllets daoB = new ImplementsBitllets();
-        boolean menu = false;
-        int opcio=-1;
-        do
-        {
-            System.out.println("GESTIO BILLETS\n");
-            System.out.println("Entra una opcio: ");
-            System.out.println("1 - Llista Bitllets");
-            System.out.println("2 - Compra Bitllets");
-            System.out.println("3 - Eliminar Bittlets");
-            System.out.println("4 - Crear Bittlets");
-            System.out.println("0 - Turn Back");
-            opcio = lector.nextInt();
-            lector.nextLine();
 
-            switch (opcio)
-            {
-                case 1:
-                    daoB.llistarBitllets();
-                    break;
-                case 2:
-                    String bIdCompra = DadesBitllet.formCompraBitllet();
-                    daoB.compraBitllets(bIdCompra);
-                    break;
-                case 3:
-                    String bIdElimina = DadesBitllet.formEliminarBitllet();
-                    daoB.eliminarBitllets(bIdElimina);
-                    break;
-                case 4:
-                    Billet bCrea = DadesBitllet.formCreaBitllet();
-                    daoB.creaBitllets(bCrea);
-                    break;
-                case 0:
-                    System.out.println("Toranras al menu admin\n");
-                    menu = true;
-                    break;
-                default:
-                    System.out.println("Opcio incorrecta, Torna a intentar.");
-                    break;
-            }
-        }while(!menu && opcio!=0);
-    }
-
-
-    /**
-     * menu de admin nomes pot accedir l'admin :D
-     * */
-    private static void menuAdmin() throws Exception
-    {
-        boolean menu = false;
-        int opcioMenu =-1;
-
-        do
-        {
-            System.out.println("Benvingut Admin! \n");
-            System.out.println("MENU ADMIN\n");
-            System.out.println("1.Gestio Users");
-            System.out.println("2.Gestio Billets");
-            System.out.println("3.Equipatge Stuff");
-            System.out.println("4.Factura Stuff");
-            System.out.println("5.Gestio Viatge");
-            System.out.println("0.Log out");
-
-            opcioMenu= lector.nextInt();
-            lector.nextLine();
-
-            switch (opcioMenu)
-            {
-                case 1:
-                    gestioUsuaris();
-                    break;
-                case 2:
-                    gestioBillets();
-                    break;
-                case 3:
-                    //TODO GESTIO EQUIPATGE
-                    break;
-                case 4:
-                    //TODO GESTIO FACTURA
-                    break;
-                case 5:
-                    gestioViatges();
-                    break;
-
-                case 0:
-                    menu= true;
-                    System.out.println("Has tencat la sessio Admin");
-                    break;
-
-                default:
-                    System.out.println("No tenim aquesta opcio");
-                    break;
-            }
-        }while (!menu && opcioMenu!=0);
-    }
-
-    /**
-     * MENU DEL USUARI
-     */
-    private static void menuUser() throws Exception
-    {
-        boolean menu = false;
-        int opcioMenu =-1;
-
-        do
-        {
-            System.out.println("Benvingut User! \n");
-            System.out.println("MENU USER\n");
-            System.out.println("1.Listar Viatges");
-            System.out.println("2.Comprar Billets");
-            System.out.println("0.Log out");
-
-            opcioMenu= lector.nextInt();
-            lector.nextLine();
-
-            switch (opcioMenu)
-            {
-                case 1:
-                        //TODO LLISTAR VIATGES
-                    break;
-                case 2:
-                    //TODO COMPRAR BILLETS
-                    break;
-                case 0:
-                    menu= true;
-                    System.out.println("Has tencat la sessio admin");
-
-                    //lector.close();
-                    break;
-
-                default:
-                    System.out.println("No tenim aquesta opcio");
-                    break;
-            }
-        }while (!menu && opcioMenu!=0);
-
-    }
 }
