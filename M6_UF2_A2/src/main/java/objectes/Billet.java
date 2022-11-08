@@ -4,11 +4,11 @@ import Interfaces.InterfaceBitllets;
 
 public class Billet
 {
-    int idBillet;
-
-    TipusBillet tipusBillet;
-    double preuBillet;
-    int maxPersones;
+    private int idBillet;
+    private  int idViatge;
+    private TipusBillet tipusBillet;
+    private int preuBillet;
+    private int maxPersones;
 
 
     /**
@@ -26,9 +26,10 @@ public class Billet
      * @param preuBillet
      * @param numPersones
      */
-    public void setAllBillet(int idBillet,TipusBillet typeBillet,double preuBillet,int numPersones)
+    public void setAllBillet(int idBillet,int idViatge,TipusBillet typeBillet,int preuBillet,int numPersones)
     {
         this.idBillet=idBillet;
+        this.idViatge = idViatge;
         this.tipusBillet =typeBillet;
         this.preuBillet=preuBillet;
         this.maxPersones=numPersones;
@@ -49,13 +50,17 @@ public class Billet
     {
         return tipusBillet;
     }
-    public double getPreuBillet()
+    public int getPreuBillet()
     {
         return preuBillet;
     }
     public int getMaxPersones()
     {
         return maxPersones;
+    }
+    public int getIdViatge()
+    {
+        return this.idViatge;
     }
 
 
@@ -68,7 +73,7 @@ public class Billet
     {
         this.tipusBillet = tipusBillet;
     }
-    public void setPreuBillet(double preuBillet)
+    public void setPreuBillet(int preuBillet)
     {
         this.preuBillet = preuBillet;
     }
