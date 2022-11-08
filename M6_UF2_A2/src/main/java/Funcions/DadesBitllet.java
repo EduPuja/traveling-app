@@ -10,8 +10,9 @@ public class DadesBitllet
 {
     // intentar cerrar
     static  Scanner lector = new Scanner(System.in);
-    public static Billet formCompraBitllet()
+    public static String formCompraBitllet()
     {
+
         /*Billet billet= new Billet();
 
         System.out.println("Digues el numero del bitllet a comprar: ");
@@ -31,11 +32,10 @@ public class DadesBitllet
 
         return null;
     }
-    public static Billet formEliminarBitllet()
+    public static String formEliminarBitllet()
     {
         return null;
     }
-
     public static Billet formCreaBitllet() throws Exception {
        Billet billet = new Billet();
 

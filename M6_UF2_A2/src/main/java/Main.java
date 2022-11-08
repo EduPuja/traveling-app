@@ -198,12 +198,12 @@ public class Main
                     daoB.llistarBitllets();
                     break;
                 case 2:
-                    Billet bCompra = DadesBitllet.formCompraBitllet();
-                    daoB.compraBitllets(bCompra);
+                    String bIdCompra = DadesBitllet.formCompraBitllet();
+                    daoB.compraBitllets(bIdCompra);
                     break;
                 case 3:
-                    Billet bElimina = DadesBitllet.formEliminarBitllet();
-                    daoB.eliminarBitllets(bElimina);
+                    String bIdElimina = DadesBitllet.formEliminarBitllet();
+                    daoB.eliminarBitllets(bIdElimina);
                     break;
                 case 4:
                     Billet bCrea = DadesBitllet.formCreaBitllet();
