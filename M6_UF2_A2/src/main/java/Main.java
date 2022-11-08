@@ -216,12 +216,12 @@ public class Main
             switch (opcio)
             {
                 case 1:
-                    //TODO CREAR
                     Estacio estacio = DadesEstacio.fromAltaEstacio();
                     estacioDao.novaEstacio(estacio);
                     break;
                 case 2:
-                    //TODO BAIXA
+                    int idEstacio = DadesEstacio.fromBaixaEstacio();
+                    estacioDao.deleteEstacio(idEstacio);
                     break;
                 case 3:
                     //TODO MODIFICAR
