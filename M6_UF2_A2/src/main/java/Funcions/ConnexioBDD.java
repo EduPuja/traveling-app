@@ -11,7 +11,9 @@ public class ConnexioBDD
     public static Statement conexioDB() throws Exception
     {
         // url on esta la base de dades
-        String url = "jdbc:mysql://192.168.18.184:3306/m6_uf2_a1";
+
+
+        String url = "jdbc:mysql://localhost:3306/m6_uf2_a2_edudani";
         // usuari base de dades
         String user = "admin";
         // contrasenya base de dades
