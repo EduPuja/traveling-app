@@ -82,20 +82,28 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         Statement statement = ConnexioBDD.conexioDB();
         // EXEMPLE MODIFICAR estacio
 
-        /*Statement statement = ConnexioBDD.conexioDB();
-
 
         String taula [] = dades.split("/");
-        int idEstacio = Integer.parseInt(taula[0]);
-        String desNou = taula[1];
+        int linaFactura = Integer.parseInt(taula[0]);
+        int numFactura = Integer.parseInt(taula[1]);
+        int idPersona = Integer.parseInt(taula[2]);
+        int preu = Integer.parseInt(taula[3]);
 
-        String query = "UPDATE `estacio` SET `descrip`='"+ desNou+"' WHERE `id_estacio`= "+ idEstacio;
 
-        if(statement.executeUpdate(query) == 1) System.out.println("Modificat Correcatament.");
+
+        String query = "UPDATE `linia_factura` SET `linia_factura`="+linaFactura+",`num_factura`="+numFactura+",`id_persona`="+idPersona+",`preu`="+preu+" WHERE `linia_factura`="+linaFactura;
+
+        if(statement.executeUpdate(query) == 1) System.out.println("La linaFactura ha sigut Modificada .");
         else System.out.println("Modificat Incorrectament.");
-        statement.close();;*/
+        statement.close();
     }
 
+    /**
+     * Metode per consultar si exgisteix una linaFactura amb un id concret
+     * @param linaFactura
+     * @return
+     * @throws Exception
+     */
     public static boolean consultarLiniaFactura(int linaFactura) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
