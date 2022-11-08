@@ -2,6 +2,7 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceBitllets;
+import com.sun.javafx.image.BytePixelSetter;
 import objectes.Billet;
 
 import java.sql.ResultSet;
@@ -15,19 +16,31 @@ public class ImplementsBitllets implements InterfaceBitllets
     }
     public void compraBitllets(Billet bCompra) throws Exception
     {
-        ConnexioBDD.conexioDB();
+        Statement con =ConnexioBDD.conexioDB();
+
+        if(comprovarBillet(bCompra.getIdBillet()))
+        {
+            System.out.println("Numero del billet :" + bCompra.getIdBillet());
+        }
     }
     public void eliminarBitllets(Billet bElimina) throws Exception
     {
-        ConnexioBDD.conexioDB();
+
 
         Statement con = ConnexioBDD.conexioDB();
-        //String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
+        String query = "DELETE FROM billets WHERE id_billet="+bElimina.getIdBillet();
 
-       // con.executeQuery(query);
 
-        System.out.println("SE HA ELIMIANT UN BILLET A LA BBDD");
-        con.close();
+        // con.executeQuery
+        if(con.executeUpdate(query) == 1)
+        {
+            System.out.println("Se ha elimiant el billet!");
+        }
+        else System.out.println("No se ha eliminat el billet ;( ");
+
+
+
+        con.close();    // cierro la conexion
     }
 
     public void creaBitllets(Billet bCrea) throws Exception
@@ -35,9 +48,15 @@ public class ImplementsBitllets implements InterfaceBitllets
         Statement con = ConnexioBDD.conexioDB();
         String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
 
-        con.executeQuery(query);
+       // con.executeQuery(query);
 
-        System.out.println("SE HA CREAT UN BILLET A LA BBDD");
+        if(con.executeUpdate(query) == 1)
+        {
+            System.out.println("Billet CREAT! ");
+        }
+        else System.out.println("Billet NO created ;( ");
+
+
         con.close();
 
 
@@ -45,6 +64,10 @@ public class ImplementsBitllets implements InterfaceBitllets
 
     public static boolean comprovarBillet(int idBillet)
     {
+
+        // billet  num 1
+        // billet entrat 2  -ok
+        // billet entrat 1  --esta repetit
         try
         {
             Statement statement = ConnexioBDD.conexioDB();
@@ -73,10 +96,6 @@ public class ImplementsBitllets implements InterfaceBitllets
 
 
         return false;
-        // billet  num 1
-        // billet entrat 2  -ok
-        // billet entrat 1  --esta repetit
-
 
 
     }
