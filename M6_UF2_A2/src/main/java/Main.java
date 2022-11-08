@@ -26,8 +26,8 @@ public class Main
         String dni = "";
         String password = "";
 
-        //variables de user && admin ( no se utilizan por ahora)
-        boolean admin = false;
+        //variables admin ( no se utilizan por ahora)
+         // boolean admin = false;
         boolean userExist = false;
 
         boolean menu = false;
@@ -51,11 +51,11 @@ public class Main
 
                 if(dni.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
                 {
-                /*admin = true;
-                menuGeneral(admin);*/
+
                     menuAdmin();
                 }
-                else{
+                else
+                {
                     userExist = ImplementsUsuari.comprovarUser(dni,password);
                     if (userExist)
                     {
@@ -104,22 +104,22 @@ public class Main
             switch (opcioMenu)
             {
                 case 1:
-                    gestioUsuaris();
+                    gestioUsuaris();        // menu de gestrio usuari entra users modificar i elminar usuaris
                     break;
                 case 2:
-                    gestioBillets();
+                    gestioBillets();        // gestio billets compra billet eliminiacio y llistat
                     break;
                 case 3:
-                    gestioEquipatge();
+                    gestioEquipatge();      // TODO falta this meode
                     break;
                 case 4:
-                    gestioFactura();
+                    gestioFactura();        //todo falta gestio factura
                     break;
                 case 5:
-                    gestioViatges();
+                    gestioViatges();            // gestio de cada viatge
                     break;
                 case 6:
-                    gestioEstacio();
+                    gestioEstacio();            // gestio de cada estacio
                     break;
 
                 case 0:
@@ -158,7 +158,7 @@ public class Main
             switch (opcioMenu)
             {
                 case 1:
-                        //TODO LLISTAR VIATGES
+                    //TODO LLISTAR VIATGES
                     break;
                 case 2:
                     //TODO COMPRAR BILLETS
@@ -271,7 +271,7 @@ public class Main
                     break;
                 case 2:
                     int bIdCompra = DadesBitllet.formCompraBitllet();
-                   // daoB.compraBitllets(bIdCompra);
+                   // daoB.compraBitllets(bIdCompra);           //todo esto no se para que es :D
                     break;
                 case 3:
                     int bIdElimina = DadesBitllet.formEliminarBitllet();
