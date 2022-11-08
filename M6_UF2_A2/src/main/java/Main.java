@@ -277,7 +277,7 @@ public class Main
                     break;
                 case 2:
                     int bIdCompra = DadesBitllet.formCompraBitllet();
-                    daoB.compraBitllets(bIdCompra);
+                   // daoB.compraBitllets(bIdCompra);
                     break;
                 case 3:
                     int bIdElimina = DadesBitllet.formEliminarBitllet();
