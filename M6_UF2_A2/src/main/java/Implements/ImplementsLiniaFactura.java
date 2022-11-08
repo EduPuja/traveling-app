@@ -73,7 +73,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
 
     /**
      * Metode per modificar la linia factura
-     * @param updateLF
+     * @param dades
      * @throws Exception
      */
     public void modificarLiniaFactura(String dades) throws Exception
@@ -82,14 +82,11 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         Statement statement = ConnexioBDD.conexioDB();
         // EXEMPLE MODIFICAR estacio
 
-
         String taula [] = dades.split("/");
         int linaFactura = Integer.parseInt(taula[0]);
         int numFactura = Integer.parseInt(taula[1]);
         int idPersona = Integer.parseInt(taula[2]);
         int preu = Integer.parseInt(taula[3]);
-
-
 
         String query = "UPDATE `linia_factura` SET `linia_factura`="+linaFactura+",`num_factura`="+numFactura+",`id_persona`="+idPersona+",`preu`="+preu+" WHERE `linia_factura`="+linaFactura;
 
