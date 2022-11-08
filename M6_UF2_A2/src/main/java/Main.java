@@ -23,7 +23,7 @@ public class Main
 
     public static void main(String[] args) throws Exception
     {
-        String nom = "";
+        String dni = "";
         String password = "";
 
         //variables de user && admin ( no se utilizan por ahora)
@@ -36,8 +36,8 @@ public class Main
             System.out.println("               LogIn                ");
             System.out.println("------------------------------------");
             System.out.println("       Entra el nom d'Usurai:       ");
-            nom = lector.nextLine();
-            if(nom.equalsIgnoreCase("sortir") || nom.equalsIgnoreCase("exit"))
+            dni = lector.nextLine();
+            if(dni.equalsIgnoreCase("sortir") || dni.equalsIgnoreCase("exit"))
             {
                 menu=true;
                 lector.close();
@@ -48,20 +48,20 @@ public class Main
                 System.out.println("     Entra el password d'Usurai:    ");
                 password = lector.nextLine();
                 System.out.println("------------------------------------");
-
-                if(nom.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
+                userExist = ImplementsUsuari.comprovarUser(dni,password);
+                if(dni.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
                 {
                 /*admin = true;
                 menuGeneral(admin);*/
                     menuAdmin();
                 }
-                else if (nom.equalsIgnoreCase("user") && password.equalsIgnoreCase("1234"))
+                else if (userExist)
                 {
                     menuUser();
                 }
                 else
                 {
-                    System.out.println("Usuari no exgisteix");
+                    System.out.println("Usuari Incorrecte.");
                 }
             }
 
@@ -114,6 +114,7 @@ public class Main
                     String dades = DadesUser.formUpdateUser();
                     daoU.modificacioUser(dades);
                     break;
+
                 case 0:
                     System.out.println("Toranras al menu Admin\n");
                     menu = true;

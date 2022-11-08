@@ -2,8 +2,12 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceUsuari;
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.Result;
 import objectes.Persona;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
@@ -61,22 +65,40 @@ public class ImplementsUsuari implements InterfaceUsuari
     public void llistarUser() throws Exception {
         ConnexioBDD.conexioDB();
     }
-    public static boolean comprovarUser(String dni, String password, boolean admin) throws Exception {
+    public static boolean comprovarUser(String dni, String password) throws Exception {
         //comprovarUser en la bdd.
         Statement statement = ConnexioBDD.conexioDB();
 
         String query = "SELECT * FROM `persona` WHERE `dni`= '" + dni + "'";
 
-        if(statement.executeUpdate(query) == 1){
-            System.out.println("Usuari entrat.");
+        ResultSet rs = statement.executeQuery(query);
+
+        if(rs.getString("dni").equalsIgnoreCase(dni)){
+            statement.close();
+            return true;
         }
-        else System.out.println("Usuari no entrat.");
-        statement.close();
-        return false;
+        else
+        {
+            statement.close();
+            return false;
+        }
     }
-    public static boolean comprovarUserBaixa_Update_Alta(String dni)
-    {
+    public static boolean comprovarUserBaixa_Update_Alta(String dni) throws Exception {
         //comprovarUser en la bdd.
-        return true;
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String query = "SELECT * FROM `persona` WHERE `dni`= '" + dni + "'";
+
+        ResultSet rs = statement.executeQuery(query);
+
+        if(rs.getString("dni").equalsIgnoreCase(dni)){
+            statement.close();
+            return true;
+        }
+        else
+        {
+            statement.close();
+            return false;
+        }
     }
 }
