@@ -25,8 +25,11 @@ public class Main
     {
         String nom = "";
         String password = "";
+
+        //variables de user && admin ( no se utilizan por ahora)
         boolean admin = false;
         boolean userExist = false;
+
         boolean menu = false;
         do{
             System.out.println("------------------------------------");
@@ -34,40 +37,62 @@ public class Main
             System.out.println("------------------------------------");
             System.out.println("       Entra el nom d'Usurai:       ");
             nom = lector.nextLine();
-            System.out.println("     Entra el password d'Usurai:    ");
-            password = lector.nextLine();
-            System.out.println("------------------------------------");
-
-            if(nom.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
+            if(nom.equalsIgnoreCase("sortir") || nom.equalsIgnoreCase("exit"))
             {
-                admin = true;
-                menuGeneral(admin);
+                menu=true;
+                lector.close();
+                System.out.println("FI programa");
             }
-            userExist = ImplementsUsuari.comprovarUser(nom,password,admin);
+            else
+            {
+                System.out.println("     Entra el password d'Usurai:    ");
+                password = lector.nextLine();
+                System.out.println("------------------------------------");
+
+                if(nom.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
+                {
+                /*admin = true;
+                menuGeneral(admin);*/
+                    menuAdmin();
+                }
+                else if (nom.equalsIgnoreCase("user") && password.equalsIgnoreCase("1234"))
+                {
+                    menuUser();
+                }
+                else
+                {
+                    System.out.println("Usuari no exgisteix");
+                }
+            }
+
+            /*userExist = ImplementsUsuari.comprovarUser(nom,password,admin);
             if(userExist)
             {
                 menuGeneral(admin);
                 menu = true;
             }
-            else System.out.println("Usuari Incorrecte.");
+            else System.out.println("Usuari Incorrecte.");*/
         }while (!menu);
 
         // falta un else if comprovant que el usuari existeix.
 
     }
-    private static void menuUsuaris() throws Exception
+    private static void gestioUsuaris() throws Exception
     {
         InterfaceUsuari daoU = new ImplementsUsuari();
         boolean menu = false;
+        int opcio = -1;
         do
         {
+            System.out.println("Gestio usuaris\n");
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Alta Usuari");
             System.out.println("2 - Baixa Usuari");
             System.out.println("3 - Modificar Usuari");
+            System.out.println("4 - Llistar Usuari");
             System.out.println("0 - Sortir");
 
-            int opcio = lector.nextInt();
+            opcio= lector.nextInt();
             lector.nextLine();
 
             switch (opcio)
@@ -85,14 +110,14 @@ public class Main
                     daoU.modificacioUser(dades);
                     break;
                 case 0:
-                    System.out.println("Adeu.");
+                    System.out.println("Toranras al menu Admin\n");
                     menu = true;
                     break;
                 default:
                     System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;
             }
-        }while(!menu);
+        }while(!menu && opcio!=0);
     }
     private static void menuViatges() throws Exception
     {
@@ -210,7 +235,7 @@ public class Main
                     menuBitllets(admin);
                     break;
                 case 2:
-                    if(admin) menuUsuaris();
+                    if(admin) gestioUsuaris();
                     else System.out.println("Opcio incorrecta, Torna a intentar.");
                     break;
                 case 3:
@@ -225,5 +250,100 @@ public class Main
                     break;
             }
         }while(!menu);
+    }
+
+
+    /**
+     * menu de admin nomes pot accedir l'admin :D
+     * */
+    private static void menuAdmin() throws Exception
+    {
+        boolean menu = false;
+        int opcioMenu =-1;
+
+        do
+        {
+            System.out.println("Benvingut Admin! \n");
+            System.out.println("MENU ADMIN\n");
+            System.out.println("1.Gestio Users");
+            System.out.println("2.Billets Stuff");
+            System.out.println("3.Equipatge Stuff");
+            System.out.println("4.Factura Stuff");
+            System.out.println("5.Viatge Stuff");
+            System.out.println("0.Log out");
+
+            opcioMenu= lector.nextInt();
+            lector.nextLine();
+
+            switch (opcioMenu)
+            {
+                case 1:
+                    gestioUsuaris();
+                    break;
+                case 2:
+                    //TODO getsio billets
+                    break;
+                case 3:
+                    //TODO GESTIO EQUIPATGE
+                    break;
+                case 4:
+                    //TODO GESTIO FACTURA
+                    break;
+                case 5:
+                    //TODO GESTIO VIATGE
+                    break;
+
+                case 0:
+                    menu= true;
+                    System.out.println("Has tencat la sessio Admin");
+                    break;
+
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcioMenu!=0);
+    }
+
+    /**
+     * MENU DEL USUARI
+     */
+    private static void menuUser() throws Exception
+    {
+        boolean menu = false;
+        int opcioMenu =-1;
+
+        do
+        {
+            System.out.println("Benvingut User! \n");
+            System.out.println("MENU USER\n");
+            System.out.println("1.Listar Viatges");
+            System.out.println("2.Comprar Billets");
+            System.out.println("0.Log out");
+
+            opcioMenu= lector.nextInt();
+            lector.nextLine();
+
+            switch (opcioMenu)
+            {
+                case 1:
+                        //TODO LLISTAR VIATGES
+                    break;
+                case 2:
+                    //TODO COMPRAR BILLETS
+                    break;
+                case 0:
+                    menu= true;
+                    System.out.println("Has tencat la sessio admin");
+
+                    //lector.close();
+                    break;
+
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcioMenu!=0);
+
     }
 }
