@@ -72,16 +72,23 @@ public class ImplementsUsuari implements InterfaceUsuari
         String query = "SELECT * FROM `persona` WHERE `dni`= '" + dni + "'";
 
         ResultSet rs = statement.executeQuery(query);
-
-        if(rs.getString("dni").equalsIgnoreCase(dni)){
-            statement.close();
-            return true;
-        }
-        else
+        if(rs.next())
         {
+            if(rs.getString("dni").equalsIgnoreCase(dni)){
+                statement.close();
+                return true;
+            }
+            else
+            {
+                statement.close();
+                return false;
+            }
+        }
+        else {
             statement.close();
             return false;
         }
+
     }
     public static boolean comprovarUserBaixa_Update_Alta(String dni) throws Exception {
         //comprovarUser en la bdd.
@@ -90,15 +97,22 @@ public class ImplementsUsuari implements InterfaceUsuari
         String query = "SELECT * FROM `persona` WHERE `dni`= '" + dni + "'";
 
         ResultSet rs = statement.executeQuery(query);
-
-        if(rs.getString("dni").equalsIgnoreCase(dni)){
-            statement.close();
-            return true;
-        }
-        else
+        if(rs.next())
         {
+            if(rs.getString("dni").equalsIgnoreCase(dni)){
+                statement.close();
+                return true;
+            }
+            else
+            {
+                statement.close();
+                return false;
+            }
+        }
+        else {
             statement.close();
             return false;
         }
+
     }
 }
