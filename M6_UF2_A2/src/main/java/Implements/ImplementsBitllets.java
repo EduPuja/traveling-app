@@ -28,6 +28,7 @@ public class ImplementsBitllets implements InterfaceBitllets
     }
     public void compraBitllets(int bIdCompra,String dniClient) throws Exception
     {
+        System.out.println("Bitllet comprat.");
         //TODO Llamar a crearfactura(bIDCompra,dniClient)
         //dentro de crearfactura creas las lineas de la misma
         //quan per cada bitllet es compri s'ha de borrar 1 a el numero de stock que hi ha de el bitllet.
