@@ -6,7 +6,6 @@ import objectes.Billet;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class ImplementsBitllets implements InterfaceBitllets
 {
@@ -27,9 +26,11 @@ public class ImplementsBitllets implements InterfaceBitllets
         }
         statement.close();
     }
-    public void compraBitllets(int bCompra) throws Exception
+    public void compraBitllets(int bIdCompra,String dniClient) throws Exception
     {
-
+        //TODO Llamar a crearfactura(bIDCompra,dniClient)
+        //dentro de crearfactura creas las lineas de la misma
+        //quan per cada bitllet es compri s'ha de borrar 1 a el numero de stock que hi ha de el bitllet.
     }
     public void eliminarBitllets(int bIDElimina) throws Exception
     {
@@ -49,19 +50,15 @@ public class ImplementsBitllets implements InterfaceBitllets
         String query = "INSERT INTO billets(id_billet, id_viatge,tipus_billet,preu,max_billets_tipus) VALUES ("+bCrea.getIdBillet()+" "+bCrea.getIdViatge()+"'"+bCrea.getTipusBillet().toString()+"'"+bCrea.getPreuBillet()+" "+bCrea.getMaxPersones()+")";
 
        // con.executeQuery(query);
-
         if(con.executeUpdate(query) == 1)
         {
             System.out.println("Billet CREAT! ");
         }
         else System.out.println("Billet NO created ;( ");
-
-
         con.close();
-
-
     }
-    public static boolean comprovarBillet(int idBillet) throws Exception {
+    public static boolean comprovarBillet(int idBillet) throws Exception
+    {
         // billet  num 1
         // billet entrat 2  -ok
         // billet entrat 1  --esta repetit
@@ -80,6 +77,28 @@ public class ImplementsBitllets implements InterfaceBitllets
         {
             statement.close();
             return false;
+        }
+    }
+    public static int preuBitllet(int idBillet) throws Exception
+    {
+        // billet  num 1
+        // billet entrat 2  -ok
+        // billet entrat 1  --esta repetit
+        Statement statement = ConnexioBDD.conexioDB();
+
+        String query = "select `preu` from `billets` where `id_billet` ="+idBillet;
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if(resultSet.next())
+        {
+            statement.close();
+            return resultSet.getInt("preu");
+        }
+        else
+        {
+            statement.close();
+            return 0;
         }
     }
 }

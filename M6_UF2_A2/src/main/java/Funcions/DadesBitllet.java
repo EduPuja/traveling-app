@@ -10,7 +10,8 @@ public class DadesBitllet
 {
     // intentar cerrar
     static  Scanner lector = new Scanner(System.in);
-    public static int formCompraBitllet() throws Exception {
+    public static int formCompraBitllet() throws Exception
+    {
         boolean menu = false;
         int idBitllet;
         do{
@@ -20,14 +21,27 @@ public class DadesBitllet
             if(ImplementsBitllets.comprovarBillet(idBitllet)) menu = true;
             else System.out.println("Aquest bitllet no existeix.");
         }while (!menu);
-        System.out.println("");
+        int preu = ImplementsBitllets.preuBitllet(idBitllet);
+        System.out.println("El bitllet costa " + preu + "€ el vos comprar? ");
+        String resporsta = lector.nextLine();
+        if(resporsta.equalsIgnoreCase("si")) return idBitllet;
+        else return -1;
+    }
+    public static int formEliminarBitllet() throws Exception {
+        boolean menu = false;
+        int idBitllet;
+        do{
+            System.out.println("Entra el bitllet que vos eliminar: ");
+            idBitllet = lector.nextInt();
+            lector.nextLine();
+            if(ImplementsBitllets.comprovarBillet(idBitllet)) menu = true;
+            else System.out.println("Aquest bitllet no existeix.");
+        }while (!menu);
+
         return idBitllet;
     }
-    public static int formEliminarBitllet()
+    public static Billet formCreaBitllet() throws Exception
     {
-        return 23;
-    }
-    public static Billet formCreaBitllet() throws Exception {
        Billet billet = new Billet();
 
        boolean menu = false;
