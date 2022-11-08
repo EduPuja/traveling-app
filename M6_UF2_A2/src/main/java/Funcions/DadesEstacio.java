@@ -11,7 +11,7 @@ public class DadesEstacio
     /**
      * Metode per entrar una estacio
      */
-    public void fromAltaEstacio() throws Exception
+    public static void fromAltaEstacio() throws Exception
     {
         Scanner lector = new Scanner(System.in);
 
@@ -46,9 +46,9 @@ public class DadesEstacio
     /**
      * Metode per donar de baixa una estacio
      */
-    public void fromBaixaEstacio()
+    public static int fromBaixaEstacio()
     {
-
+        return -1;
     }
 
     /**
