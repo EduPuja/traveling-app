@@ -77,7 +77,7 @@ public class ImplementsEstacio implements InterfaceEstacio
      * @return
      * @throws Exception
      */
-    public boolean comprovarEstacio(int idEstacio) throws Exception
+    public static boolean comprovarEstacio(int idEstacio) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
 
