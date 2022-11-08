@@ -27,12 +27,12 @@ public class ImplementsEstacio implements InterfaceEstacio
     }
 
 
-    public void deleteEstacio(Estacio eDelete) throws Exception
+    public void deleteEstacio(int idEstacio) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        if(comprovarEstacio(eDelete.getIdEstacio()))
+        if(comprovarEstacio(idEstacio))
         {
-            String query = "DELETE FROM `estacio` WHERE id_estacio ="+ eDelete.getIdEstacio();
+            String query = "DELETE FROM `estacio` WHERE id_estacio ="+ idEstacio;
             if(con.executeUpdate(query) ==1)
             {
                 System.out.println("Estacio ha sigut eliminada correctament");
