@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class DadesUser {
     public static Scanner lector = new Scanner(System.in);
-    public static Persona formAltaUser()
+    public static Persona formAltaUser() throws Exception
     {
         Persona p = new Persona();
         String auxDni = "";
@@ -69,7 +69,7 @@ public class DadesUser {
         return valid;
 
     }
-    public static String formBaixaUser()
+    public static String formBaixaUser() throws Exception
     {
         String dniB = "";
         boolean menu = false;
@@ -87,7 +87,7 @@ public class DadesUser {
         }while(!menu);
         return dniB;
     }
-    public static String formUpdateUser()
+    public static String formUpdateUser() throws Exception
     {
         String dades = "";
         String dni = "";
