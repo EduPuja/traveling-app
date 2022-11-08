@@ -82,7 +82,7 @@ public class Main
     }
 
     /**
-     * Gestio usuaris
+     * Gestio usuaris Ja esta fet
      * @throws Exception
      */
     private static void gestioUsuaris() throws Exception
