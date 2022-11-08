@@ -2,6 +2,7 @@ package objectes;
 
 public class Linia_Factura
 {
+    private int liniaFactura;
     private int numLinia;
     private int idPersona;
     private double preu;
@@ -20,8 +21,9 @@ public class Linia_Factura
      * @param idPersona
      * @param preu
      */
-    public Linia_Factura(int numLinia, int idPersona, double preu)
+    public Linia_Factura(int liniaFactura,int numLinia, int idPersona, double preu)
     {
+        this.liniaFactura=liniaFactura;
         this.numLinia = numLinia;
         this.idPersona = idPersona;
         this.preu = preu;
@@ -33,8 +35,9 @@ public class Linia_Factura
      * @param idPersona
      * @param preu
      */
-    public void setAllLiniaFact(int numLinia, int idPersona, double preu)
+    public void setAllLiniaFact(int liniaFactura,int numLinia, int idPersona, double preu)
     {
+        this.liniaFactura=liniaFactura;
         this.numLinia = numLinia;
         this.idPersona = idPersona;
         this.preu = preu;
@@ -46,11 +49,15 @@ public class Linia_Factura
      */
     public String getInfoLinaFact()
     {
-        return "NUM_LINIA:"+this.numLinia+"\nID_PERSONA: "+this.idPersona+"\nPREU: "+this.preu;
+        return "LINA_FACTURA: "+this.liniaFactura+"\nNUM_LINIA: "+this.numLinia+"\nID_PERSONA: "+this.idPersona+"\nPREU: "+this.preu;
     }
 
     //** GETS **//
 
+    public int getLiniaFactura()
+    {
+        return liniaFactura;
+    }
     public int getNumLinia()
     {
         return numLinia;
@@ -66,6 +73,11 @@ public class Linia_Factura
 
 
     // ** SETS **//
+
+    public void setLiniaFactura(int liniaFactura)
+    {
+        this.liniaFactura = liniaFactura;
+    }
     public void setNumLinia(int numLinia)
     {
         this.numLinia = numLinia;
