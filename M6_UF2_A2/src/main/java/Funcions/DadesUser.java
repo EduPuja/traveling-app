@@ -7,7 +7,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class DadesUser {
+public class DadesUser
+{
     public static Scanner lector = new Scanner(System.in);
     public static Persona formAltaUser() throws Exception
     {
