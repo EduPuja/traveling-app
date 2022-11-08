@@ -22,10 +22,6 @@ public class DadesBitllet
     {
         return null;
     }
-    public static void formLlistarBitllets()
-    {
-
-    }
 
     public static Billet formCreaBitllet() {
         Billet billet= new Billet();

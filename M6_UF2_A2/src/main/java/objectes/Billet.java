@@ -10,7 +10,6 @@ public class Billet
     private int preuBillet;
     private int maxPersones;
 
-
     /**
      * Construcotr buit
      */
@@ -18,7 +17,6 @@ public class Billet
     {
 
     }
-
     /**
      * Metode que el que crea es un billet de forma general
      * @param idBillet

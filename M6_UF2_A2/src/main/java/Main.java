@@ -199,7 +199,6 @@ public class Main
             switch (opcio)
             {
                 case 1:
-                    DadesBitllet.formLlistarBitllets();
                     daoB.llistarBitllets();
                     break;
                 case 2:

@@ -13,7 +13,20 @@ public class ImplementsBitllets implements InterfaceBitllets
 {
     public void llistarBitllets() throws Exception
     {
-        Statement statement= ConnexioBDD.conexioDB();
+        Statement statement = ConnexioBDD.conexioDB();
+        String query = "SELECT * FROM `persona`";
+
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next())
+        {
+            System.out.println("ID_BITLLET: "+rs.getString("id_persona"));
+            System.out.println("ID_VIATGE: "+rs.getString("dni"));
+            System.out.println("TIPUS BITLLET: "+rs.getString("nom"));
+            System.out.println("PREU BITLLET: "+rs.getDate("data_naix").toString());
+            System.out.println("MAXIM DE PERSONES: "+rs.getDate("data_naix").toString());
+            System.out.println("");
+        }
+        statement.close();
 
     }
     public void compraBitllets(Billet bCompra) throws Exception
@@ -81,7 +94,6 @@ public class ImplementsBitllets implements InterfaceBitllets
 
         con.close();    // cierro la conexion
     }
-
     public void creaBitllets(Billet bCrea) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -100,10 +112,8 @@ public class ImplementsBitllets implements InterfaceBitllets
 
 
     }
-
     public static boolean comprovarBillet(int idBillet)
     {
-
         // billet  num 1
         // billet entrat 2  -ok
         // billet entrat 1  --esta repetit
