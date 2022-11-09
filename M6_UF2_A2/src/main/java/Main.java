@@ -35,7 +35,7 @@ public class Main
             System.out.println("------------------------------------");
             System.out.println("               LogIn                ");
             System.out.println("------------------------------------");
-            System.out.println("       Entra el nom d'Usurai:       ");
+            System.out.println("       Entra el DNI d'Usurai:       ");
             dni = lector.nextLine();
             if(dni.equalsIgnoreCase("sortir") || dni.equalsIgnoreCase("exit"))
             {
