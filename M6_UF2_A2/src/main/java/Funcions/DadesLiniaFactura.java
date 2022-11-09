@@ -49,9 +49,6 @@ public class DadesLiniaFactura
      */
     public static int fromBaixaLinaFactura() throws Exception
     {
-
-
-
         System.out.println("El numero de la linaFactura que vols ");
        int linaFactura= lector.nextInt();
         lector.nextLine();
@@ -63,7 +60,7 @@ public class DadesLiniaFactura
 
     }
 
- 
+
     public static void fromUpdateLinaFactura() throws Exception
     {
         
