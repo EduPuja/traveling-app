@@ -1,5 +1,7 @@
 package Funcions;
 
+import Implements.ImplementsLiniaFactura;
+import Implements.ImplementsUsuari;
 import Objectes.Linia_Factura;
 
 import java.sql.SQLSyntaxErrorException;
@@ -38,8 +40,26 @@ public class DadesLiniaFactura
         Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura,idPersona,preuLinaFactura); // objecte
 
     }
-    public static void fromBaixaLinaFactura() throws Exception
+
+    /**
+     * Metode donar de baixaLinaFactura el que fa és comprova a la base de dades si exgisteix aquell id de la lina factura
+     * si el troba llavors te el retorna. En cas  de que no el trobi el que fa és et retorna -1
+     * @return
+     * @throws Exception
+     */
+    public static int fromBaixaLinaFactura() throws Exception
     {
+
+
+
+        System.out.println("El numero de la linaFactura que vols ");
+       int linaFactura= lector.nextInt();
+        lector.nextLine();
+        if(ImplementsLiniaFactura.consultarLiniaFactura(linaFactura))
+        {
+            return linaFactura;
+        }
+        else return -1;
 
     }
     public static void fromDeleteLinaFactura() throws Exception
