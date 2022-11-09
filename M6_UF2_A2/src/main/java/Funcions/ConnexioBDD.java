@@ -8,12 +8,17 @@ import java.sql.Statement;
 public class ConnexioBDD
 {
 
+    /**
+     * Metode que el que fa es la connexio a la base de dades mysql utilizant XAMPP
+     * @return
+     * @throws Exception
+     */
     public static Statement conexioDB() throws Exception
     {
         // url on esta la base de dades
 
         //Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String url = "jdbc:mysql://localhost:3306/m6_uf2_a2_edudani";
+        String url = "jdbc:mysql://localhost:3306/m6_uf2_a2_edudani";       // Per ara ho fem amb localhost ja que tenim la mateix arxiu bbdd
         // usuari base de dades
         String user = "admin";
         // contrasenya base de dades
