@@ -62,11 +62,8 @@ public class DadesLiniaFactura
         else return -1;
 
     }
-    public static void fromDeleteLinaFactura() throws Exception
-    {
 
-    }
-
+ 
     public static void fromUpdateLinaFactura() throws Exception
     {
         
