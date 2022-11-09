@@ -2,7 +2,7 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceBitllets;
-import objectes.Billet;
+import Objectes.Billet;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

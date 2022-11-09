@@ -1,6 +1,4 @@
-package objectes;
-
-import Interfaces.InterfaceViatjes;
+package Objectes;
 
 public class Viatje
 {

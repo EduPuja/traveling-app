@@ -1,7 +1,7 @@
 package Funcions;
 
 import Implements.ImplementsUsuari;
-import objectes.Persona;
+import Objectes.Persona;
 
 import java.sql.Date;
 import java.time.LocalDate;

@@ -1,6 +1,5 @@
-package objectes;
+package Objectes;
 
-import javax.swing.plaf.PanelUI;
 import java.util.Date;
 
 public class Factura

@@ -1,8 +1,7 @@
 package Funcions;
 
 import Implements.ImplementsEstacio;
-import Interfaces.InterfaceEstacio;
-import objectes.Estacio;
+import Objectes.Estacio;
 
 import java.util.Scanner;
 

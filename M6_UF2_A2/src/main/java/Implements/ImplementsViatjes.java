@@ -2,10 +2,9 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceViatjes;
-import objectes.Viatje;
+import Objectes.Viatje;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ImplementsViatjes implements InterfaceViatjes

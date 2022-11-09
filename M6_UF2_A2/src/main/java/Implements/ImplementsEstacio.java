@@ -2,7 +2,7 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceEstacio;
-import objectes.Estacio;
+import Objectes.Estacio;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

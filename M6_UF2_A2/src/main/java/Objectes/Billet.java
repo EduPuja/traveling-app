@@ -1,6 +1,4 @@
-package objectes;
-
-import Interfaces.InterfaceBitllets;
+package Objectes;
 
 public class Billet
 {

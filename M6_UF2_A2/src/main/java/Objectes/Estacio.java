@@ -1,4 +1,4 @@
-package objectes;
+package Objectes;
 
 public class Estacio
 {

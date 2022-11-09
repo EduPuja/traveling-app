@@ -1,6 +1,4 @@
-package objectes;
-
-import Interfaces.InterfaceUsuari;
+package Objectes;
 
 import java.util.Date;
 

@@ -2,12 +2,9 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceUsuari;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.xdevapi.Result;
-import objectes.Persona;
+import Objectes.Persona;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 

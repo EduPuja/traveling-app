@@ -1,6 +1,6 @@
 package Interfaces;
 
-import objectes.Billet;
+import Objectes.Billet;
 
 public interface InterfaceBitllets {
     public void llistarBitllets() throws Exception;

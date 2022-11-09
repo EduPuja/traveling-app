@@ -2,7 +2,7 @@ package Implements;
 
 import Funcions.ConnexioBDD;
 import Interfaces.InterfaceLiniaFactura;
-import objectes.Linia_Factura;
+import Objectes.Linia_Factura;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
