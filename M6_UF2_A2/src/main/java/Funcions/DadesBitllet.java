@@ -2,8 +2,8 @@ package Funcions;
 
 import Implements.ImplementsBitllets;
 import Implements.ImplementsViatjes;
-import objectes.Billet;
-import objectes.TipusBillet;
+import Objectes.Billet;
+import Objectes.TipusBillet;
 
 import java.util.Scanner;
 public class DadesBitllet

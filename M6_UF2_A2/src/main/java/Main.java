@@ -10,10 +10,10 @@ import Interfaces.InterfaceBitllets;
 import Interfaces.InterfaceEstacio;
 import Interfaces.InterfaceUsuari;
 import Interfaces.InterfaceViatjes;
-import objectes.Billet;
-import objectes.Estacio;
-import objectes.Persona;
-import objectes.Viatje;
+import Objectes.Billet;
+import Objectes.Estacio;
+import Objectes.Persona;
+import Objectes.Viatje;
 
 import java.util.Scanner;
 

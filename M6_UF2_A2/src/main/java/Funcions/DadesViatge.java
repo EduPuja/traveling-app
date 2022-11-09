@@ -1,6 +1,6 @@
 package Funcions;
 
-import objectes.Viatje;
+import Objectes.Viatje;
 
 public class DadesViatge {
     public static Viatje formNouViatge()

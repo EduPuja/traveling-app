@@ -1,6 +1,6 @@
 package Interfaces;
 
-import objectes.Viatje;
+import Objectes.Viatje;
 
 public interface InterfaceViatjes
 {

@@ -1,6 +1,6 @@
 package Interfaces;
 
-import objectes.Estacio;
+import Objectes.Estacio;
 
 public interface InterfaceEstacio
 {

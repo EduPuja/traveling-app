@@ -1,6 +1,6 @@
 package Interfaces;
 
-import objectes.Persona;
+import Objectes.Persona;
 
 public interface InterfaceUsuari
 {

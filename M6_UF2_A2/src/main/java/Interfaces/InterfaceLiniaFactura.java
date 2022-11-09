@@ -1,8 +1,6 @@
 package Interfaces;
 
-import objectes.Billet;
-import objectes.Linia_Factura;
-import objectes.Viatje;
+import Objectes.Linia_Factura;
 
 public interface InterfaceLiniaFactura
 {
