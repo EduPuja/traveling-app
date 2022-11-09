@@ -8,13 +8,20 @@ import objectes.TipusBillet;
 import java.util.Scanner;
 public class DadesBitllet
 {
-    // intentar cerrar
-    static  Scanner lector = new Scanner(System.in);
+
+    private static Scanner lector = new Scanner(System.in);         // intentar cerrar
+
+    /**
+     * Metode que se utiliza per comprar un billet
+     * @return
+     * @throws Exception
+     */
     public static int formCompraBitllet() throws Exception
     {
         boolean menu = false;
         int idBitllet;
-        do{
+        do
+        {
             System.out.println("Entra el id de el bitllet que vos comprar: ");
             idBitllet = lector.nextInt();
             lector.nextLine();
@@ -27,11 +34,18 @@ public class DadesBitllet
         if(resporsta.equalsIgnoreCase("si")) return idBitllet;
         else return -1;
     }
+
+    /**
+     * Metode per eliminar un billlet
+     * @return
+     * @throws Exception
+     */
     public static int formEliminarBitllet() throws Exception
     {
         boolean menu = false;
         int idBitllet;
-        do{
+        do
+        {
             System.out.println("Entra el bitllet que vos eliminar: ");
             idBitllet = lector.nextInt();
             lector.nextLine();
@@ -41,23 +55,32 @@ public class DadesBitllet
 
         return idBitllet;
     }
+
+    /**
+     * Metode que crea un billlet i tel retorna
+     * @return
+     * @throws Exception
+     */
     public static Billet formCreaBitllet() throws Exception
     {
        Billet billet = new Billet();
 
-       boolean menu = false;
+
+       boolean menu = false;      // Aqui hay una variable que no se utiliza ??
        boolean menu2 = false;
        boolean menu3 = false;
        int idViatge;
        int preuBillet;
        String auxTipusBitllet;
+       // variables tipus billet Son enums
        TipusBillet turista = TipusBillet.TURISTA;
        TipusBillet bussines = TipusBillet.BUISSNES;
        TipusBillet premium = TipusBillet.PREMIUM;
        TipusBillet finalTip = null;
        int maxPersones;
 
-       do{
+       do
+       {
            System.out.println("Entra el id de el Viatge de el bitllet: ");
            idViatge = lector.nextInt();
            lector.nextLine();
@@ -67,18 +90,22 @@ public class DadesBitllet
        System.out.println("Entra el preu que te el bitllet: ");
        preuBillet = lector.nextInt();
        lector.nextLine();
-       do{
+       do
+       {
            System.out.println("Entra de quin tipus sera el bitllet: (TURISTA,BUISSNES,PREMIUM)");
            auxTipusBitllet = lector.nextLine();
-           if(auxTipusBitllet.equals(turista.toString())){
+           if(auxTipusBitllet.equals(turista.toString()))
+           {
                finalTip = turista;
                menu3 = true;
            }
-           else if(auxTipusBitllet.equals(bussines.toString())){
+           else if(auxTipusBitllet.equals(bussines.toString()))
+           {
                finalTip = bussines;
                menu3 = true;
            }
-           else if(auxTipusBitllet.equals(premium.toString())){
+           else if(auxTipusBitllet.equals(premium.toString()))
+           {
                finalTip = premium;
                menu3 = true;
            }
