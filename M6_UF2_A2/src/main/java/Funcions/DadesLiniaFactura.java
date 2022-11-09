@@ -61,9 +61,64 @@ public class DadesLiniaFactura
     }
 
 
+    /**
+     * Metode que acutliza una lina factura :D
+     * @throws Exception
+     */
     public static void fromUpdateLinaFactura() throws Exception
     {
-        
+
+        // ** CREO QUE ESTE METODO NO SE SI DEVERIA EXISITIR....** //
+
+        System.out.println("Digues el idLina que vols modificar");
+        int idLinaFact = lector.nextInt();
+        lector.nextLine();
+        if(ImplementsLiniaFactura.consultarLiniaFactura(idLinaFact))
+        {
+            //cracio del menu en si
+
+            boolean menu =false;
+            int opcioMenu = -1;
+            do
+            {
+                System.out.println("MODIFICACIO LINAFACTURA ");
+                System.out.println("Digues la opcio que vols modificar:");
+                System.out.println("1.LinaFactura (id) ");
+                System.out.println("2.Num_Factura ");
+                System.out.println("3.Id_Persona ");
+                System.out.println("4.Preu");
+                System.out.println("0.Turn back");
+                opcioMenu= lector.nextInt();
+                lector.nextLine();
+                switch (opcioMenu)
+                {
+                    case 1:
+                        //todo canviar el id
+                        break;
+                    case 2:
+                        //todo canviar el num factura
+                        break;
+                    case 3:
+                        // todo canviar el id persona
+                        break;
+                    case 4:
+                        // todo canviar el preu
+                        break;
+                    case 0:
+                        System.out.println("Hasta luego");
+                            menu=true;
+                            break;
+                    default:
+                        System.out.println("No tenim aquesta opcio");
+                        break;
+                }
+
+            }while (!menu);
+        }
+        else System.out.println("Aquesta linaFactura not found D:");
+
+        // retornar un string :D
+
     }
 
 
