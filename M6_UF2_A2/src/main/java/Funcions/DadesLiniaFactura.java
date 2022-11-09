@@ -13,14 +13,7 @@ public class DadesLiniaFactura
 
     public static void fromAltaLinaFactura(Linia_Factura factura) throws Exception
     {
-        Statement con = ConnexioBDD.conexioDB();
-        String query = "INSERT INTO `linia_factura`(`linia_factura`, `num_factura`, `id_persona`, `preu`) VALUES ("+factura.getLiniaFactura()+","+factura.getNumLinia()+","+factura.getIdPersona()+","+factura.getPreu()+")";
 
-        if(con.executeUpdate(query) == 1)
-        {
-            System.out.println("Linia Factura se ha inserit");
-        }
-        else System.out.println("Linfactura No insertada");
 
 
     }
@@ -37,6 +30,8 @@ public class DadesLiniaFactura
     {
         
     }
+
+
 
 
 
