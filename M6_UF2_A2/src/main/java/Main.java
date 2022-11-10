@@ -287,6 +287,40 @@ public class Main
      */
     private static void gestioFactura()
     {
+
+        boolean menu = false;
+        int opcio=-1;
+        do
+        {
+            System.out.println("GESTIO FACUTRA\n");
+            System.out.println("1.Alta factura");
+            System.out.println("2.Baixa factura");
+            System.out.println("3.Modifciar factura");
+            System.out.println("0.Turn back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+            
+            switch (opcio)
+            {
+                case 1:
+                    //todo ALTA FACTURA
+                    break;
+                case 2:
+                    //TODO BAIXA FACTURA
+                    break;
+                case 3:
+                    //TODO MODIFICAR FACTURA
+                    break;
+                case 0:
+                    System.out.println("Tornaras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcio!=0);
+
     }
 
     /**
