@@ -94,8 +94,9 @@ public class Main
             System.out.println("2.Gestio Billets");
             System.out.println("3.Gestio Equipatge");
             System.out.println("4.Gestio Factura");
-            System.out.println("5.Gestio Viatge");
-            System.out.println("6.Gestio Estacio");
+            System.out.println("5.Gestio Linia Factura");
+            System.out.println("6.Gestio Viatge");
+            System.out.println("7.Gestio Estacio");
             System.out.println("0.Log out");
 
             opcioMenu= lector.nextInt();
@@ -116,10 +117,14 @@ public class Main
                     gestioFactura();        //todo falta gestio factura
                     break;
                 case 5:
-                    gestioViatges();            // gestio de cada viatge
+                                //todo falta gestio linia factura
                     break;
                 case 6:
-                    gestioEstacio();            // gestio de cada estacio
+                    gestioViatges();    // gestio de cada viatge
+
+                    break;
+                case 7:
+                    gestioEstacio();     // gestio de cada estacio
                     break;
 
                 case 0:
@@ -234,6 +239,47 @@ public class Main
     private static void gestioEquipatge()
     {
         
+    }
+
+    /**
+     * Getstio LINIA factura
+     */
+    private static void gestioLiniaFactura()
+    {
+        boolean menu =false;
+        int opcio = -1;
+
+        do
+        {
+            System.out.println("GESTIO LINIA FACTURA\n");
+            System.out.println("1.ALTA LINIA FACTURA");
+            System.out.println("2.Baixa LINIA FACTURA");
+            System.out.println("3.Modificacio FACTURA");
+            System.out.println("0.Turn back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+            switch (opcio)
+            {
+                case 1:
+                            // todo alta liniafactura
+                    break;
+                case 2:
+                         // todo baixa liniafactura
+                    break;
+                case 3:
+                         // todo mod liniafactura
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opico");
+                    break;
+
+            }
+        }while (!menu && opcio!=0);
+
     }
 
     /**
