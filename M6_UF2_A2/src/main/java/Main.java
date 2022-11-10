@@ -238,7 +238,38 @@ public class Main
      */
     private static void gestioEquipatge()
     {
-        
+        boolean menu = false;
+        int opcio = -1;
+        do
+        {
+            System.out.println("GESTIO EQUIPATGE\n");
+            System.out.println("1.Alta Equipatge");
+            System.out.println("1.Baixa Equipatge");
+            System.out.println("1.Modificar Equipatge");
+            System.out.println("0.Turn Back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+            switch (opcio)
+            {
+                case 1:
+                    // todo alta equipatge
+                    break;
+                case 2:
+                    // todo baixa equipatge
+                    break;
+                case 3:
+                    // todo mod equipatge
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opico");
+                    break;
+            }
+        }while (!menu && opcio!=0);
+
     }
 
     /**
@@ -299,7 +330,7 @@ public class Main
             System.out.println("0.Turn back");
             opcio=lector.nextInt();
             lector.nextLine();
-            
+
             switch (opcio)
             {
                 case 1:
