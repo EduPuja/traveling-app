@@ -31,6 +31,11 @@ public class ImplementsViatjes implements InterfaceViatjes
 
     }
 
+    /**
+     * eliminar viatge base de dades✅
+     * @param idViatge
+     * @throws Exception
+     */
     @Override
     public void eliminarViatje(int idViatge) throws Exception
     {
@@ -51,6 +56,11 @@ public class ImplementsViatjes implements InterfaceViatjes
 
     }
 
+    /**
+     * Modificar viatge base de dades✅
+     * @param dades
+     * @throws Exception
+     */
     @Override
     public void modificarViatje(String dades) throws Exception
     {
@@ -115,6 +125,12 @@ public class ImplementsViatjes implements InterfaceViatjes
 
     }
 
+    /**
+     * Comprovar un viatge ✅
+     * @param idViatge
+     * @return
+     * @throws Exception
+     */
     public static boolean comprovarViatge(int idViatge) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
