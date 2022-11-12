@@ -65,18 +65,29 @@ public class ImplementsEquipatge implements InterfaceEquipatge
     public void modificarEquipatge(String dades) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        String taula [] = dades.split("/");
-        int idEquip = Integer.parseInt(taula[0]);
-        int pesKg = Integer.parseInt(taula[1]);
-        int numMaletes = Integer.parseInt(taula[2]);
 
-        String query = "Update equipatge set pes_kg = "+pesKg+", num_maletes = "+numMaletes+" WHERE id_equip = "+idEquip;
-
-        if(con.executeUpdate(query) == 1)
+        if(!dades.equalsIgnoreCase("no"))
         {
-            System.out.println("Se ha modifcar el Equipatge :D");
+            String taula [] = dades.split("/");
+
+            String novaInfo = taula[1];
+            String tipoInfo = taula[2];
+
+
+            int idEquip = Integer.parseInt(taula[0]);
+            int pesKg = Integer.parseInt(taula[1]);
+            int tipoInfo = Integer.parseInt(taula[2]);
+
+
+          //  String query = "update equipatge set "+
+            if(con.executeUpdate(query) == 1)
+            {
+               System.out.println("Equipatge modificat");
+            }
+            else System.out.println("Equipatge no modifcat");
+            con.close();
         }
-        else  System.out.println("No se ha modifcat el equipatge");
+        else System.out.println("Modificacio Cancelada.");
 
 
         con.close();

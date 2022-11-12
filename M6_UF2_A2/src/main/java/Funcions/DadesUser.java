@@ -150,7 +150,7 @@ public class DadesUser
                         dades = dades + "/" + auxData_naix + "/data_naix";
                         menu2 = true;
                         break;
-                    case 4:
+                    case 0:
                         menu2 = true;
                         dades = "no";
                         break;
