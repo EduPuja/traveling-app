@@ -1,19 +1,7 @@
-import Funcions.DadesBitllet;
-import Funcions.DadesEstacio;
-import Funcions.DadesUser;
-import Funcions.DadesViatge;
-import Implements.ImplementsBitllets;
-import Implements.ImplementsEstacio;
-import Implements.ImplementsUsuari;
-import Implements.ImplementsViatjes;
-import Interfaces.InterfaceBitllets;
-import Interfaces.InterfaceEstacio;
-import Interfaces.InterfaceUsuari;
-import Interfaces.InterfaceViatjes;
-import Objectes.Billet;
-import Objectes.Estacio;
-import Objectes.Persona;
-import Objectes.Viatje;
+import Funcions.*;
+import Implements.*;
+import Interfaces.*;
+import Objectes.*;
 
 import java.util.Scanner;
 
@@ -273,8 +261,9 @@ public class Main
      * Getstio LINIA factura
      * TODO FALTA TODA LA LINIAFACTURA.
      */
-    private static void gestioLiniaFactura()
+    private static void gestioLiniaFactura() throws Exception
     {
+        InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
         boolean menu =false;
         int opcio = -1;
 
@@ -291,10 +280,12 @@ public class Main
             switch (opcio)
             {
                 case 1:
-                            // todo alta liniafactura
+                    Linia_Factura liniaFactura = DadesLiniaFactura.fromAltaLinaFactura();
+                    daoLinaFactura.crearLiniaFactura(liniaFactura);
                     break;
                 case 2:
-                         // todo baixa liniafactura
+                       int idLinaFactura = DadesLiniaFactura.fromBaixaLinaFactura();
+                       daoLinaFactura.eliminarLiniaFactura(idLinaFactura);
                     break;
                 case 3:
                          // todo mod liniafactura
