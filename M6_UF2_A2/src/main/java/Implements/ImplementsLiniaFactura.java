@@ -41,7 +41,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
     public void crearLiniaFactura(Linia_Factura creaLF) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        String query = "INSERT INTO `linia_factura`(`linia_factura`, `num_factura`, `id_persona`, `preu`) VALUES ("+creaLF.getLiniaFactura()+","+creaLF.getNumLinia()+","+creaLF.getIdPersona()+","+creaLF.getPreu()+")";
+        String query = "INSERT INTO linia_factura(linia_factura, num_factura, id_persona, preu) VALUES ("+creaLF.getLiniaFactura()+","+creaLF.getNumLinia()+","+creaLF.getIdPersona()+","+creaLF.getPreu()+")";
         if(con.executeUpdate(query) == 1)
         {
             System.out.println("Se ha insertat una Linia factura :D");

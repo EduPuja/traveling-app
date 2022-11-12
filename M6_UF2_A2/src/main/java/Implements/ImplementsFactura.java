@@ -26,20 +26,25 @@ public class ImplementsFactura implements InterfaceFactura {
         int idP = creaF.getIdPersona();
         Date dataF = creaF.getData();
 
-        String query = "Insert into factura(id_persona,preu_total,data_factura) values("+idP+","+(-1)+",`"+dataF+"`)";
+        String query = "Insert into factura(num_factura,id_persona,preu_total,data_factura) values("+nF+","+idP+","+(-1)+",'"+dataF+"')";
 
         if(statement.executeUpdate(query) == 1)
         {
             Linia_Factura lf = DadesLiniaFactura.fromAltaLinaFactura();
             daoLF.crearLiniaFactura(lf);
             int preu = lf.getPreu();
-
-            String query2 = "Update factura set preu_total="+ preu + "where num_factura=" +nF;
-
-            if(statement.executeUpdate(query2)==1) System.out.println("Factura creada");
-            else System.out.println("Factura no creada.");
+            updatePreu(preu,nF);
         }
     }
+
+    private void updatePreu(int preu, int nF) throws Exception {
+        Statement statement = ConnexioBDD.conexioDB();
+        String query2 = "Update factura set preu_total="+ preu + " where num_factura="+nF;
+
+        if(statement.executeUpdate(query2)==1) System.out.println("Factura creada");
+        else System.out.println("Factura no creada.");
+    }
+
     @Override
     public void eliminarFactura(int idLinaFactura) throws Exception {
 
@@ -53,12 +58,23 @@ public class ImplementsFactura implements InterfaceFactura {
     public static int dniAid(String dni) throws Exception {
         Statement statement = ConnexioBDD.conexioDB();
 
-        String query = "Select id_persona from persona where dni="+dni+"";
+        String query = "Select id_persona from persona where dni='"+dni+"'";
 
         ResultSet rs = statement.executeQuery(query);
+        int id = -1;
+        if(rs.next()){
+            id = rs.getInt("id_persona");
+            rs.close();
+            statement.close();
+            return id;
+        }
 
-        if(rs.next()) return rs.getInt("id_persona");
-        else return 0;
+        else{
+            rs.close();
+            statement.close();
+            return id;
+        }
+
     }
     public static boolean comprovaNumFact(int numF) throws Exception {
         //comprovarUser en la bdd.

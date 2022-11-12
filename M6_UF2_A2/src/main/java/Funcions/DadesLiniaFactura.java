@@ -1,5 +1,7 @@
 package Funcions;
 
+import Implements.ImplementsBitllets;
+import Implements.ImplementsFactura;
 import Implements.ImplementsLiniaFactura;
 import Implements.ImplementsUsuari;
 import Objectes.Linia_Factura;
@@ -19,26 +21,46 @@ public class DadesLiniaFactura
      */
     public static Linia_Factura fromAltaLinaFactura() throws Exception
     {
-        System.out.println("Digues el numero de la lina factura");
-        int linaFactnum = lector.nextInt();
-        lector.nextLine();
-        // EL LINES FACTURA ES AUTO INCREMENT...
-        // SE TIENE QUE COMPROVAR SU EXISTENCIA
-        System.out.println("Digues el num de la factura");
-        int numFactura =  lector.nextInt();
-        lector.nextLine();
-        // ES A EL NUEMRO DE LA FACTURA A LA QUE VA REFERENCIADA LA LINEA.
-        System.out.println("Digues el id de la persona a qui va a la lina factura");
-        int idPersona = lector.nextInt();
-        lector.nextLine();
-        //todo comprovar que aquest id estigui realment a la basse de dades sino esta et surti un error
-        System.out.println("Digues un preu a la linafactura");
-        int preuLinaFactura = lector.nextInt();
-        lector.nextLine();
-        //EL PRECIO ES EL DE EL BILLETE QUE COJE EL USUARIO NO LO ENTRAS TU.
+        int linaFactnum;
+        int numFactura;
+        String dni;
+        int bitllet;
+        boolean menulf= false;
+        do{
+            System.out.println("Digues el numero de la linia factura: ");
+            linaFactnum = lector.nextInt();
+            lector.nextLine();
+            if(ImplementsLiniaFactura.consultarLiniaFactura(linaFactnum)) System.out.println("Numero de linia factura ja existeix.");
+            else menulf = true;;
+        }while(!menulf);
+        boolean menuf= false;
+        do{
+            System.out.println("Digues el num de la factura: ");
+            numFactura =  lector.nextInt();
+            lector.nextLine();
+            if(ImplementsFactura.comprovaNumFact(numFactura))menuf = true;
+            else System.out.println("Numero de factura ja existeix.");
 
+        }while(!menuf);
+        boolean menud= false;
+        do{
+            System.out.println("Digues el dni de la persona a qui va a la lina factura: ");
+            dni = lector.nextLine();
+            if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(dni)) menud = true;
+            else System.out.println("Dni incorrecte.");
+        }while(!menud);
+        System.out.println("------------------------------------------");
+        System.out.println("             Bitllets Actuals             ");
+        System.out.println("------------------------------------------");
+        ImplementsBitllets.llistarBitlletsPerLF();
+        System.out.println("");
+        System.out.println("Escull un bitllet: ");
+        bitllet = lector.nextInt();
+        lector.nextLine();
 
-        Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura,idPersona,preuLinaFactura); // objecte
+        int preu = ImplementsBitllets.preuBitllet(bitllet);
+
+        Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura, ImplementsFactura.dniAid(dni),preu); // objecte
 
         return linaFact;
 

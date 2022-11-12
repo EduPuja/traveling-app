@@ -26,8 +26,8 @@ public class DadesFactura {
             System.out.println("Entra el numero de la factura: ");
             num_factura = lector.nextInt();
             lector.nextLine();
-            if(ImplementsFactura.comprovaNumFact(num_factura)) menu2 = true;
-            else System.out.println("Numero de la factura.");
+            if(ImplementsFactura.comprovaNumFact(num_factura)) System.out.println("Numero de la factura.");
+            else menu2 = true;
         }while(!menu2);
         do{
             System.out.println("Entra el dni de l'usuari: ");

@@ -106,16 +106,17 @@ public class ImplementsBitllets implements InterfaceBitllets
         String query = "select `preu` from `billets` where `id_billet` ="+idBillet;
 
         ResultSet resultSet = statement.executeQuery(query);
-
+        int preu = -1;
         if(resultSet.next())
         {
+            preu = resultSet.getInt("preu");
             statement.close();
-            return resultSet.getInt("preu");
+            return preu ;
         }
         else
         {
             statement.close();
-            return 0;
+            return preu;
         }
     }
     public static int max_billets_tipusBitllet(int idBillet) throws Exception
@@ -136,5 +137,30 @@ public class ImplementsBitllets implements InterfaceBitllets
             statement.close();
             return 0;
         }
+    }
+    public static void llistarBitlletsPerLF() throws Exception
+    {
+        Statement statement = ConnexioBDD.conexioDB();
+        // consulta que sabe el usuari donde va a ir el precio i cantidad de personas
+        String query = "" +
+                "SELECT id_billet,b.id_viatge as idviatge, tipus_billet, preu, max_billets_tipus, " +
+                "e.descrip as origen, e1.descrip as desti FROM billets b " +
+                "INNER JOIN viatges v on v.id_viatge = b.id_viatge " +
+                "INNER JOIN estacio e on e.id_estacio = v.id_origen " +
+                "INNER JOIN estacio e1 on e1.id_estacio = v.id_desti";
+
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next())
+        {
+            System.out.println("ID_BITLLET: "+rs.getInt("id_billet"));       // esto era string .-. !!
+            System.out.println("ID_VIATGE: "+rs.getInt("idviatge"));        // esto era string .-. !!
+            System.out.println("ESTACIO ORIGEN: "+rs.getString("origen"));
+            System.out.println("ESTACIO DESTI: "+rs.getString("desti"));
+            System.out.println("TIPUS BITLLET: "+rs.getString("tipus_billet"));
+            System.out.println("PREU BITLLET: "+rs.getInt("preu"));
+            System.out.println("MAXIM DE PERSONES: "+rs.getInt("max_billets_tipus"));
+            System.out.println("");
+        }
+        statement.close();
     }
 }

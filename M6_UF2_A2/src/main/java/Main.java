@@ -493,13 +493,13 @@ public class Main
                     break;
                 case 3:
                     //DELETE
-                    Viatje vEliminar = DadesViatge.formEliminarViatge();
-                    daoV.eliminarViatje(vEliminar);
+                    //Viatje vEliminar = DadesViatge.formEliminarViatge();
+                    //daoV.eliminarViatje(vEliminar);
                     break;
                 case 4:
                     //UPDATE
-                    Viatje vUpdate = DadesViatge.formUpdateViatge();
-                    daoV.modificarViatje(vUpdate);
+                    //Viatje vUpdate = DadesViatge.formUpdateViatge();
+                    //daoV.modificarViatje(vUpdate);
                     break;
                 case 0:
                     System.out.println("Toranras al menu Admin\n");
