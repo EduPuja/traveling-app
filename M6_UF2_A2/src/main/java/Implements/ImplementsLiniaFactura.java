@@ -84,11 +84,11 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
 
         String taula [] = dades.split("/");
         int linaFactura = Integer.parseInt(taula[0]);
-        int numFactura = Integer.parseInt(taula[1]);
-        int idPersona = Integer.parseInt(taula[2]);
+        //int numFactura = Integer.parseInt(taula[1]);
+        //int idPersona = Integer.parseInt(taula[2]);
         int preu = Integer.parseInt(taula[3]);
 
-        String query = "UPDATE `linia_factura` SET `linia_factura`="+linaFactura+",`num_factura`="+numFactura+",`id_persona`="+idPersona+",`preu`="+preu+" WHERE `linia_factura`="+linaFactura;
+        String query = "UPDATE `linia_factura` SET `preu`="+preu+" WHERE `linia_factura`="+linaFactura;
 
         if(statement.executeUpdate(query) == 1) System.out.println("La linaFactura ha sigut Modificada .");
         else System.out.println("Modificat Incorrectament.");
