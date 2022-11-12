@@ -86,10 +86,10 @@ public class Main
             switch (opcioMenu)
             {
                 case 1:
-                    gestioUsuaris();        // menu de gestrio usuari entra users modificar i elminar usuaris
+                    gestioUsuaris();        // menu de gestrio usuari entra users modificar i elminar usuaris✅
                     break;
                 case 2:
-                    gestioBillets();        // gestio billets compra billet eliminiacio y llistat (falta compra)
+                    gestioBillets();        //TODO FALTA LA COMPRA
                     break;
                 case 3:
                     gestioEquipatge();      // TODO falta this meode
@@ -98,13 +98,13 @@ public class Main
                     gestioFactura();        //todo falta gestio factura
                     break;
                 case 5:
-                    gestioLiniaFactura();   //todo falta gestio linia factura
+                    gestioLiniaFactura();   //gestio lina factura ✅
                     break;
                 case 6:
-                    gestioViatges();    // gestio de cada viatge
+                    gestioViatges();        //todo gestio vaitges FALTA
                     break;
                 case 7:
-                    gestioEstacio();     // gestio de cada estacio
+                    gestioEstacio();     // gestio de cada estacio ✅
                     break;
 
                 case 0:
@@ -142,7 +142,7 @@ public class Main
             switch (opcioMenu)
             {
                 case 1:
-                    //TODO LLISTAR VIATGES
+                  //LLISTAR TOTS BILLETS
                     daoB.llistarBitllets();
                     break;
                 case 2:
@@ -153,8 +153,6 @@ public class Main
                 case 0:
                     menu= true;
                     System.out.println("Has tencat la sessio admin");
-
-                    //lector.close();
                     break;
 
                 default:
@@ -169,7 +167,7 @@ public class Main
 
     /**
      * Metode que el que fa es gestiona les estacions
-     * TODO ACABADO, SIUUUUUUUUU!!!!!!!
+     *
      */
     private static void gestioEstacio() throws Exception
     {
@@ -259,7 +257,7 @@ public class Main
 
     /**
      * Getstio LINIA factura
-     * TODO FALTA TODA LA LINIAFACTURA.
+     *
      */
     private static void gestioLiniaFactura() throws Exception
     {
@@ -280,15 +278,23 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                      //llistar lina
+                    daoLinaFactura.llistarLiniaFactura();
+                    break;
+                case 2:
+                    //alta lina
                     Linia_Factura liniaFactura = DadesLiniaFactura.fromAltaLinaFactura();
                     daoLinaFactura.crearLiniaFactura(liniaFactura);
                     break;
-                case 2:
-                       int idLinaFactura = DadesLiniaFactura.fromBaixaLinaFactura();
-                       daoLinaFactura.eliminarLiniaFactura(idLinaFactura);
-                    break;
                 case 3:
-                         // todo mod liniafactura
+                    ///baixa lina
+                    int idLinaFactura = DadesLiniaFactura.fromBaixaLinaFactura();
+                    daoLinaFactura.eliminarLiniaFactura(idLinaFactura);
+                    break;
+                case 4:
+                    //modiiciar lina
+                    String dades = DadesEstacio.fromUpdateEstacio();
+                    daoLinaFactura.modificarLiniaFactura(dades);
                     break;
                 case 0:
                     System.out.println("Toranras al menu admin");
@@ -369,17 +375,21 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    //LLISTAR
                     daoB.llistarBitllets();
                     break;
                 case 2:
+                    // TODO FALTA ESTO COMPRA
                     int bIdCompra = DadesBitllet.formCompraBitllet();
-                    daoB.compraBitllets(bIdCompra,dniUserLog); //todo esto no se para que es :D
+                    daoB.compraBitllets(bIdCompra,dniUserLog);
                     break;
                 case 3:
+                    // ELIMINAR
                     int bIdElimina = DadesBitllet.formEliminarBitllet();
                     daoB.eliminarBitllets(bIdElimina);
                     break;
                 case 4:
+                    // CREAR
                     Billet bCrea = DadesBitllet.formCreaBitllet();
                     daoB.creaBitllets(bCrea);
                     break;
@@ -394,9 +404,9 @@ public class Main
         }while(!menu && opcio!=0);
     }
     /**
-     * Gestio usuaris Ja esta fet
+     * Gestio usuaris ✅
      * @throws Exception
-     * TODO TODO ECHO, SIUUUUUUUUUUUUUUUU!!!!!!!!
+     *
      */
     private static void gestioUsuaris() throws Exception
     {
@@ -419,18 +429,22 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    // ALTA
                     Persona uAlta = DadesUser.formAltaUser();
                     daoU.altaUser(uAlta);
                     break;
                 case 2:
+                    //BAIXA
                     String dniUser = DadesUser.formBaixaUser();
                     daoU.baixaUser(dniUser);
                     break;
                 case 3:
+                    //MOD
                     String dades = DadesUser.formUpdateUser();
                     daoU.modificacioUser(dades);
                     break;
                 case 4:
+                    //LISTAR
                     daoU.llistarUser();
                     break;
                 case 0:
@@ -446,7 +460,7 @@ public class Main
     /**
      * Gestio viatges
      * @throws Exception
-     * TODO FALTA TODO.
+     * TODO FALTA TODO EL IMPLEMENTS I LAS DADES.
      */
     private static void gestioViatges() throws Exception
     {
@@ -467,22 +481,26 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    //LLISTAR
                     daoV.llistarViatje();
                     break;
                 case 2:
+                    //  ADD
                     Viatje vNou = DadesViatge.formNouViatge();
                     daoV.nouViatje(vNou);
                     break;
                 case 3:
+                    //DELETE
                     Viatje vEliminar = DadesViatge.formEliminarViatge();
                     daoV.eliminarViatje(vEliminar);
                     break;
                 case 4:
+                    //UPDATE
                     Viatje vUpdate = DadesViatge.formUpdateViatge();
                     daoV.modificarViatje(vUpdate);
                     break;
                 case 0:
-                    System.out.println("Adeu.");
+                    System.out.println("Toranras al menu Admin\n");
                     menu = true;
                     break;
                 default:
