@@ -1,6 +1,8 @@
 package Funcions;
 
+import Implements.ImplementsBitllets;
 import Implements.ImplementsUsuari;
+import Interfaces.InterfaceBitllets;
 import Objectes.Persona;
 
 import java.sql.Date;
@@ -158,5 +160,19 @@ public class DadesUser
             }while(!menu2);
         }
         return dades;// dades esta format en el seguent format (dni/dade modificada/tipo de dada);
+    }
+
+    public static int formCompraBitllet() throws Exception {
+        int idBCompra = 0;
+        boolean menu = false;
+        do {
+            System.out.println("Entra la id de el bitllet que desitges:");
+            idBCompra = lector.nextInt();
+            lector.nextLine();
+            if(ImplementsBitllets.comprovarBillet(idBCompra)) menu = true;
+            else System.out.println("Aquesta opcio no existeix.");
+
+        }while(!menu);
+        return idBCompra;
     }
 }

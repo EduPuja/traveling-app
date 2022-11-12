@@ -19,15 +19,15 @@ public class DadesLiniaFactura
      */
     public static void fromAltaLinaFactura() throws Exception
     {
-
-
-
         System.out.println("Digues el numero de la lina factura");
         int linaFactnum = lector.nextInt();
         lector.nextLine();
+        // EL LINES FACTURA ES AUTO INCREMENT...
+        // SE TIENE QUE COMPROVAR SU EXISTENCIA
         System.out.println("Digues el num de la factura");
         int numFactura =  lector.nextInt();
         lector.nextLine();
+        // ES A EL NUEMRO DE LA FACTURA A LA QUE VA REFERENCIADA LA LINEA.
         System.out.println("Digues el id de la persona a qui va a la lina factura");
         int idPersona = lector.nextInt();
         lector.nextLine();
@@ -35,6 +35,7 @@ public class DadesLiniaFactura
         System.out.println("Digues un preu a la linafactura");
         int preuLinaFactura = lector.nextInt();
         lector.nextLine();
+        //EL PRECIO ES EL DE EL BILLETE QUE COJE EL USUARIO NO LO ENTRAS TU.
 
 
         Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura,idPersona,preuLinaFactura); // objecte
@@ -49,7 +50,7 @@ public class DadesLiniaFactura
      */
     public static int fromBaixaLinaFactura() throws Exception
     {
-        System.out.println("El numero de la linaFactura que vols ");
+        System.out.println("El numero de la linaFactura que vols: ");
        int linaFactura= lector.nextInt();
         lector.nextLine();
         if(ImplementsLiniaFactura.consultarLiniaFactura(linaFactura))
@@ -59,20 +60,25 @@ public class DadesLiniaFactura
         else return -1;
 
     }
-
-
     /**
      * Metode que acutliza una lina factura :D
      * @throws Exception
      */
     public static void fromUpdateLinaFactura() throws Exception
     {
+        // A DE EXISTIR JAJAJAJAJAJAJ SI NO COMO HACES LA MODIFICACION DE UNA LINEA DE FACTURA
+        // EL STRING QUE TIENES QUE RETORNAR ES UN STRING DADES QUE SERIA ESTE:
+        // String dades = ""; // id de la linea # nuevaInfo # tipo de info
+
 
         // ** CREO QUE ESTE METODO NO SE SI DEVERIA EXISITIR....** //
+
+        String dades = "";
 
         System.out.println("Digues el idLina que vols modificar");
         int idLinaFact = lector.nextInt();
         lector.nextLine();
+        dades = ""+idLinaFact;
         if(ImplementsLiniaFactura.consultarLiniaFactura(idLinaFact))
         {
             //cracio del menu en si
@@ -94,6 +100,7 @@ public class DadesLiniaFactura
                 {
                     case 1:
                         //todo canviar el id
+                        
                         break;
                     case 2:
                         //todo canviar el num factura

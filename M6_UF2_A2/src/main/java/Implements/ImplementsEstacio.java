@@ -17,10 +17,9 @@ public class ImplementsEstacio implements InterfaceEstacio
         String query = "INSERT INTO `estacio`(`id_estacio`, `descrip`) VALUES ("+eNou.getIdEstacio()+",'"+eNou.getDescripco()+"')";
         if(con.executeUpdate(query) == 1)
         {
-            System.out.println("Insertat");
+            System.out.println("Estacio entrada Correctament.");
         }
-        else System.out.println("error");
-
+        else System.out.println("Estacio no entrada.");
 
         con.close();
     }
@@ -56,8 +55,17 @@ public class ImplementsEstacio implements InterfaceEstacio
     }
     public void llistarEstacio() throws Exception
     {
-        Statement con = ConnexioBDD.conexioDB();
+        Statement statement = ConnexioBDD.conexioDB();
+        String query = "SELECT * FROM `estacio`";
 
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next())
+        {
+            System.out.println("ID_ESTACIO: "+rs.getString("id_estacio"));       // esto era string .-. !!
+            System.out.println("DESCRIPCIO: "+rs.getString("descrip"));        // esto era string .-. !!
+            System.out.println("");
+        }
+        statement.close();
     }
     /**
      * Metode per comprovar si una estacio esta insertada a la base de dades

@@ -20,11 +20,12 @@ import java.util.Scanner;
 public class Main
 {
     public static Scanner lector = new Scanner(System.in);
+    public static String dniUserLog = "";
+    public static String passwordUserLog = "";
 
     public static void main(String[] args) throws Exception
     {
-        String dni = "";
-        String password = "";
+
 
         //variables admin ( no se utilizan por ahora)
          // boolean admin = false;
@@ -36,8 +37,8 @@ public class Main
             System.out.println("               LogIn                ");
             System.out.println("------------------------------------");
             System.out.println("       Entra el DNI d'Usurai:       ");
-            dni = lector.nextLine();
-            if(dni.equalsIgnoreCase("sortir") || dni.equalsIgnoreCase("exit"))
+            dniUserLog = lector.nextLine();
+            if(dniUserLog.equalsIgnoreCase("sortir") || dniUserLog.equalsIgnoreCase("exit"))
             {
                 menu=true;
                 lector.close();
@@ -46,17 +47,17 @@ public class Main
             else
             {
                 System.out.println("     Entra el password d'Usurai:    ");
-                password = lector.nextLine();
+                passwordUserLog = lector.nextLine();
                 System.out.println("------------------------------------");
 
-                if(dni.equalsIgnoreCase("admin") && password.equalsIgnoreCase("1234"))
+                if(dniUserLog.equalsIgnoreCase("admin") && passwordUserLog.equalsIgnoreCase("1234"))
                 {
 
                     menuAdmin();
                 }
                 else
                 {
-                    userExist = ImplementsUsuari.comprovarUser(dni,password);
+                    userExist = ImplementsUsuari.comprovarUser(dniUserLog,passwordUserLog);
                     if (userExist)
                     {
                         menuUser();
@@ -67,16 +68,8 @@ public class Main
                     }
                 }
             }
-
         }while (!menu);
-
-
-
     }
-
-
-
-
 
     /**
      * menu de admin nomes pot accedir l'admin :D
@@ -108,7 +101,7 @@ public class Main
                     gestioUsuaris();        // menu de gestrio usuari entra users modificar i elminar usuaris
                     break;
                 case 2:
-                    gestioBillets();        // gestio billets compra billet eliminiacio y llistat
+                    gestioBillets();        // gestio billets compra billet eliminiacio y llistat (falta compra)
                     break;
                 case 3:
                     gestioEquipatge();      // TODO falta this meode
@@ -117,11 +110,10 @@ public class Main
                     gestioFactura();        //todo falta gestio factura
                     break;
                 case 5:
-                                //todo falta gestio linia factura
+                    gestioLiniaFactura();   //todo falta gestio linia factura
                     break;
                 case 6:
                     gestioViatges();    // gestio de cada viatge
-
                     break;
                 case 7:
                     gestioEstacio();     // gestio de cada estacio
@@ -139,13 +131,12 @@ public class Main
         }while (!menu && opcioMenu!=0);
     }
 
-
-
     /**
      * MENU DEL USUARI
      */
     private static void menuUser() throws Exception
     {
+        InterfaceBitllets daoB = new ImplementsBitllets();
         boolean menu = false;
         int opcioMenu =-1;
 
@@ -153,7 +144,7 @@ public class Main
         {
             System.out.println("Benvingut User! \n");
             System.out.println("MENU USER\n");
-            System.out.println("1.Listar Viatges");
+            System.out.println("1.Listar Bitllets");
             System.out.println("2.Comprar Billets");
             System.out.println("0.Log out");
 
@@ -164,9 +155,12 @@ public class Main
             {
                 case 1:
                     //TODO LLISTAR VIATGES
+                    daoB.llistarBitllets();
                     break;
                 case 2:
                     //TODO COMPRAR BILLETS
+                    int idBCompra = DadesUser.formCompraBitllet();
+                    daoB.compraBitllets(idBCompra,dniUserLog);
                     break;
                 case 0:
                     menu= true;
@@ -183,15 +177,11 @@ public class Main
 
     }
 
-
     // ************ METODES GESTIO *****////////
-
-
-
-
 
     /**
      * Metode que el que fa es gestiona les estacions
+     * TODO ACABADO, SIUUUUUUUUU!!!!!!!
      */
     private static void gestioEstacio() throws Exception
     {
@@ -203,9 +193,10 @@ public class Main
         do
         {
             System.out.println("GESTIO ESTACIONS\n");
-            System.out.println("1.Crear una estacio");
-            System.out.println("2.Baixa estacio");
-            System.out.println("3.Modificar estacions");
+            System.out.println("1.Llistar estacions");
+            System.out.println("2.Crear una estacio");
+            System.out.println("3.Baixa estacio");
+            System.out.println("4.Modificar estacions");
             System.out.println("0.Turn back");
 
             opcio =lector.nextInt();
@@ -214,14 +205,17 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    estacioDao.llistarEstacio();
+                    break;
+                case 2:
                     Estacio estacio = DadesEstacio.fromAltaEstacio();
                     estacioDao.novaEstacio(estacio);
                     break;
-                case 2:
+                case 3:
                     int idEstacio = DadesEstacio.fromBaixaEstacio();
                     estacioDao.deleteEstacio(idEstacio);
                     break;
-                case 3:
+                case 4:
                     String dades = DadesEstacio.fromUpdateEstacio();
                     estacioDao.modificarEstacio(dades);
                     break;
@@ -235,17 +229,20 @@ public class Main
 
     /**
      * gestio equipatge
+     * TODO FALTA TODO EL EQUPAGE.
      */
     private static void gestioEquipatge()
     {
+        InterfaceEstacio daoE = new ImplementsEstacio();
         boolean menu = false;
         int opcio = -1;
         do
         {
             System.out.println("GESTIO EQUIPATGE\n");
-            System.out.println("1.Alta Equipatge");
-            System.out.println("1.Baixa Equipatge");
-            System.out.println("1.Modificar Equipatge");
+            System.out.println("1.Llistar Equipatge Usuari");
+            System.out.println("2.Alta Equipatge");
+            System.out.println("3.Baixa Equipatge");
+            System.out.println("4.Modificar Equipatge");
             System.out.println("0.Turn Back");
             opcio=lector.nextInt();
             lector.nextLine();
@@ -274,6 +271,7 @@ public class Main
 
     /**
      * Getstio LINIA factura
+     * TODO FALTA TODA LA LINIAFACTURA.
      */
     private static void gestioLiniaFactura()
     {
@@ -283,9 +281,10 @@ public class Main
         do
         {
             System.out.println("GESTIO LINIA FACTURA\n");
-            System.out.println("1.ALTA LINIA FACTURA");
-            System.out.println("2.Baixa LINIA FACTURA");
-            System.out.println("3.Modificacio FACTURA");
+            System.out.println("1.Llista lineas de una factura.");
+            System.out.println("2.ALTA LINIA FACTURA");
+            System.out.println("3.Baixa LINIA FACTURA");
+            System.out.println("4.Modificacio FACTURA");
             System.out.println("0.Turn back");
             opcio=lector.nextInt();
             lector.nextLine();
@@ -315,10 +314,10 @@ public class Main
 
     /**
      * gestio factura
+     * TODO FALTA TODA LA FACTURA
      */
     private static void gestioFactura()
     {
-
         boolean menu = false;
         int opcio=-1;
         do
@@ -357,6 +356,7 @@ public class Main
     /**
      * Gestio billets
      * @throws Exception
+     * TODO TODO ECHO MENOS LA COMPRA DE BILLETES.
      */
     private static void gestioBillets() throws Exception
     {
@@ -382,7 +382,7 @@ public class Main
                     break;
                 case 2:
                     int bIdCompra = DadesBitllet.formCompraBitllet();
-                   // daoB.compraBitllets(bIdCompra);           //todo esto no se para que es :D
+                    daoB.compraBitllets(bIdCompra,dniUserLog); //todo esto no se para que es :D
                     break;
                 case 3:
                     int bIdElimina = DadesBitllet.formEliminarBitllet();
@@ -405,6 +405,7 @@ public class Main
     /**
      * Gestio usuaris Ja esta fet
      * @throws Exception
+     * TODO TODO ECHO, SIUUUUUUUUUUUUUUUU!!!!!!!!
      */
     private static void gestioUsuaris() throws Exception
     {
@@ -451,11 +452,10 @@ public class Main
             }
         }while(!menu && opcio!=0);
     }
-
-
     /**
      * Gestio viatges
      * @throws Exception
+     * TODO FALTA TODO.
      */
     private static void gestioViatges() throws Exception
     {
@@ -464,9 +464,10 @@ public class Main
         do
         {
             System.out.println("Entra una opcio: ");
-            System.out.println("1 - Nou Viatje");
-            System.out.println("2 - Eliminar Viatje");
-            System.out.println("3 - Modificar Viatje");
+            System.out.println("1 - Llistar Viatjes");
+            System.out.println("2 - Nou Viatje");
+            System.out.println("3 - Eliminar Viatje");
+            System.out.println("4 - Modificar Viatje");
             System.out.println("0 - Sortir");
 
             int opcio = lector.nextInt();
@@ -475,14 +476,17 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    daoV.llistarViatje();
+                    break;
+                case 2:
                     Viatje vNou = DadesViatge.formNouViatge();
                     daoV.nouViatje(vNou);
                     break;
-                case 2:
+                case 3:
                     Viatje vEliminar = DadesViatge.formEliminarViatge();
                     daoV.eliminarViatje(vEliminar);
                     break;
-                case 3:
+                case 4:
                     Viatje vUpdate = DadesViatge.formUpdateViatge();
                     daoV.modificarViatje(vUpdate);
                     break;
