@@ -10,6 +10,8 @@ import java.sql.Statement;
 public class ImplementsViatjes implements InterfaceViatjes
 {
 
+
+    // TODO FALTA TODO EL IMPLEMENTS VIATGE!!
     public void nouViatje(Viatje vNou) throws Exception
     {
        Statement con =ConnexioBDD.conexioDB();
