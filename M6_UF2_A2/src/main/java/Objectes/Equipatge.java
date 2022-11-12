@@ -5,7 +5,7 @@ public class Equipatge
     private int idEquipatge;
     private int numFactura;
     private int liniaFactura;
-    private double pesKg;
+    private int pesKg;
     private int numMaletes;
 
     /**
@@ -23,7 +23,7 @@ public class Equipatge
      * @param pesKg
      * @param numMaletes
      */
-    public Equipatge(int idEquipatge, int numFactura, int liniaFactura, double pesKg, int numMaletes)
+    public Equipatge(int idEquipatge, int numFactura, int liniaFactura, int pesKg, int numMaletes)
     {
         this.idEquipatge = idEquipatge;
         this.numFactura = numFactura;
@@ -41,7 +41,7 @@ public class Equipatge
      * @param pesKg
      * @param numMaletes
      */
-    public void setAllEquipatge(int idEquipatge, int numFactura, int liniaFactura, double pesKg, int numMaletes)
+    public void setAllEquipatge(int idEquipatge, int numFactura, int liniaFactura, int pesKg, int numMaletes)
     {
         this.idEquipatge = idEquipatge;
         this.numFactura = numFactura;
@@ -72,7 +72,7 @@ public class Equipatge
     {
         return liniaFactura;
     }
-    public double getPesKg()
+    public int getPesKg()
     {
         return pesKg;
     }
@@ -95,7 +95,7 @@ public class Equipatge
     {
         this.liniaFactura = liniaFactura;
     }
-    public void setPesKg(double pesKg)
+    public void setPesKg(int pesKg)
     {
         this.pesKg = pesKg;
     }
