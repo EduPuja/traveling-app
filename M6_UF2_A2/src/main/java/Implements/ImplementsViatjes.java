@@ -55,7 +55,12 @@ public class ImplementsViatjes implements InterfaceViatjes
     // TODO FALTA MODIFICAR VIATGE
     public void modificarViatje(Viatje vUpdate) throws Exception
     {
-        Statement stat= ConnexioBDD.conexioDB();
+        Statement statement= ConnexioBDD.conexioDB();
+
+        // todo comprovar que el viatge sigui el que has preguntat i un cop preguntat has de preguntar el que vol modifcar en cas de que sigui alguna de les opcions MENYS PAIS se ha d'anar a modifcar estacio
+
+
+        statement.close();
     }
 
     /**
