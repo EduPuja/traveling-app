@@ -64,26 +64,29 @@ public class DadesLiniaFactura
      * Metode que acutliza una lina factura :D
      * @throws Exception
      */
-    public static void fromUpdateLinaFactura() throws Exception
+    public static String fromUpdateLinaFactura() throws Exception
     {
-        // A DE EXISTIR JAJAJAJAJAJAJ SI NO COMO HACES LA MODIFICACION DE UNA LINEA DE FACTURA
-        // EL STRING QUE TIENES QUE RETORNAR ES UN STRING DADES QUE SERIA ESTE:
-        // String dades = ""; // id de la linea # nuevaInfo # tipo de info
-
-
-        // ** CREO QUE ESTE METODO NO SE SI DEVERIA EXISITIR....** //
 
         String dades = "";
 
         System.out.println("Digues el idLina que vols modificar");
         int idLinaFact = lector.nextInt();
         lector.nextLine();
-        dades = ""+idLinaFact;
+
         if(ImplementsLiniaFactura.consultarLiniaFactura(idLinaFact))
         {
-            //cracio del menu en si
+            //quant trobi si exgisteix la lina factura el que ha de fer es actualizar el preu
 
-            boolean menu =false;
+            System.out.println("La lina que vols modificar Exgiteix");
+            System.out.println("Digues el nou preu :");
+            int preu = lector.nextInt();
+            lector.nextLine();
+
+            dades = ""+idLinaFact+"/"+preu;
+
+            return dades;
+            // como solo tienes que modifacr el precio  i necesitas el idFactura lo envio sin mas con un string
+          /*  boolean menu =false;
             int opcioMenu = -1;
             do
             {
@@ -100,7 +103,7 @@ public class DadesLiniaFactura
                 {
                     case 1:
                         //todo canviar el id
-                        
+
                         break;
                     case 2:
                         //todo canviar el num factura
@@ -120,11 +123,11 @@ public class DadesLiniaFactura
                         break;
                 }
 
-            }while (!menu);
+            }while (!menu);*/
         }
         else System.out.println("Aquesta linaFactura not found D:");
 
-        // retornar un string :D
+      return "";
 
     }
 
