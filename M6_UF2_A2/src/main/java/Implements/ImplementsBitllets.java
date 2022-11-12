@@ -63,7 +63,7 @@ public class ImplementsBitllets implements InterfaceBitllets
     public static void stockDown(int bIDStock) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        String query = "UPDATE max_billets_tipus FROM billets SET max_billets_tipus = " +(max_billets_tipusBitllet(bIDStock)-1)+" WHERE id_billet="+bIDStock;
+        String query = "UPDATE billets SET max_billets_tipus = " +(max_billets_tipusBitllet(bIDStock)-1)+" WHERE id_billet="+bIDStock;
         // con.executeQuery
         if(con.executeUpdate(query) == 1)
         {
@@ -131,16 +131,17 @@ public class ImplementsBitllets implements InterfaceBitllets
         String query = "select `max_billets_tipus` from `billets` where `id_billet` ="+idBillet;
 
         ResultSet resultSet = statement.executeQuery(query);
-
+        int maxbill = -1;
         if(resultSet.next())
         {
+            maxbill = resultSet.getInt("max_billets_tipus");
             statement.close();
-            return resultSet.getInt("max_billets_tipus");
+            return maxbill;
         }
         else
         {
             statement.close();
-            return 0;
+            return maxbill;
         }
     }
     public static void llistarBitlletsPerLF() throws Exception

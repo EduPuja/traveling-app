@@ -33,8 +33,7 @@ public class ImplementsFactura implements InterfaceFactura {
         if(statement.executeUpdate(query) == 1)
         {
             Linia_Factura lf = new Linia_Factura();
-            lf.setIdPersona(idP);
-            lf.setPreu(ImplementsBitllets.preuBitllet(idB));
+
             boolean nlf = false;
             Random rdm = new Random();
             int numLF;
@@ -42,7 +41,11 @@ public class ImplementsFactura implements InterfaceFactura {
                 numLF = rdm.nextInt(5000);
                 if(!ImplementsLiniaFactura.consultarLiniaFactura(numLF)) nlf = true;
             }while (!nlf);
+
+            lf.setLiniaFactura(nF);
             lf.setNumLinia(numLF);
+            lf.setIdPersona(idP);
+            lf.setPreu(ImplementsBitllets.preuBitllet(idB));
 
             daoLF.crearLiniaFactura(lf);
             int preu = lf.getPreu();
