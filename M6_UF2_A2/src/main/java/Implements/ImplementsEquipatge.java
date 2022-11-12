@@ -56,11 +56,27 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         con.close();
     }
 
+    /**
+     * Modificar equipatge en la bbdd ✅
+     * @param dades
+     * @throws Exception
+     */
     @Override
     public void modificarEquipatge(String dades) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
+        String taula [] = dades.split("/");
+        int idEquip = Integer.parseInt(taula[0]);
+        int pesKg = Integer.parseInt(taula[1]);
+        int numMaletes = Integer.parseInt(taula[2]);
 
+        String query = "Update equipatge set pes_kg = "+pesKg+", num_maletes = "+numMaletes+" WHERE id_equip = "+idEquip;
+
+        if(con.executeUpdate(query) == 1)
+        {
+            System.out.println("Se ha modifcar el Equipatge :D");
+        }
+        else  System.out.println("No se ha modifcat el equipatge");
 
 
         con.close();
