@@ -313,8 +313,8 @@ public class Main
      * gestio factura
      * TODO FALTA TODA LA FACTURA
      */
-    private static void gestioFactura()
-    {
+    private static void gestioFactura() throws Exception {
+        InterfaceFactura daoF = new ImplementsFactura();
         boolean menu = false;
         int opcio=-1;
         do
@@ -331,6 +331,8 @@ public class Main
             {
                 case 1:
                     //todo ALTA FACTURA
+                    Factura f = DadesFactura.fromAltaFacturaAdmin();
+                    daoF.crearFactura(f);
                     break;
                 case 2:
                     //TODO BAIXA FACTURA

@@ -6,7 +6,7 @@ public class Factura
 {
     private int numFactura;
     private int idPersona;
-    private double preuTotal;
+    private int preuTotal;
     private Date data;
 
     /**
@@ -24,7 +24,7 @@ public class Factura
      * @param preuTotal
      * @param data
      */
-    public Factura(int numFactura, int idPersona, double preuTotal, Date data)
+    public Factura(int numFactura, int idPersona, int preuTotal, Date data)
     {
         this.numFactura = numFactura;
         this.idPersona = idPersona;
@@ -39,7 +39,7 @@ public class Factura
      * @param preuTotal
      * @param data
      */
-    public void setAllFactura(int numFactura, int idPersona, double preuTotal, Date data)
+    public void setAllFactura(int numFactura, int idPersona, int preuTotal, Date data)
     {
         this.numFactura = numFactura;
         this.idPersona = idPersona;
@@ -67,7 +67,7 @@ public class Factura
     {
         return idPersona;
     }
-    public double getPreuTotal()
+    public int getPreuTotal()
     {
         return preuTotal;
     }
@@ -75,8 +75,6 @@ public class Factura
     {
         return data;
     }
-
-
     // ** SETS **//
     public void setNumFactura(int numFactura)
     {
@@ -86,7 +84,7 @@ public class Factura
     {
         this.idPersona = idPersona;
     }
-    public void setPreuTotal(double preuTotal)
+    public void setPreuTotal(int preuTotal)
     {
         this.preuTotal = preuTotal;
     }

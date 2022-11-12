@@ -5,7 +5,7 @@ public class Linia_Factura
     private int liniaFactura;
     private int numLinia;
     private int idPersona;
-    private double preu;
+    private int preu;
 
     /**
      * Construcor buit
@@ -21,7 +21,7 @@ public class Linia_Factura
      * @param idPersona
      * @param preu
      */
-    public Linia_Factura(int liniaFactura,int numLinia, int idPersona, double preu)
+    public Linia_Factura(int liniaFactura,int numLinia, int idPersona, int preu)
     {
         this.liniaFactura=liniaFactura;
         this.numLinia = numLinia;
@@ -35,7 +35,7 @@ public class Linia_Factura
      * @param idPersona
      * @param preu
      */
-    public void setAllLiniaFact(int liniaFactura,int numLinia, int idPersona, double preu)
+    public void setAllLiniaFact(int liniaFactura,int numLinia, int idPersona, int preu)
     {
         this.liniaFactura=liniaFactura;
         this.numLinia = numLinia;
@@ -66,7 +66,7 @@ public class Linia_Factura
     {
         return idPersona;
     }
-    public double getPreu()
+    public int getPreu()
     {
         return preu;
     }
@@ -86,7 +86,7 @@ public class Linia_Factura
     {
         this.idPersona = idPersona;
     }
-    public void setPreu(double preu)
+    public void setPreu(int preu)
     {
         this.preu = preu;
     }
