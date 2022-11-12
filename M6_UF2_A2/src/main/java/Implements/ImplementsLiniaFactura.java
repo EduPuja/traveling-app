@@ -55,13 +55,13 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
      * @throws Exception
      */
 
-    public void eliminarLiniaFactura(Linia_Factura deleteLF) throws Exception
+    public void eliminarLiniaFactura(int idLinaFactura) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        if(consultarLiniaFactura(deleteLF.getLiniaFactura()))
+        if(consultarLiniaFactura(idLinaFactura))
         {
             // exgisteix llavors haig de fer el delelte
-            String query = "DELETE FROM `linia_factura` WHERE lina_facutra="+deleteLF.getLiniaFactura();
+            String query = "DELETE FROM `linia_factura` WHERE lina_facutra="+idLinaFactura;
             if(con.executeUpdate(query) == 1)
             {
                 System.out.println("Se ha eliminat una LinaFactura");
@@ -69,6 +69,8 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
             else System.out.println("No se ha eliminat");
         }
         else System.out.println("Lina factura no trobada");
+
+        con.close();
     }
 
     /**
