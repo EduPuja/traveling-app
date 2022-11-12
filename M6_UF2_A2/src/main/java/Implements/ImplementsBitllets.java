@@ -13,6 +13,7 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void llistarBitllets() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
+        // consulta que sabe el usuari donde va a ir el precio i cantidad de personas
         String query = "" +
                 "SELECT id_billet,b.id_viatge as idviatge, tipus_billet, preu, max_billets_tipus, " +
                 "e.descrip as origen, e1.descrip as desti FROM billets b " +
