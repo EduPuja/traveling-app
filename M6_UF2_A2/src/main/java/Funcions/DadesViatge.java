@@ -2,7 +2,9 @@ package Funcions;
 
 import Objectes.Viatje;
 
-public class DadesViatge {
+public class DadesViatge
+{
+    // TODO falta todo esto
     public static Viatje formNouViatge()
     {
         return null;
