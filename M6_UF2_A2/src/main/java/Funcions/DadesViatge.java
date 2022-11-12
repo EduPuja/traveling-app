@@ -9,12 +9,12 @@ public class DadesViatge
     {
         return null;
     }
-    public static Viatje formEliminarViatge()
+    public static int formEliminarViatge()
     {
-        return null;
+        return -1;
     }
-    public static Viatje formUpdateViatge()
+    public static String formUpdateViatge()
     {
-        return null;
+        return " ";
     }
 }
