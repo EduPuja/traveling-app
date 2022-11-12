@@ -69,17 +69,11 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         if(!dades.equalsIgnoreCase("no"))
         {
             String taula [] = dades.split("/");
-
-            String novaInfo = taula[1];
-            String tipoInfo = taula[2];
-
-
             int idEquip = Integer.parseInt(taula[0]);
-            int pesKg = Integer.parseInt(taula[1]);
+            int newInfo = Integer.parseInt(taula[1]); // peskg o num_maletes
             int tipoInfo = Integer.parseInt(taula[2]);
 
-
-          //  String query = "update equipatge set "+
+            String query = "Update equipatge set "+tipoInfo+"="+newInfo+" where id_equip="+idEquip;
             if(con.executeUpdate(query) == 1)
             {
                System.out.println("Equipatge modificat");
