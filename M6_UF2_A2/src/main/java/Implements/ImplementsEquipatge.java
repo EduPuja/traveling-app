@@ -4,6 +4,7 @@ import Funcions.ConnexioBDD;
 import Interfaces.InterfaceEquipatge;
 import Objectes.Equipatge;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ImplementsEquipatge implements InterfaceEquipatge
@@ -29,21 +30,113 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
     }
 
+    /**
+     * Eliminar equipatge base de dades✅
+     * @param idEquipatge
+     * @throws Exception
+     */
     @Override
-    public void eliminarEquipatge(int idEquipatge)
+    public void eliminarEquipatge(int idEquipatge)throws Exception
     {
+        Statement con = ConnexioBDD.conexioDB();
 
+        if(comprovarEquipatge(idEquipatge))
+        {
+            String query = "Delete from equipatge where id_equip = "+idEquipatge;
+
+            if(con.executeUpdate(query) ==1)
+            {
+                System.out.println("Equipatge ELIMINAT");
+            }
+            else System.out.println("Equipatge NO eliminat");
+        }
+        else System.out.println("Equipatge no exgisteix");
+
+
+        con.close();
     }
 
+    /**
+     * Modificar equipatge en la bbdd ✅
+     * @param dades
+     * @throws Exception
+     */
     @Override
-    public void modificarEquipatge(String dades)
+    public void modificarEquipatge(String dades) throws Exception
     {
+        Statement con = ConnexioBDD.conexioDB();
+        String taula [] = dades.split("/");
+        int idEquip = Integer.parseInt(taula[0]);
+        int pesKg = Integer.parseInt(taula[1]);
+        int numMaletes = Integer.parseInt(taula[2]);
 
+        String query = "Update equipatge set pes_kg = "+pesKg+", num_maletes = "+numMaletes+" WHERE id_equip = "+idEquip;
+
+        if(con.executeUpdate(query) == 1)
+        {
+            System.out.println("Se ha modifcar el Equipatge :D");
+        }
+        else  System.out.println("No se ha modifcat el equipatge");
+
+
+        con.close();
     }
 
+    /**
+     * Llistar equipatge ✅
+     * @throws Exception
+     */
     @Override
-    public void llistarEquipatge()
+    public void llistarEquipatge()throws Exception
     {
+        Statement con = ConnexioBDD.conexioDB();
+        String query = "SELECT * FROM `equipatge`";
+
+        ResultSet rs = con.executeQuery(query);
+
+
+        while (rs.next())
+        {
+           System.out.println("ID_Equip: "+rs.getInt("id_equip"));
+            System.out.println("Num_FACTURA: "+rs.getInt("num_factura"));
+            System.out.println("Lina_Factura: "+rs.getInt("lina_factura"));
+            System.out.println("Pes_kg: "+rs.getInt("pes_kg"));
+            System.out.println("Num_Maletes: "+rs.getInt("num_maletes"));
+            System.out.println("");
+        }
+
+        rs.close();
+        con.close();
+    }
+
+    /**
+     * Metode que comprova a la base de dades si hi ha un equipatge  ✅
+     * @param idEquipatge
+     * @return
+     * @throws Exception
+     */
+    public static boolean comprovarEquipatge(int idEquipatge) throws Exception
+    {
+        Statement con = ConnexioBDD.conexioDB();
+
+        String query = "select id_equip from equipatge where id_equip = "+idEquipatge;
+
+        ResultSet rs = con.executeQuery(query);
+
+        if(rs.next())
+        {
+            rs.close();
+            con.close();
+            return  true;
+        }
+        else
+        {
+            rs.close();
+            con.close();
+            return  false;
+        }
+
+
 
     }
 }
