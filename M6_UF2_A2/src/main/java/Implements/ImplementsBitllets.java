@@ -1,8 +1,11 @@
 package Implements;
 
 import Funcions.ConnexioBDD;
+import Funcions.DadesFactura;
 import Interfaces.InterfaceBitllets;
+import Interfaces.InterfaceFactura;
 import Objectes.Billet;
+import Objectes.Factura;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -38,7 +41,9 @@ public class ImplementsBitllets implements InterfaceBitllets
     public void compraBitllets(int bIdCompra,String dniClient) throws Exception
     {
         System.out.println("Bitllet comprat.");
-        //ImplementsFactura.crearFactura(bIdCompra,dniClient);
+        InterfaceFactura daoF = new ImplementsFactura();
+        Factura f = DadesFactura.fromAltaFactura(dniClient);
+        daoF.crearFactura(f,bIdCompra);
         stockDown(bIdCompra);
         //TODO Llamar a crearfactura(bIDCompra,dniClient)
         //dentro de crearfactura creas las lineas de la misma

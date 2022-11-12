@@ -10,6 +10,7 @@ import Objectes.Linia_Factura;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Random;
 
 public class ImplementsFactura implements InterfaceFactura {
 
@@ -19,7 +20,37 @@ public class ImplementsFactura implements InterfaceFactura {
     }
 
     @Override
-    public void crearFactura(Factura creaF) throws Exception {
+    public void crearFactura(Factura creaF,int idB) throws Exception {
+        InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
+
+        Statement statement = ConnexioBDD.conexioDB();
+        int nF = creaF.getNumFactura();
+        int idP = creaF.getIdPersona();
+        Date dataF = creaF.getData();
+
+        String query = "Insert into factura(num_factura,id_persona,preu_total,data_factura) values("+nF+","+idP+","+(-1)+",'"+dataF+"')";
+
+        if(statement.executeUpdate(query) == 1)
+        {
+            Linia_Factura lf = new Linia_Factura();
+            lf.setIdPersona(idP);
+            lf.setPreu(ImplementsBitllets.preuBitllet(idB));
+            boolean nlf = false;
+            Random rdm = new Random();
+            int numLF;
+            do{
+                numLF = rdm.nextInt(5000);
+                if(!ImplementsLiniaFactura.consultarLiniaFactura(numLF)) nlf = true;
+            }while (!nlf);
+            lf.setNumLinia(numLF);
+
+            daoLF.crearLiniaFactura(lf);
+            int preu = lf.getPreu();
+            updatePreu(preu,nF);
+        }
+    }
+    @Override
+    public void crearFacturaAdmin(Factura creaF) throws Exception {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
         Statement statement = ConnexioBDD.conexioDB();
         int nF = creaF.getNumFactura();
@@ -36,7 +67,6 @@ public class ImplementsFactura implements InterfaceFactura {
             updatePreu(preu,nF);
         }
     }
-
     private void updatePreu(int preu, int nF) throws Exception {
         Statement statement = ConnexioBDD.conexioDB();
         String query2 = "Update factura set preu_total="+ preu + " where num_factura="+nF;
@@ -44,7 +74,6 @@ public class ImplementsFactura implements InterfaceFactura {
         if(statement.executeUpdate(query2)==1) System.out.println("Factura creada");
         else System.out.println("Factura no creada.");
     }
-
     @Override
     public void eliminarFactura(int idLinaFactura) throws Exception {
 

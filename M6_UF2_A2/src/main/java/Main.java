@@ -95,15 +95,12 @@ public class Main
                     gestioEquipatge();      // TODO falta this meode
                     break;
                 case 4:
-                    gestioFactura();        //todo falta gestio factura
+                    gestioFactura();        //gestio de cada factura ✅
                     break;
                 case 5:
-                    gestioLiniaFactura();   //gestio lina factura ✅
-                    break;
-                case 6:
                     gestioViatges();        //todo gestio vaitges FALTA
                     break;
-                case 7:
+                case 6:
                     gestioEstacio();     // gestio de cada estacio ✅
                     break;
 
@@ -332,7 +329,7 @@ public class Main
                 case 1:
                     //todo ALTA FACTURA
                     Factura f = DadesFactura.fromAltaFacturaAdmin();
-                    daoF.crearFactura(f);
+                    daoF.crearFacturaAdmin(f);
                     break;
                 case 2:
                     //TODO BAIXA FACTURA

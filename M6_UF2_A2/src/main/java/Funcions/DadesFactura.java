@@ -7,6 +7,7 @@ import Objectes.Factura;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.Scanner;
 
 public class DadesFactura {
@@ -14,7 +15,24 @@ public class DadesFactura {
     public static Scanner lector = new Scanner(System.in);
 
     public static Factura fromAltaFactura(String dni) throws Exception {
-        return null;
+        boolean menu = false;
+
+        Factura f = new Factura();
+        boolean menu2 = false;
+        Random rdm = new Random();
+        int num_factura;
+        do{
+            num_factura = rdm.nextInt(5000);
+            if(!ImplementsFactura.comprovaNumFact(num_factura)) menu2 = true;
+        }while(!menu2);
+
+        LocalDate data_naixLD = LocalDate.now();
+        Date data_naixD = Date.valueOf(data_naixLD);
+
+        f.setNumFactura(num_factura);
+        f.setIdPersona(ImplementsFactura.dniAid(dni));
+        f.setData(data_naixD);
+        return f;
     }
     public static Factura fromAltaFacturaAdmin() throws Exception {
         boolean menu = false;
