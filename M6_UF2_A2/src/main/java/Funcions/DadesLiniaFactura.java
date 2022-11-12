@@ -17,7 +17,7 @@ public class DadesLiniaFactura
      * metode per donar d'alta una lina factura
      * @throws Exception
      */
-    public static void fromAltaLinaFactura() throws Exception
+    public static Linia_Factura fromAltaLinaFactura() throws Exception
     {
         System.out.println("Digues el numero de la lina factura");
         int linaFactnum = lector.nextInt();
@@ -39,6 +39,8 @@ public class DadesLiniaFactura
 
 
         Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura,idPersona,preuLinaFactura); // objecte
+
+        return linaFact;
 
     }
 
@@ -86,48 +88,15 @@ public class DadesLiniaFactura
 
             return dades;
             // como solo tienes que modifacr el precio  i necesitas el idFactura lo envio sin mas con un string
-          /*  boolean menu =false;
-            int opcioMenu = -1;
-            do
-            {
-                System.out.println("MODIFICACIO LINAFACTURA ");
-                System.out.println("Digues la opcio que vols modificar:");
-                System.out.println("1.LinaFactura (id) ");
-                System.out.println("2.Num_Factura ");
-                System.out.println("3.Id_Persona ");
-                System.out.println("4.Preu");
-                System.out.println("0.Turn back");
-                opcioMenu= lector.nextInt();
-                lector.nextLine();
-                switch (opcioMenu)
-                {
-                    case 1:
-                        //todo canviar el id
 
-                        break;
-                    case 2:
-                        //todo canviar el num factura
-                        break;
-                    case 3:
-                        // todo canviar el id persona
-                        break;
-                    case 4:
-                        // todo canviar el preu
-                        break;
-                    case 0:
-                        System.out.println("Hasta luego");
-                            menu=true;
-                            break;
-                    default:
-                        System.out.println("No tenim aquesta opcio");
-                        break;
-                }
-
-            }while (!menu);*/
         }
-        else System.out.println("Aquesta linaFactura not found D:");
+        else
+        {
+            System.out.println("Aquesta linaFactura not found D:");
+            return "";
+        }
 
-      return "";
+
 
     }
 
