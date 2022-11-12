@@ -155,6 +155,7 @@ public class DadesUser
                         dades = "no";
                         break;
                     default:
+                        System.out.println("No tenim aquesta opcio");
                         break;
                 }
             }while(!menu2);
