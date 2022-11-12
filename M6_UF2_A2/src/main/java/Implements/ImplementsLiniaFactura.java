@@ -89,7 +89,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         int linaFactura = Integer.parseInt(taula[0]);
         //int numFactura = Integer.parseInt(taula[1]);
         //int idPersona = Integer.parseInt(taula[2]);
-        int preu = Integer.parseInt(taula[3]);
+        int preu = Integer.parseInt(taula[1]);
 
         String query = "UPDATE `linia_factura` SET `preu`="+preu+" WHERE `linia_factura`="+linaFactura;
 
