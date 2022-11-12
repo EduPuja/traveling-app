@@ -30,11 +30,27 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
     }
 
+    /**
+     * Eliminar equipatge base de dades✅
+     * @param idEquipatge
+     * @throws Exception
+     */
     @Override
     public void eliminarEquipatge(int idEquipatge)throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
 
+        if(comprovarEquipatge(idEquipatge))
+        {
+            String query = "Delete from equipatge where id_equip = "+idEquipatge;
+
+            if(con.executeUpdate(query) ==1)
+            {
+                System.out.println("Equipatge ELIMINAT");
+            }
+            else System.out.println("Equipatge NO eliminat");
+        }
+        else System.out.println("Equipatge no exgisteix");
 
 
         con.close();
@@ -77,11 +93,34 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         con.close();
     }
 
-    public static void comprovarEquipatge(int idEquipatge) throws Exception
+    /**
+     * Metode que comprova a la base de dades si hi ha un equipatge  ✅
+     * @param idEquipatge
+     * @return
+     * @throws Exception
+     */
+    public static boolean comprovarEquipatge(int idEquipatge) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
 
+        String query = "select id_equip from equipatge where id_equip = "+idEquipatge;
 
-        con.close();
+        ResultSet rs = con.executeQuery(query);
+
+        if(rs.next())
+        {
+            rs.close();
+            con.close();
+            return  true;
+        }
+        else
+        {
+            rs.close();
+            con.close();
+            return  false;
+        }
+
+
+
     }
 }
