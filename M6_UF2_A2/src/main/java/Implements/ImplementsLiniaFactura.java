@@ -47,6 +47,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
             System.out.println("Se ha insertat una Linia factura :D");
         }
         else System.out.println("No se ha insertat D: la linia factura");
+        con.close(); // cerrar
     }
 
     /**
