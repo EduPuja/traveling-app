@@ -29,9 +29,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
             System.out.println("");
         }
         con.close();    // tencar la conexio
-
-
-    }
+    } // ✅
 
     /**
      * Metode per insertar una linia factura
@@ -46,7 +44,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         if(con.executeUpdate(query) == 1) System.out.println("Se ha insertat una Linia factura :D");
         else System.out.println("No se ha insertat D: la linia factura");
         con.close(); // cerrar
-    }
+    } // ✅
 
     /**
      * metode per eliminar una liniafactura de la taula
@@ -70,7 +68,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         else System.out.println("Lina factura no trobada");
 
         con.close();
-    }
+    } // ✅
 
     /**
      * Metode per modificar la linia factura
@@ -79,7 +77,6 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
      */
     public void modificarLiniaFactura(String dades) throws Exception
     {
-
         Statement statement = ConnexioBDD.conexioDB();
         // EXEMPLE MODIFICAR estacio
 
@@ -94,7 +91,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         if(statement.executeUpdate(query) == 1) System.out.println("La linaFactura ha sigut Modificada .");
         else System.out.println("Modificat Incorrectament.");
         statement.close();
-    }
+    } // ✅
 
     /**
      * Metode per consultar si exgisteix una linaFactura amb un id concret
@@ -114,5 +111,5 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
             return true;
         }
         else con.close(); return false;
-    }
+    } // ✅
 }
