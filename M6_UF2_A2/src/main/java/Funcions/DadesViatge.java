@@ -111,6 +111,7 @@ public class DadesViatge
             {
                 menu=true;
                 return idViatgeDelete;
+            }
             else System.out.println("Aquest viatge no exgisteix");
         }while (!menu);
 
