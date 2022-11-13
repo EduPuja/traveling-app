@@ -215,8 +215,8 @@ public class Main
     }
 
     /**
-     * gestio equipatge
-     * TODO FALTA TODO EL EQUPAGE.
+     * gestio equipatge ✅
+     *
      */
     private static void gestioEquipatge() throws Exception
     {
