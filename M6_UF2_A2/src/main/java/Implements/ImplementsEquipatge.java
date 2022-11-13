@@ -22,7 +22,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
         if(equipatge!=null)
         {
-            String insertQuery = "INSERT INTO `equipatge`(`id_equip`, `num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+equipatge.getIdEquipatge()+","+equipatge.getNumFactura()+","+equipatge.getLiniaFactura()+","+equipatge.getPesKg()+","+equipatge.getNumMaletes();
+            String insertQuery = "INSERT INTO `equipatge`(`id_equip`, `num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+equipatge.getIdEquipatge()+","+equipatge.getNumFactura()+","+equipatge.getLiniaFactura()+","+equipatge.getPesKg()+","+equipatge.getNumMaletes()+")";
             if(statement.executeUpdate(insertQuery) ==1)
             {
                 System.out.println("Equipatge insertat");
@@ -108,7 +108,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         {
            System.out.println("ID_Equip: "+rs.getInt("id_equip"));
             System.out.println("Num_FACTURA: "+rs.getInt("num_factura"));
-            System.out.println("Lina_Factura: "+rs.getInt("lina_factura"));
+            System.out.println("Linia_Factura: "+rs.getInt("linia_factura"));
             System.out.println("Pes_kg: "+rs.getInt("pes_kg"));
             System.out.println("Num_Maletes: "+rs.getInt("num_maletes"));
             System.out.println("");

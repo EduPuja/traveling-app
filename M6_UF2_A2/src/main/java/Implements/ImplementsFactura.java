@@ -29,6 +29,7 @@ public class ImplementsFactura implements InterfaceFactura
             System.out.println("DATA FACTURA: " + rs.getString("data_factura"));
             System.out.println("");
         }
+        rs.close();
         statement.close();
     } // ✅
     @Override

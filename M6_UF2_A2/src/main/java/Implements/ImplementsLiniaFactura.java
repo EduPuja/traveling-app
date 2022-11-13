@@ -17,17 +17,18 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
     public void llistarLiniaFactura() throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
-        String query= "SELECT * FROM `linia_factura`";
+        String query= "SELECT lf.linia_factura,lf.num_factura,lf.preu,p.dni FROM `linia_factura` lf INNER JOIN persona p ON p.id_persona = lf.id_persona";
 
         ResultSet rs = con.executeQuery(query);
         while (rs.next())
         {
             System.out.println("LINIA_FACUTRA: "+rs.getInt("linia_factura"));
             System.out.println("NUM_FACTURA: "+rs.getInt("num_factura"));
-            System.out.println("ID_PERSONA : "+rs.getInt("tipus_billet"));
+            System.out.println("DNI_PERSONA : "+rs.getString("p.dni"));
             System.out.println("PREU: "+rs.getInt("preu"));
             System.out.println("");
         }
+        rs.close();
         con.close();    // tencar la conexio
     } // ✅
 

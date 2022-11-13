@@ -50,11 +50,12 @@ public class DadesEquipatge
             else System.out.println("Aquest Equipatge ja exgisteix");
         }
 
+        System.out.println("LLISTAT  FACTURA\n");
 
         daoFactura.llistarFactura(); //llistar factures
         while (!okNumFact)
         {
-            System.out.println("Digues una factura");
+            System.out.println("Digues una el numero de  factura");
             numFactura = lector.nextInt();
             lector.nextLine();
 
@@ -66,11 +67,13 @@ public class DadesEquipatge
             else System.out.println("Aquest numero factura no es correcte D:");
         }
 
+        System.out.println("LLISTAT  LINA_FACTURA\n");
+
         daoLinaFactura.llistarLiniaFactura();
 
         while (!okaLinaFactura)
         {
-            System.out.println("Digues la lina factura");
+            System.out.println("Digues el numero de lina factura");
             linaFactura = lector.nextInt();
             lector.nextLine();
             if(ImplementsLiniaFactura.consultarLiniaFactura(linaFactura))
