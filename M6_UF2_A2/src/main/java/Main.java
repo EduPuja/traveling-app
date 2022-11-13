@@ -262,7 +262,7 @@ public class Main
                     System.out.println("No tenim aquesta opico");
                     break;
             }
-        }while (!menu && opcio!=0);
+        }while (!menu);
 
     }
 

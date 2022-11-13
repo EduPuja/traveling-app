@@ -113,7 +113,7 @@ public class DadesEquipatge
     public static String  fromModificarEquipatge() throws Exception
     {
         boolean menu = false;
-        boolean okaIdEquip= false;
+        boolean menu2 = false;
         int opcio = -1;
         String dades="";
         int pesKg = 0;
@@ -124,51 +124,50 @@ public class DadesEquipatge
             int idEquip = lector.nextInt();
             lector.nextLine();
             dades = dades + idEquip;
-            if(ImplementsEquipatge.comprovarEquipatge(idEquip))
-            {
-                //System.out.println("Equip FIND");
-                // he contrado el equipo
-                System.out.println("MODIFCAR EQUIPATGE \n");
-                System.out.println("Escull la opcio que vols modificar");
-                System.out.println("1.Modificar Pes");
-                System.out.println("2.Modifcar Num Maletes");
-                System.out.println("0.No modifcar res");
-                opcio = lector.nextInt();
-                lector.nextLine();
-
-                switch (opcio)
-                {
-                    case 1:
-                        // pes
-                        System.out.println("Digues el NEW pes: ");
-                        pesKg= lector.nextInt();
-                        lector.nextLine();
-
-                        dades = dades + "/" + pesKg + "/pes_kg";
-                        menu = true;
-                        break;
-                    case 2:
-                        //num maletes
-                        System.out.println("Digues el NEW numero de maletes: ");
-                        numMaletes= lector.nextInt();
-                        lector.nextLine();
-                        dades = dades + "/" + numMaletes + "/num_maletes";
-                        menu = true;
-                        break;
-                    case 0:
-                        System.out.println("Tornars al menu");
-                        menu=true;
-                        break;
-                    default:
-                        System.out.println("No tenim aquesta opcio");
-                        break;
-
-                }
-
-            }
+            if(ImplementsEquipatge.comprovarEquipatge(idEquip))menu = true;
             else System.out.println("No tenim aquest equipatge");
 
         }while (!menu || opcio!=0);
+        //System.out.println("Equip FIND");
+        // he contrado el equipo
+        do
+        {
+            System.out.println("MODIFCAR EQUIPATGE \n");
+            System.out.println("Escull la opcio que vols modificar");
+            System.out.println("1.Modificar Pes");
+            System.out.println("2.Modifcar Num Maletes");
+            System.out.println("0.No modifcar res");
+            opcio = lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    // pes
+                    System.out.println("Digues el NEW pes: ");
+                    pesKg= lector.nextInt();
+                    lector.nextLine();
+
+                    dades = dades + "/" + pesKg + "/pes_kg";
+                    menu = true;
+                    break;
+                case 2:
+                    //num maletes
+                    System.out.println("Digues el NEW numero de maletes: ");
+                    numMaletes= lector.nextInt();
+                    lector.nextLine();
+                    dades = dades + "/" + numMaletes + "/num_maletes";
+                    menu = true;
+                    break;
+                case 0:
+                    System.out.println("Tornars al menu");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while(!menu2);
     return dades;
     } // ✅
 
