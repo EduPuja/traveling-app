@@ -12,7 +12,8 @@ import java.sql.Statement;
 
 public class ImplementsBitllets implements InterfaceBitllets
 {
-    // todo ImplementsBitllets nomes falta la compra.
+
+    // ✅
     public void llistarBitllets() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
