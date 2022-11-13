@@ -25,7 +25,7 @@ public class ImplementsUsuari implements InterfaceUsuari
         }
         else System.out.println("Usuari no entrat.");
         statement.close();
-    }
+    } // ✅
     public void baixaUser(String dniUser) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -37,8 +37,9 @@ public class ImplementsUsuari implements InterfaceUsuari
         }
         else System.out.println("Baixa de l'usuari no completada.");
         statement.close();
-    }
-    public void modificacioUser(String dades) throws Exception {
+    } // ✅
+    public void modificacioUser(String dades) throws Exception
+    {
         Statement statement = ConnexioBDD.conexioDB();
         // dades esta format en el seguent format (dni/dade modificada/tipo de dada);
         // fer split de dades per treure cada valor. Tot en tipos String;
@@ -58,8 +59,9 @@ public class ImplementsUsuari implements InterfaceUsuari
             statement.close();
         }
         else System.out.println("Modificacio Cancelada.");
-    }
-    public void llistarUser() throws Exception {
+    } // ✅
+    public void llistarUser() throws Exception
+    {
         Statement statement = ConnexioBDD.conexioDB();
         String query = "SELECT * FROM `persona`";
 
@@ -73,8 +75,9 @@ public class ImplementsUsuari implements InterfaceUsuari
             System.out.println("");
         }
         statement.close();
-    }
-    public static boolean comprovarUser(String dni, String password) throws Exception {
+    } // ✅
+    public static boolean comprovarUser(String dni, String password) throws Exception
+    {
         //comprovarUser en la bdd.
         Statement statement = ConnexioBDD.conexioDB();
 
@@ -98,8 +101,9 @@ public class ImplementsUsuari implements InterfaceUsuari
             return false;
         }
 
-    }
-    public static boolean comprovarUserBaixa_Update_Alta(String dni) throws Exception {
+    } // ✅
+    public static boolean comprovarUserBaixa_Update_Alta(String dni) throws Exception
+    {
         //comprovarUser en la bdd.
         Statement statement = ConnexioBDD.conexioDB();
 
@@ -123,5 +127,5 @@ public class ImplementsUsuari implements InterfaceUsuari
             return false;
         }
 
-    }
+    } // ✅
 }
