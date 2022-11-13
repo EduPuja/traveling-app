@@ -1,6 +1,7 @@
 package Funcions;
 
 import Implements.ImplementsEstacio;
+import Implements.ImplementsViatjes;
 import Interfaces.InterfaceEstacio;
 import Objectes.Viatje;
 
@@ -91,8 +92,28 @@ public class DadesViatge
         return  viatge;
 
     }
+
+    /**
+     * Metode que et retorna el id del Viatge per poderlo eliminar ✅
+     * @return
+     * @throws Exception
+     */
     public static int formEliminarViatge() throws Exception
     {
+        boolean menu = false;
+        do
+        {
+            System.out.println("Digues el idViatge que vols eliminar");
+            int idViatgeDelete = lector.nextInt();
+            lector.nextLine();
+
+            if(ImplementsViatjes.comprovarViatge(idViatgeDelete))
+            {
+                menu=true;
+                return idViatgeDelete;
+            else System.out.println("Aquest viatge no exgisteix");
+        }while (!menu);
+
         return -1;
     }
     public static String formUpdateViatge() throws Exception
