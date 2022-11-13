@@ -151,7 +151,7 @@ public class DadesViatge
        boolean okaDesti=false;
        boolean okaOrigen =false;
 
-       int idViatgeMod =-1;     // id del desti
+       int idViatgeMod ;     // id del desti
         do
        {
            System.out.println("Digues el idViatge que vols modificar ");
@@ -183,14 +183,12 @@ public class DadesViatge
                {
                    case 1:
                        //mod origen
-                       int idOrigen =-1;
+                       int idOrigen = -1;
+                       System.out.println("Llistat Estacions ");
+                       estacioDao.llistarEstacio();
                       while (!okaOrigen)
                       {
-                          System.out.println("Llistat Estacions ");
-                          estacioDao.llistarEstacio();
-
                           System.out.println("Escull ID estacio ORIGEN: ");
-
                           idOrigen = lector.nextInt();
                           lector.nextLine();
 
@@ -200,10 +198,8 @@ public class DadesViatge
                           }
                           else System.out.println("Origen not found ");
                       }
-                      if(okaOrigen)
-                      {
-                          dades = dades+"/"+idOrigen+"/id_origen";
-                      }
+                      dades = dades+"/"+idOrigen+"/id_origen";
+                      menu2 = true;
 
 
                        break;
@@ -227,7 +223,7 @@ public class DadesViatge
                        }
 
                         if (okaDesti)  dades = dades+"/"+idDesti+"/id_desti";
-
+                       menu2 = true;
 
                        break;
                    case 3:
@@ -236,6 +232,7 @@ public class DadesViatge
                         String newPais = lector.nextLine();
 
                         dades = dades+"/"+newPais+"/pais";
+                       menu2 = true;
                        break;
                    case 0:
                        System.out.println("NO SE HA MODIFCAT RES");

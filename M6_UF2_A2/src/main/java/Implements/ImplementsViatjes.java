@@ -78,7 +78,7 @@ public class ImplementsViatjes implements InterfaceViatjes
             String taula [] = dades.split("/");
             int idViatge = Integer.parseInt(taula[0]);
             String newInfo = taula[1]; // id destio o id origen o pais
-            int tipoInfo = Integer.parseInt(taula[2]);
+            String tipoInfo = taula[2];
 
             if(comprovarViatge(idViatge))
             {
