@@ -12,7 +12,8 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.Random;
 
-public class ImplementsFactura implements InterfaceFactura {
+public class ImplementsFactura implements InterfaceFactura
+{
 
     @Override
     public void llistarFactura() throws Exception
@@ -89,10 +90,24 @@ public class ImplementsFactura implements InterfaceFactura {
         else System.out.println("Factura no creada.");
     } // ✅
     @Override
-    public void eliminarFactura(int idLinaFactura) throws Exception
+    public void eliminarFactura(int idFactura) throws Exception
     {
+        Statement con = ConnexioBDD.conexioDB();
 
-    }
+        if(ImplementsEquipatge.comprovarEquipatge(idFactura))
+        {
+            String query= "DELETE FROM `factura` WHERE num_factura ="+idFactura;
+            if(con.executeUpdate(query) == 1)
+            {
+                System.out.println("Factura Eliminadada");
+            }
+            else System.out.println("Factura NO elimant");
+
+        }
+        else System.out.println("Factrua not found ");
+
+        con.close();
+    } // ✅
     @Override
     public void modificarFactura(String dades) throws Exception
     {
