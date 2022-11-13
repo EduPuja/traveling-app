@@ -75,7 +75,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
             String taula [] = dades.split("/");
             int idEquip = Integer.parseInt(taula[0]);
             int newInfo = Integer.parseInt(taula[1]); // peskg o num_maletes
-            int tipoInfo = Integer.parseInt(taula[2]);
+            String tipoInfo = taula[2];
 
             String query = "Update equipatge set "+tipoInfo+"="+newInfo+" where id_equip="+idEquip;
             if(con.executeUpdate(query) == 1)

@@ -114,30 +114,30 @@ public class DadesEquipatge
     {
         boolean menu = false;
         boolean menu2 = false;
-        int opcio = -1;
         String dades="";
         int pesKg = 0;
         int numMaletes =0;
+        int idEquip = 0;
         do
         {
             System.out.println("Digues el id Equipate que vols entrar");
-            int idEquip = lector.nextInt();
+            idEquip = lector.nextInt();
             lector.nextLine();
-            dades = dades + idEquip;
             if(ImplementsEquipatge.comprovarEquipatge(idEquip))menu = true;
             else System.out.println("No tenim aquest equipatge");
 
-        }while (!menu || opcio!=0);
+        }while (!menu);
         //System.out.println("Equip FIND");
         // he contrado el equipo
         do
         {
+            dades = dades + idEquip;
             System.out.println("MODIFCAR EQUIPATGE \n");
             System.out.println("Escull la opcio que vols modificar");
             System.out.println("1.Modificar Pes");
             System.out.println("2.Modifcar Num Maletes");
             System.out.println("0.No modifcar res");
-            opcio = lector.nextInt();
+            int opcio = lector.nextInt();
             lector.nextLine();
 
             switch (opcio)
@@ -149,7 +149,7 @@ public class DadesEquipatge
                     lector.nextLine();
 
                     dades = dades + "/" + pesKg + "/pes_kg";
-                    menu = true;
+                    menu2 = true;
                     break;
                 case 2:
                     //num maletes
@@ -157,11 +157,11 @@ public class DadesEquipatge
                     numMaletes= lector.nextInt();
                     lector.nextLine();
                     dades = dades + "/" + numMaletes + "/num_maletes";
-                    menu = true;
+                    menu2 = true;
                     break;
                 case 0:
                     System.out.println("Tornars al menu");
-                    menu=true;
+                    menu2=true;
                     break;
                 default:
                     System.out.println("No tenim aquesta opcio");
