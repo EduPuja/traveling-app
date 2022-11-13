@@ -135,19 +135,19 @@ public class DadesUser
                             if(ImplementsUsuari.comprovarUserBaixa_Update_Alta(dni))System.out.println("Aquest DNI ja existeix.");
                             else menu3 = true;
                         }while(!menu3);
-                        dades = dades + "/" + dni + "/dni";
+                        dades = dades + "#" + dni + "#dni";
                         menu2 = true;
                         break;
                     case 2:
                         System.out.println("Entra el nom nou de l'Usuari: ");
                         nom = lector.nextLine();
-                        dades = dades + "/" + nom + "/nom";
+                        dades = dades + "#" + nom + "#nom";
                         menu2 = true;
                         break;
                     case 3:
                         System.out.println("Entra la data de naixement nova de l'Usuari: ");
                         auxData_naix = lector.nextLine();
-                        dades = dades + "/" + auxData_naix + "/data_naix";
+                        dades = dades + "#" + auxData_naix + "#data_naix";
                         menu2 = true;
                         break;
                     case 0:

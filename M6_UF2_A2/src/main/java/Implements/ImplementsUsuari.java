@@ -6,6 +6,7 @@ import Objectes.Persona;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ImplementsUsuari implements InterfaceUsuari
@@ -45,12 +46,25 @@ public class ImplementsUsuari implements InterfaceUsuari
         // fer split de dades per treure cada valor. Tot en tipos String;
         if(!dades.equalsIgnoreCase("no"))
         {
-            String taula [] = dades.split("/");
+            String taula [] = dades.split("#");
             String dni = taula[0];
             String novaInfo = taula[1];
             String tipoInfo = taula[2];
-
             String query = "UPDATE `persona` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `dni` = '" + dni + "'";
+
+            if(novaInfo.contains("/"))
+            {
+                String tauladata [] = novaInfo.split("/");
+                int dia = Integer.parseInt(tauladata[0]);
+                int mes = Integer.parseInt(tauladata[1]);
+                int any = Integer.parseInt(tauladata[2]);
+                LocalDate data_naixLD = LocalDate.of(any,mes,dia);
+                java.sql.Date data_naixD = java.sql.Date.valueOf(data_naixLD);
+                query = "UPDATE `persona` SET `" + tipoInfo + "` ='" + data_naixD +"' WHERE `dni` = '" + dni + "'";
+
+            }
+            else query = "UPDATE `persona` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `dni` = '" + dni + "'";
+
 
             if(statement.executeUpdate(query) == 1){
                 System.out.println("Modificacio de " + tipoInfo + " de l'usuari completada.");
