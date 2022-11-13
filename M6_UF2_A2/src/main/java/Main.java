@@ -11,6 +11,11 @@ public class Main
     public static String dniUserLog = "";
     public static String passwordUserLog = "";
 
+    /**
+     * Main ✅
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception
     {
 
@@ -28,9 +33,10 @@ public class Main
             dniUserLog = lector.nextLine();
             if(dniUserLog.equalsIgnoreCase("sortir") || dniUserLog.equalsIgnoreCase("exit"))
             {
+                System.out.println("End Program");
                 menu=true;
                 lector.close();
-                System.out.println("FI programa");
+
             }
             else
             {
@@ -60,7 +66,7 @@ public class Main
     } // main ✅
 
     /**
-     * menu de admin nomes pot accedir l'admin :D
+     * menu de admin nomes pot accedir l'admin :D ✅
      * */
     private static void menuAdmin() throws Exception
     {
@@ -97,7 +103,7 @@ public class Main
                     gestioFactura();        //gestio de cada factura ✅
                     break;
                 case 5:
-                    gestioViatges();        //todo gestio vaitges FALTA
+                    gestioViatges();        //gestio vaitges ✅
                     break;
                 case 6:
                     gestioEstacio();     // gestio de cada estacio ✅
@@ -115,7 +121,7 @@ public class Main
     }
 
     /**
-     * MENU DEL USUARI
+     * MENU DEL USUARI ✅
      */
     private static void menuUser() throws Exception
     {
@@ -161,7 +167,7 @@ public class Main
     // ************ METODES GESTIO *****////////
 
     /**
-     * Metode que el que fa es gestiona les estacions
+     * Metode que el que fa es gestiona les estacions ✅
      *
      */
     private static void gestioEstacio() throws Exception
@@ -251,10 +257,10 @@ public class Main
     }
 
     /**
-     * Getstio LINIA factura
+     * Getstio LINIA factura ✅
      *
      */
-    private static void gestioLiniaFactura() throws Exception
+   /* private static void gestioLiniaFactura() throws Exception
     {
         InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
         boolean menu =false;
@@ -302,11 +308,11 @@ public class Main
             }
         }while (!menu && opcio!=0);
 
-    }
+    }*/
 
     /**
-     * gestio factura
-     * TODO FALTA TODA LA FACTURA
+     * gestio factura  ✅
+     *
      */
     private static void gestioFactura() throws Exception
     {
@@ -330,19 +336,16 @@ public class Main
                     daoF.llistarFactura();
                     break;
                 case 2:
-                    //todo ALTA FACTURA
                     Factura f = DadesFactura.fromAltaFacturaAdmin();
                     daoF.crearFacturaAdmin(f);
                     break;
                 case 3:
                     int idF = DadesFactura.fromBaixaFactura();
                     daoF.eliminarFactura(idF);
-                    //TODO BAIXA FACTURA
                     break;
                 case 4:
                     String dades = DadesFactura.fromUpdateFactura();
                     daoF.modificarFactura(dades);
-                    //TODO MODIFICAR FACTURA
                     break;
                 case 0:
                     System.out.println("Tornaras al menu admin");
@@ -357,9 +360,9 @@ public class Main
     }  // ✅
 
     /**
-     * Gestio billets
+     * Gestio billets✅
      * @throws Exception
-     * TODO TODO ECHO MENOS LA COMPRA DE BILLETES.
+     *
      */
     private static void gestioBillets() throws Exception
     {
@@ -403,6 +406,7 @@ public class Main
             }
         }while(!menu && opcio!=0);
     }
+
     /**
      * Gestio usuaris ✅
      * @throws Exception
@@ -457,10 +461,12 @@ public class Main
             }
         }while(!menu && opcio!=0);
     }
+
+
     /**
-     * Gestio viatges
+     * Gestio viatges ✅
      * @throws Exception
-     * TODO FALTA TODO EL IMPLEMENTS I LAS DADES.
+     *
      */
     private static void gestioViatges() throws Exception
     {
@@ -508,7 +514,7 @@ public class Main
                     break;
             }
         }while(!menu);
-    }
+    } //✅
 
 
 }
