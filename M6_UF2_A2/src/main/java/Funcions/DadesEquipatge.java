@@ -1,6 +1,8 @@
 package Funcions;
 
 import Implements.*;
+import Interfaces.InterfaceFactura;
+import Interfaces.InterfaceLiniaFactura;
 import Objectes.Equipatge;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
@@ -17,6 +19,10 @@ public class DadesEquipatge
      */
     public static Equipatge formCrearEquipatge() throws Exception
     {
+
+        // interfaces dao per poder llistar les factures i lina factures
+        InterfaceFactura daoFactura = new ImplementsFactura();
+        InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
 
         Equipatge equipatge = new Equipatge(); // objecte equipatge
 
@@ -38,14 +44,14 @@ public class DadesEquipatge
 
             if(!ImplementsEquipatge.comprovarEquipatge(idEquip))
             {
-                System.out.println("Equipatge GOOD");
+                //System.out.println("Equipatge GOOD");
                 okaIdEquip=true;
             }
             else System.out.println("Aquest Equipatge ja exgisteix");
         }
 
 
-
+        daoFactura.llistarFactura(); //llistar factures
         while (!okNumFact)
         {
             System.out.println("Digues una factura");
@@ -60,7 +66,7 @@ public class DadesEquipatge
             else System.out.println("Aquest numero factura no es correcte D:");
         }
 
-
+        daoLinaFactura.llistarLiniaFactura();
 
         while (!okaLinaFactura)
         {
