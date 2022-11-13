@@ -112,31 +112,28 @@ public class DadesEquipatge
      */
     public static String  fromModificarEquipatge() throws Exception
     {
-
         boolean menu = false;
         boolean okaIdEquip= false;
         int opcio = -1;
         String dades="";
         int pesKg = 0;
         int numMaletes =0;
-
-
         do
         {
-
             System.out.println("Digues el id Equipate que vols entrar");
             int idEquip = lector.nextInt();
             lector.nextLine();
+            dades = dades + idEquip;
             if(ImplementsEquipatge.comprovarEquipatge(idEquip))
             {
-                System.out.println("Equip FIND");
+                //System.out.println("Equip FIND");
                 // he contrado el equipo
                 System.out.println("MODIFCAR EQUIPATGE \n");
                 System.out.println("Escull la opcio que vols modificar");
                 System.out.println("1.Modificar Pes");
                 System.out.println("2.Modifcar Num Maletes");
                 System.out.println("0.No modifcar res");
-                opcio= lector.nextInt();
+                opcio = lector.nextInt();
                 lector.nextLine();
 
                 switch (opcio)
@@ -172,9 +169,6 @@ public class DadesEquipatge
             else System.out.println("No tenim aquest equipatge");
 
         }while (!menu || opcio!=0);
-
-
-
     return dades;
     } // ✅
 
