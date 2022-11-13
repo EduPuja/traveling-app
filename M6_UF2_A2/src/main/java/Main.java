@@ -308,16 +308,18 @@ public class Main
      * gestio factura
      * TODO FALTA TODA LA FACTURA
      */
-    private static void gestioFactura() throws Exception {
+    private static void gestioFactura() throws Exception
+    {
         InterfaceFactura daoF = new ImplementsFactura();
         boolean menu = false;
         int opcio=-1;
         do
         {
             System.out.println("GESTIO FACUTRA\n");
-            System.out.println("1.Alta factura");
-            System.out.println("2.Baixa factura");
-            System.out.println("3.Modifciar factura");
+            System.out.println("1.Llistar factures");
+            System.out.println("2.Alta factura");
+            System.out.println("3.Baixa factura");
+            System.out.println("4.Modifciar factura");
             System.out.println("0.Turn back");
             opcio=lector.nextInt();
             lector.nextLine();
@@ -325,14 +327,21 @@ public class Main
             switch (opcio)
             {
                 case 1:
+                    daoF.llistarFactura();
+                    break;
+                case 2:
                     //todo ALTA FACTURA
                     Factura f = DadesFactura.fromAltaFacturaAdmin();
                     daoF.crearFacturaAdmin(f);
                     break;
-                case 2:
+                case 3:
+                    int idF = DadesFactura.fromBaixaFactura();
+                    daoF.eliminarFactura(idF);
                     //TODO BAIXA FACTURA
                     break;
-                case 3:
+                case 4:
+                    String dades = DadesFactura.fromUpdateFactura();
+                    daoF.modificarFactura(dades);
                     //TODO MODIFICAR FACTURA
                     break;
                 case 0:
@@ -345,7 +354,7 @@ public class Main
             }
         }while (!menu && opcio!=0);
 
-    }
+    }  // ✅
 
     /**
      * Gestio billets

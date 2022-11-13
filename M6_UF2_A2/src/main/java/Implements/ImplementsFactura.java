@@ -111,8 +111,24 @@ public class ImplementsFactura implements InterfaceFactura
     @Override
     public void modificarFactura(String dades) throws Exception
     {
+        Statement statement = ConnexioBDD.conexioDB();
 
-    }
+        if(!dades.equalsIgnoreCase("no")){
+            String taula [] = dades.split("/");
+            String id_factura = taula[0];
+            String novaInfo = taula[1];
+            String tipoInfo = taula[2];
+
+            String query = "UPDATE `factura` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `id_factura` = '" + id_factura + "'";
+
+            if(statement.executeUpdate(query) == 1){
+                System.out.println("Modificacio de " + tipoInfo + " de factura completada.");
+            }
+            else System.out.println("Modificacio de " + tipoInfo + " de factura no completada.");
+            statement.close();
+        }
+        else System.out.println("Modificacio Cancelada.");
+    } // ✅
     public static int dniAid(String dni) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
