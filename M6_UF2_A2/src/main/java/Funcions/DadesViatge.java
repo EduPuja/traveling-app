@@ -1,6 +1,7 @@
 package Funcions;
 
 import Implements.ImplementsEstacio;
+import Implements.ImplementsUsuari;
 import Implements.ImplementsViatjes;
 import Interfaces.InterfaceEstacio;
 import Objectes.Viatje;
@@ -117,8 +118,123 @@ public class DadesViatge
 
         return -1;
     }
+
+    /**
+     * Metode que et retorna un string amb la info modificada de un viatge ✅
+     * @return
+     * @throws Exception
+     */
     public static String formUpdateViatge() throws Exception
     {
-        return " ";
+
+       String dades = "";       // variable dades on passa la magia
+       // variables menu ;D
+       boolean menu = false;
+       boolean menu2 =false;
+
+       // variables que comproven si el origen i desti estan corretes
+       boolean okaDesti=false;
+       boolean okaOrigen =false;
+
+       int idViatgeMod =-1;     // id del desti
+        do
+       {
+           System.out.println("Digues el idViatge que vols modificar ");
+           idViatgeMod = lector.nextInt();
+           lector.nextLine();
+           if(ImplementsViatjes.comprovarViatge(idViatgeMod))
+           {
+               menu=true;
+           }
+           else System.out.println("Viatge Not found D: ");
+       }while (!menu);
+
+
+       if(menu)
+       {
+           dades = ""+idViatgeMod;  // guardar la id del viatge en la variable dades
+           InterfaceEstacio estacioDao = new ImplementsEstacio();
+
+           do
+           {
+               System.out.println("Escull una opcio!\n");
+               System.out.println("1 - Modificar Origen");
+               System.out.println("2 - Modificar Desti");
+               System.out.println("3 - Modificar Pais");
+               System.out.println("0.Discard Changes");
+               int opcio = lector.nextInt();
+               lector.nextLine();
+               switch (opcio)
+               {
+                   case 1:
+                       //mod origen
+                       int idOrigen =-1;
+                      while (!okaOrigen)
+                      {
+                          System.out.println("Llistat Estacions ");
+                          estacioDao.llistarEstacio();
+
+                          System.out.println("Escull ID estacio ORIGEN: ");
+
+                          idOrigen = lector.nextInt();
+                          lector.nextLine();
+
+                          if(ImplementsEstacio.comprovarEstacio(idOrigen))
+                          {
+                              okaOrigen=true;
+                          }
+                          else System.out.println("Origen not found ");
+                      }
+                      if(okaOrigen)
+                      {
+                          dades = dades+"/"+idOrigen+"/id_origen";
+                      }
+
+
+                       break;
+                   case 2:
+                       // mod desti
+                       int idDesti=-1;
+                       while (!okaDesti)
+                       {
+
+                           System.out.println("Llistat Estacions ");
+                           estacioDao.llistarEstacio();;
+
+                           System.out.println("Escull ID estacio DESTI: ");
+                           idDesti = lector.nextInt();
+                           lector.nextLine();
+                           if (ImplementsEstacio.comprovarEstacio(idDesti))
+                           {
+                               okaDesti=true;
+                           }
+                           else System.out.println("Desti not found ");
+                       }
+
+                        if (okaDesti)  dades = dades+"/"+idDesti+"/id_desti";
+
+
+                       break;
+                   case 3:
+                       // mod pais
+                        System.out.println("Digues el nou PAIS: ");
+                        String newPais = lector.nextLine();
+
+                        dades = dades+"/"+newPais+"/pais";
+                       break;
+                   case 0:
+                       System.out.println("NO SE HA MODIFCAT RES");
+                       dades="no";
+                       menu2=true;
+                       break;
+                   default:
+                       System.out.println("No tenim aquesta opcio");
+                       break;
+               }
+
+
+           }while (!menu2);
+       }
+        return dades;   // dades on passo faig la maiga
     }
 }
