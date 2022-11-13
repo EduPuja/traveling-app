@@ -20,12 +20,16 @@ public class ImplementsEquipatge implements InterfaceEquipatge
     {
         Statement statement = ConnexioBDD.conexioDB();
 
-        String insertQuery = "INSERT INTO `equipatge`(`id_equip`, `num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+equipatge.getIdEquipatge()+","+equipatge.getNumFactura()+","+equipatge.getLiniaFactura()+","+equipatge.getPesKg()+","+equipatge.getNumMaletes();
-        if(statement.executeUpdate(insertQuery) ==1)
+        if(equipatge!=null)
         {
-            System.out.println("Equipatge insertat");
+            String insertQuery = "INSERT INTO `equipatge`(`id_equip`, `num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+equipatge.getIdEquipatge()+","+equipatge.getNumFactura()+","+equipatge.getLiniaFactura()+","+equipatge.getPesKg()+","+equipatge.getNumMaletes();
+            if(statement.executeUpdate(insertQuery) ==1)
+            {
+                System.out.println("Equipatge insertat");
+            }
+            else System.out.println("Equipatge NO insertat");
         }
-        else System.out.println("Equipatge NO insertat");
+        else System.out.println("Equipatge Error No inserat");
         statement.close();
 
     } // ✅
