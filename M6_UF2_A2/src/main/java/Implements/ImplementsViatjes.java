@@ -33,7 +33,7 @@ public class ImplementsViatjes implements InterfaceViatjes
 
         con.close();
 
-    }
+    } // ✅
 
     /**
      * eliminar viatge base de dades✅
@@ -58,7 +58,7 @@ public class ImplementsViatjes implements InterfaceViatjes
 
         con.close();
 
-    }
+    } // ✅
 
     /**
      * Modificar viatge base de dades✅
@@ -96,7 +96,7 @@ public class ImplementsViatjes implements InterfaceViatjes
 
 
         con.close();
-    }
+    } // ✅
 
     /**
      * llistar viatges desde la base de dades✅
@@ -127,7 +127,7 @@ public class ImplementsViatjes implements InterfaceViatjes
         rs.close();
         con.close();
 
-    }
+    } // ✅
 
     /**
      * Comprovar un viatge ✅
@@ -153,6 +153,6 @@ public class ImplementsViatjes implements InterfaceViatjes
             con.close();
             return false;
         }
-    }
+    } // ✅
 
 }
