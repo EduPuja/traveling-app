@@ -218,9 +218,9 @@ public class Main
      * gestio equipatge
      * TODO FALTA TODO EL EQUPAGE.
      */
-    private static void gestioEquipatge()
+    private static void gestioEquipatge() throws Exception
     {
-        InterfaceEstacio daoE = new ImplementsEstacio();
+        InterfaceEquipatge daoEquipatge = new ImplementsEquipatge();
         boolean menu = false;
         int opcio = -1;
         do
@@ -236,13 +236,23 @@ public class Main
             switch (opcio)
             {
                 case 1:
-                    // todo alta equipatge
+                        //listar
+                    daoEquipatge.llistarEquipatge();
                     break;
                 case 2:
-                    // todo baixa equipatge
+                        //alta
+                    Equipatge equip = DadesEquipatge.formCrearEquipatge();
+                    daoEquipatge.afegirEquipatge(equip);
                     break;
                 case 3:
-                    // todo mod equipatge
+                    //baixa
+                    int idEquip = DadesEquipatge.fromDeleteEquipatge();
+                    daoEquipatge.eliminarEquipatge(idEquip);
+                    break;
+                case 4:
+                        // mod
+                    String dades = DadesEquipatge.fromModificarEquipatge();
+                    daoEquipatge.modificarEquipatge(dades);
                     break;
                 case 0:
                     System.out.println("Toranras al menu admin");
