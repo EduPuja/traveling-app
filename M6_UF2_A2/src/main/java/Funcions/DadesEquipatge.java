@@ -12,7 +12,7 @@ public class DadesEquipatge
     private static Scanner lector = new Scanner(System.in);
 
     /**
-     * Metode que et retorna un objecte equipatge creat ✅
+     * Metode que et retorna un objecte equipatge creat
      * @return
      */
     public static Equipatge formCrearEquipatge()
@@ -22,13 +22,13 @@ public class DadesEquipatge
         int idEquip = lector.nextInt();
         lector.nextLine();
 
-        //TODO NUM FACTURA!!! d:
+        //TODO comprovar  NUM FACTURA!!! d:
         System.out.println("Digues una factura");
         int numFactura = lector.nextInt();
         lector.nextLine();
 
 
-        //todo linafactura en equipatge ;(
+        //todo  comprovar linafactura en equipatge ;(
         System.out.println("Digues la lina factura");
         int linaFactura = lector.nextInt();
         lector.nextLine();
