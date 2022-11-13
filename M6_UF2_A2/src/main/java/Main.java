@@ -97,7 +97,7 @@ public class Main
                     gestioBillets();        // menu de gesito de bitllets ✅
                     break;
                 case 3:
-                    gestioEquipatge();      // TODO falta this meode
+                    gestioEquipatge();      // gestio equipatge ✅
                     break;
                 case 4:
                     gestioFactura();        //gestio de cada factura ✅
