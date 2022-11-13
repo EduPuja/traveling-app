@@ -113,4 +113,22 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         else con.close(); return false;
     } // ✅
 
+    public static void eliminarLinFactDeFact(int idFactura) throws Exception {
+
+        Statement con = ConnexioBDD.conexioDB();
+        if(ImplementsFactura.comprovaNumFact(idFactura))
+        {
+            // exgisteix llavors haig de fer el delelte
+            String query = "DELETE FROM `linia_factura` WHERE num_factura="+idFactura;
+            if(con.executeUpdate(query) == 1)
+            {
+                System.out.println("Se ha eliminat una LinaFactura");
+            }
+            else System.out.println("No se ha eliminat");
+        }
+        else System.out.println("Lina factura no trobada");
+
+        con.close();
+    }
+
 }

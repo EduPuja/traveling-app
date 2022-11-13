@@ -50,7 +50,7 @@ public class ImplementsViatjes implements InterfaceViatjes
         if(comprovarViatge(idViatge))
         {
 
-            String query = "DELETE FROM `viatges` WHERE id_viatge"+idViatge;
+            String query = "DELETE FROM `viatges` WHERE id_viatge="+idViatge;
             if(con.executeUpdate(query) ==1)
             {
                 System.out.println("Viatge Eliminat");
