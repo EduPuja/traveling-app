@@ -164,258 +164,10 @@ public class Main
 
     }
 
+
+
+
     // ************ METODES GESTIO *****////////
-
-    /**
-     * Metode que el que fa es gestiona les estacions ✅
-     *
-     */
-    private static void gestioEstacio() throws Exception
-    {
-        // interfece de dao estacio
-        InterfaceEstacio estacioDao = new ImplementsEstacio();
-        boolean menu =false;
-        int opcio = -1;
-
-        do
-        {
-            System.out.println("GESTIO ESTACIONS\n");
-            System.out.println("1.Llistar estacions");
-            System.out.println("2.Crear una estacio");
-            System.out.println("3.Baixa estacio");
-            System.out.println("4.Modificar estacions");
-            System.out.println("0.Turn back");
-
-            opcio =lector.nextInt();
-            lector.nextLine();
-
-            switch (opcio)
-            {
-                case 1:
-                    estacioDao.llistarEstacio();
-                    break;
-                case 2:
-                    Estacio estacio = DadesEstacio.fromAltaEstacio();
-                    estacioDao.novaEstacio(estacio);
-                    break;
-                case 3:
-                    int idEstacio = DadesEstacio.fromBaixaEstacio();
-                    estacioDao.deleteEstacio(idEstacio);
-                    break;
-                case 4:
-                    String dades = DadesEstacio.fromUpdateEstacio();
-                    estacioDao.modificarEstacio(dades);
-                    break;
-                default:
-                    System.out.println("No tenim aquesta opcio");
-                    break;
-            }
-        }while (!menu && opcio!=0);
-
-    }
-
-    /**
-     * gestio equipatge ✅
-     *
-     */
-    private static void gestioEquipatge() throws Exception
-    {
-        InterfaceEquipatge daoEquipatge = new ImplementsEquipatge();
-        boolean menu = false;
-        int opcio = -1;
-        do
-        {
-            System.out.println("GESTIO EQUIPATGE\n");
-            System.out.println("1.Llistar Equipatge Usuari");
-            System.out.println("2.Alta Equipatge");
-            System.out.println("3.Baixa Equipatge");
-            System.out.println("4.Modificar Equipatge");
-            System.out.println("0.Turn Back");
-            opcio=lector.nextInt();
-            lector.nextLine();
-            switch (opcio)
-            {
-                case 1:
-                        //listar
-                    daoEquipatge.llistarEquipatge();
-                    break;
-                case 2:
-                        //alta
-                    Equipatge equip = DadesEquipatge.formCrearEquipatge();
-                    daoEquipatge.afegirEquipatge(equip);
-                    break;
-                case 3:
-                    //baixa
-                    int idEquip = DadesEquipatge.fromDeleteEquipatge();
-                    daoEquipatge.eliminarEquipatge(idEquip);
-                    break;
-                case 4:
-                        // mod
-                    String dades = DadesEquipatge.fromModificarEquipatge();
-                    daoEquipatge.modificarEquipatge(dades);
-                    break;
-                case 0:
-                    System.out.println("Toranras al menu admin");
-                    menu=true;
-                    break;
-                default:
-                    System.out.println("No tenim aquesta opico");
-                    break;
-            }
-        }while (!menu);
-
-    }
-
-    /**
-     * Getstio LINIA factura ✅
-     *
-     */
-   /* private static void gestioLiniaFactura() throws Exception
-    {
-        InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
-        boolean menu =false;
-        int opcio = -1;
-
-        do
-        {
-            System.out.println("GESTIO LINIA FACTURA\n");
-            System.out.println("1.Llista lineas de una factura.");
-            System.out.println("2.ALTA LINIA FACTURA");
-            System.out.println("3.Baixa LINIA FACTURA");
-            System.out.println("4.Modificacio FACTURA");
-            System.out.println("0.Turn back");
-            opcio=lector.nextInt();
-            lector.nextLine();
-            switch (opcio)
-            {
-                case 1:
-                      //llistar lina
-                    daoLinaFactura.llistarLiniaFactura();
-                    break;
-                case 2:
-                    //alta lina
-                    Linia_Factura liniaFactura = DadesLiniaFactura.fromAltaLinaFactura();
-                    daoLinaFactura.crearLiniaFactura(liniaFactura);
-                    break;
-                case 3:
-                    ///baixa lina
-                    int idLinaFactura = DadesLiniaFactura.fromBaixaLinaFactura();
-                    daoLinaFactura.eliminarLiniaFactura(idLinaFactura);
-                    break;
-                case 4:
-                    //modiiciar lina
-                    String dades = DadesEstacio.fromUpdateEstacio();
-                    daoLinaFactura.modificarLiniaFactura(dades);
-                    break;
-                case 0:
-                    System.out.println("Toranras al menu admin");
-                    menu=true;
-                    break;
-                default:
-                    System.out.println("No tenim aquesta opico");
-                    break;
-
-            }
-        }while (!menu && opcio!=0);
-
-    }*/
-
-    /**
-     * gestio factura  ✅
-     *
-     */
-    private static void gestioFactura() throws Exception
-    {
-        InterfaceFactura daoF = new ImplementsFactura();
-        boolean menu = false;
-        int opcio=-1;
-        do
-        {
-            System.out.println("GESTIO FACUTRA\n");
-            System.out.println("1.Llistar factures");
-            System.out.println("2.Alta factura");
-            System.out.println("3.Baixa factura");
-            System.out.println("4.Modifciar factura");
-            System.out.println("0.Turn back");
-            opcio=lector.nextInt();
-            lector.nextLine();
-
-            switch (opcio)
-            {
-                case 1:
-                    daoF.llistarFactura();
-                    break;
-                case 2:
-                    Factura f = DadesFactura.fromAltaFacturaAdmin();
-                    daoF.crearFacturaAdmin(f);
-                    break;
-                case 3:
-                    int idF = DadesFactura.fromBaixaFactura();
-                    daoF.eliminarFactura(idF);
-                    break;
-                case 4:
-                    String dades = DadesFactura.fromUpdateFactura();
-                    daoF.modificarFactura(dades);
-                    break;
-                case 0:
-                    System.out.println("Tornaras al menu admin");
-                    menu=true;
-                    break;
-                default:
-                    System.out.println("No tenim aquesta opcio");
-                    break;
-            }
-        }while (!menu && opcio!=0);
-
-    }  // ✅
-
-    /**
-     * Gestio billets✅
-     * @throws Exception
-     *
-     */
-    private static void gestioBillets() throws Exception
-    {
-        InterfaceBitllets daoB = new ImplementsBitllets();
-        boolean menu = false;
-        int opcio=-1;
-        do
-        {
-            System.out.println("GESTIO BILLETS\n");
-            System.out.println("Entra una opcio: ");
-            System.out.println("1 - Llista Bitllets");
-            System.out.println("2 - Eliminar Bittlets");
-            System.out.println("3 - Crear Bittlets");
-            System.out.println("0 - Turn Back");
-            opcio = lector.nextInt();
-            lector.nextLine();
-
-            switch (opcio)
-            {
-                case 1:
-                    //LLISTAR
-                    daoB.llistarBitllets();
-                    break;
-                case 2:
-                    // ELIMINAR
-                    int bIdElimina = DadesBitllet.formEliminarBitllet();
-                    daoB.eliminarBitllets(bIdElimina);
-                    break;
-                case 3:
-                    // CREAR
-                    Billet bCrea = DadesBitllet.formCreaBitllet();
-                    daoB.creaBitllets(bCrea);
-                    break;
-                case 0:
-                    System.out.println("Toranras al menu admin\n");
-                    menu = true;
-                    break;
-                default:
-                    System.out.println("Opcio incorrecta, Torna a intentar.");
-                    break;
-            }
-        }while(!menu && opcio!=0);
-    }
 
     /**
      * Gestio usuaris ✅
@@ -472,6 +224,156 @@ public class Main
         }while(!menu && opcio!=0);
     }
 
+    /**
+     * Gestio billets✅
+     * @throws Exception
+     *
+     */
+    private static void gestioBillets() throws Exception
+    {
+        InterfaceBitllets daoB = new ImplementsBitllets();
+        boolean menu = false;
+        int opcio=-1;
+        do
+        {
+            System.out.println("GESTIO BILLETS\n");
+            System.out.println("Entra una opcio: ");
+            System.out.println("1 - Llista Bitllets");
+            System.out.println("2 - Eliminar Bittlets");
+            System.out.println("3 - Crear Bittlets");
+            System.out.println("0 - Turn Back");
+            opcio = lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    //LLISTAR
+                    daoB.llistarBitllets();
+                    break;
+                case 2:
+                    // ELIMINAR
+                    int bIdElimina = DadesBitllet.formEliminarBitllet();
+                    daoB.eliminarBitllets(bIdElimina);
+                    break;
+                case 3:
+                    // CREAR
+                    Billet bCrea = DadesBitllet.formCreaBitllet();
+                    daoB.creaBitllets(bCrea);
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin\n");
+                    menu = true;
+                    break;
+                default:
+                    System.out.println("Opcio incorrecta, Torna a intentar.");
+                    break;
+            }
+        }while(!menu && opcio!=0);
+    }
+
+    /**
+     * gestio equipatge ✅
+     *
+     */
+    private static void gestioEquipatge() throws Exception
+    {
+        InterfaceEquipatge daoEquipatge = new ImplementsEquipatge();
+        boolean menu = false;
+        int opcio = -1;
+        do
+        {
+            System.out.println("GESTIO EQUIPATGE\n");
+            System.out.println("1.Llistar Equipatge Usuari");
+            System.out.println("2.Alta Equipatge");
+            System.out.println("3.Baixa Equipatge");
+            System.out.println("4.Modificar Equipatge");
+            System.out.println("0.Turn Back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+            switch (opcio)
+            {
+                case 1:
+                    //listar
+                    daoEquipatge.llistarEquipatge();
+                    break;
+                case 2:
+                    //alta
+                    Equipatge equip = DadesEquipatge.formCrearEquipatge();
+                    daoEquipatge.afegirEquipatge(equip);
+                    break;
+                case 3:
+                    //baixa
+                    int idEquip = DadesEquipatge.fromDeleteEquipatge();
+                    daoEquipatge.eliminarEquipatge(idEquip);
+                    break;
+                case 4:
+                    // mod
+                    String dades = DadesEquipatge.fromModificarEquipatge();
+                    daoEquipatge.modificarEquipatge(dades);
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opico");
+                    break;
+            }
+        }while (!menu);
+
+    }
+
+
+    /**
+     * gestio factura  ✅
+     *
+     */
+    private static void gestioFactura() throws Exception
+    {
+        InterfaceFactura daoF = new ImplementsFactura();
+        boolean menu = false;
+        int opcio=-1;
+        do
+        {
+            System.out.println("GESTIO FACUTRA\n");
+            System.out.println("1.Llistar factures");
+            System.out.println("2.Alta factura");
+            System.out.println("3.Baixa factura");
+            System.out.println("4.Modifciar factura");
+            System.out.println("0.Turn back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    daoF.llistarFactura();
+                    break;
+                case 2:
+                    Factura f = DadesFactura.fromAltaFacturaAdmin();
+                    daoF.crearFacturaAdmin(f);
+                    break;
+                case 3:
+                    int idF = DadesFactura.fromBaixaFactura();
+                    daoF.eliminarFactura(idF);
+                    break;
+                case 4:
+                    String dades = DadesFactura.fromUpdateFactura();
+                    daoF.modificarFactura(dades);
+                    break;
+                case 0:
+                    System.out.println("Tornaras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcio!=0);
+
+    }  // ✅
+
 
     /**
      * Gestio viatges ✅
@@ -526,5 +428,110 @@ public class Main
         }while(!menu);
     } //✅
 
+
+    /**
+     * Metode que el que fa es gestiona les estacions ✅
+     *
+     */
+    private static void gestioEstacio() throws Exception
+    {
+        // interfece de dao estacio
+        InterfaceEstacio estacioDao = new ImplementsEstacio();
+        boolean menu =false;
+        int opcio = -1;
+
+        do
+        {
+            System.out.println("GESTIO ESTACIONS\n");
+            System.out.println("1.Llistar estacions");
+            System.out.println("2.Crear una estacio");
+            System.out.println("3.Baixa estacio");
+            System.out.println("4.Modificar estacions");
+            System.out.println("0.Turn back");
+
+            opcio =lector.nextInt();
+            lector.nextLine();
+
+            switch (opcio)
+            {
+                case 1:
+                    estacioDao.llistarEstacio();
+                    break;
+                case 2:
+                    Estacio estacio = DadesEstacio.fromAltaEstacio();
+                    estacioDao.novaEstacio(estacio);
+                    break;
+                case 3:
+                    int idEstacio = DadesEstacio.fromBaixaEstacio();
+                    estacioDao.deleteEstacio(idEstacio);
+                    break;
+                case 4:
+                    String dades = DadesEstacio.fromUpdateEstacio();
+                    estacioDao.modificarEstacio(dades);
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opcio");
+                    break;
+            }
+        }while (!menu && opcio!=0);
+
+    }
+
+
+
+
+    /**
+     * Getstio LINIA factura ✅
+     *
+     */
+   /* private static void gestioLiniaFactura() throws Exception
+    {
+        InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
+        boolean menu =false;
+        int opcio = -1;
+
+        do
+        {
+            System.out.println("GESTIO LINIA FACTURA\n");
+            System.out.println("1.Llista lineas de una factura.");
+            System.out.println("2.ALTA LINIA FACTURA");
+            System.out.println("3.Baixa LINIA FACTURA");
+            System.out.println("4.Modificacio FACTURA");
+            System.out.println("0.Turn back");
+            opcio=lector.nextInt();
+            lector.nextLine();
+            switch (opcio)
+            {
+                case 1:
+                      //llistar lina
+                    daoLinaFactura.llistarLiniaFactura();
+                    break;
+                case 2:
+                    //alta lina
+                    Linia_Factura liniaFactura = DadesLiniaFactura.fromAltaLinaFactura();
+                    daoLinaFactura.crearLiniaFactura(liniaFactura);
+                    break;
+                case 3:
+                    ///baixa lina
+                    int idLinaFactura = DadesLiniaFactura.fromBaixaLinaFactura();
+                    daoLinaFactura.eliminarLiniaFactura(idLinaFactura);
+                    break;
+                case 4:
+                    //modiiciar lina
+                    String dades = DadesEstacio.fromUpdateEstacio();
+                    daoLinaFactura.modificarLiniaFactura(dades);
+                    break;
+                case 0:
+                    System.out.println("Toranras al menu admin");
+                    menu=true;
+                    break;
+                default:
+                    System.out.println("No tenim aquesta opico");
+                    break;
+
+            }
+        }while (!menu && opcio!=0);
+
+    }*/
 
 }
