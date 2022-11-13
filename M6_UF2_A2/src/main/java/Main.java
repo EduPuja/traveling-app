@@ -496,8 +496,8 @@ public class Main
                     break;
                 case 4:
                     //UPDATE
-                    //Viatje vUpdate = DadesViatge.formUpdateViatge();
-                    //daoV.modificarViatje(vUpdate);
+                    String dades = DadesViatge.formUpdateViatge();
+                    daoV.modificarViatje(dades);
                     break;
                 case 0:
                     System.out.println("Toranras al menu Admin\n");
