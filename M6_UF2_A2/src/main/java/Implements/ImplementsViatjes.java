@@ -20,13 +20,17 @@ public class ImplementsViatjes implements InterfaceViatjes
     public void nouViatje(Viatje vNou) throws Exception
     {
         Statement con =ConnexioBDD.conexioDB();
-
-        String query = "INSERT INTO `viatges`(`id_viatge`, `id_origen`, `id_desti`, `pais`) VALUES ("+vNou.getIdViatge()+","+vNou.getIdOrigen()+","+vNou.getIdDesti()+","+vNou.getPais();
-        if(con.executeUpdate(query) ==1)
+        if(vNou == null)
         {
-            System.out.println("Viatge Insertat correctament ");
+            String query = "INSERT INTO `viatges`(`id_viatge`, `id_origen`, `id_desti`, `pais`) VALUES ("+vNou.getIdViatge()+","+vNou.getIdOrigen()+","+vNou.getIdDesti()+","+vNou.getPais();
+            if(con.executeUpdate(query) ==1)
+            {
+                System.out.println("Viatge Insertat correctament ");
+            }
+            else  System.out.println("Viatge NO INSERTAT D:");
         }
-        else  System.out.println("Viatge NO INSERTAT D:");
+        else System.out.println("No insertat D: ");
+
         con.close();
 
     }
