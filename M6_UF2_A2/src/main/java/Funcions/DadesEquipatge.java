@@ -136,6 +136,9 @@ public class DadesEquipatge
                 System.out.println("1.Modificar Pes");
                 System.out.println("2.Modifcar Num Maletes");
                 System.out.println("0.No modifcar res");
+                opcio= lector.nextInt();
+                lector.nextLine();
+
                 switch (opcio)
                 {
                     case 1:
@@ -145,6 +148,7 @@ public class DadesEquipatge
                         lector.nextLine();
 
                         dades = dades + "/" + pesKg + "/pes_kg";
+                        menu = true;
                         break;
                     case 2:
                         //num maletes
@@ -152,6 +156,7 @@ public class DadesEquipatge
                         numMaletes= lector.nextInt();
                         lector.nextLine();
                         dades = dades + "/" + numMaletes + "/num_maletes";
+                        menu = true;
                         break;
                     case 0:
                         System.out.println("Tornars al menu");
