@@ -482,8 +482,8 @@ public class Main
                     break;
                 case 3:
                     //DELETE
-                    //Viatje vEliminar = DadesViatge.formEliminarViatge();
-                    //daoV.eliminarViatje(vEliminar);
+                    int IdViatge = DadesViatge.formEliminarViatge();
+                    daoV.eliminarViatje(IdViatge);
                     break;
                 case 4:
                     //UPDATE
