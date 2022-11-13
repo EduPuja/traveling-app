@@ -27,8 +27,8 @@ public class ImplementsBitllets implements InterfaceBitllets
         ResultSet rs = statement.executeQuery(query);
         while (rs.next())
         {
-            System.out.println("ID_BITLLET: "+rs.getInt("id_billet"));       // esto era string .-. !!
-            System.out.println("ID_VIATGE: "+rs.getInt("idviatge"));        // esto era string .-. !!
+            System.out.println("ID_BITLLET: "+rs.getInt("id_billet"));
+            System.out.println("ID_VIATGE: "+rs.getInt("idviatge"));
             System.out.println("ESTACIO ORIGEN: "+rs.getString("origen"));
             System.out.println("ESTACIO DESTI: "+rs.getString("desti"));
             System.out.println("TIPUS BITLLET: "+rs.getString("tipus_billet"));
@@ -37,7 +37,7 @@ public class ImplementsBitllets implements InterfaceBitllets
             System.out.println("");
         }
         statement.close();
-    }
+    } // ✅
     public void compraBitllets(int bIdCompra,String dniClient) throws Exception
     {
         System.out.println("Bitllet comprat.");
@@ -45,9 +45,7 @@ public class ImplementsBitllets implements InterfaceBitllets
         Factura f = DadesFactura.fromAltaFactura(dniClient);
         daoF.crearFactura(f,bIdCompra);
         stockDown(bIdCompra);
-        //TODO Llamar a crearfactura(bIDCompra,dniClient)
-        //dentro de crearfactura creas las lineas de la misma
-    }
+    }// ✅
     public void eliminarBitllets(int bIDElimina) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -59,7 +57,7 @@ public class ImplementsBitllets implements InterfaceBitllets
         }
         else System.out.println("No se ha eliminat el billet.");
         con.close();    // cierro la conexion
-    }
+    }// ✅
     public static void stockDown(int bIDStock) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -71,7 +69,7 @@ public class ImplementsBitllets implements InterfaceBitllets
         }
         else System.out.println("No se ha eliminat el billet.");
         con.close();    // cierro la conexion
-    }
+    }// ✅
     public void creaBitllets(Billet bCrea) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -84,7 +82,7 @@ public class ImplementsBitllets implements InterfaceBitllets
         }
         else System.out.println("Billet NO created ;( ");
         con.close();
-    }
+    }// ✅
     public static boolean comprovarBillet(int idBillet) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -103,7 +101,7 @@ public class ImplementsBitllets implements InterfaceBitllets
             statement.close();
             return false;
         }
-    }
+    }// ✅
     public static int preuBitllet(int idBillet) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -123,7 +121,7 @@ public class ImplementsBitllets implements InterfaceBitllets
             statement.close();
             return preu;
         }
-    }
+    }// ✅
     public static int max_billets_tipusBitllet(int idBillet) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -143,7 +141,7 @@ public class ImplementsBitllets implements InterfaceBitllets
             statement.close();
             return maxbill;
         }
-    }
+    }// ✅
     public static void llistarBitlletsPerLF() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -168,5 +166,5 @@ public class ImplementsBitllets implements InterfaceBitllets
             System.out.println("");
         }
         statement.close();
-    }
+    }// ✅
 }
