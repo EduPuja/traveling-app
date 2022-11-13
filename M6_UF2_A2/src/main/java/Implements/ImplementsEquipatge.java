@@ -28,7 +28,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         else System.out.println("Equipatge NO insertat");
         statement.close();
 
-    }
+    } // ✅
 
     /**
      * Eliminar equipatge base de dades✅
@@ -54,7 +54,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
 
         con.close();
-    }
+    } // ✅
 
     /**
      * Modificar equipatge en la bbdd ✅
@@ -85,7 +85,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
 
         con.close();
-    }
+    } // ✅
 
     /**
      * Llistar equipatge ✅
@@ -112,7 +112,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
         rs.close();
         con.close();
-    }
+    } // ✅
 
     /**
      * Metode que comprova a la base de dades si hi ha un equipatge  ✅
@@ -140,8 +140,5 @@ public class ImplementsEquipatge implements InterfaceEquipatge
             con.close();
             return  false;
         }
-
-
-
-    }
+    } // ✅
 }

@@ -22,7 +22,7 @@ public class ImplementsEstacio implements InterfaceEstacio
         else System.out.println("Estacio no entrada.");
 
         con.close();
-    }
+    } // ✅
     public void deleteEstacio(int idEstacio) throws Exception
     {
         Statement con = ConnexioBDD.conexioDB();
@@ -38,7 +38,7 @@ public class ImplementsEstacio implements InterfaceEstacio
         else System.out.println("Aquesta estacio no exgisteix D: ");
 
         con.close();
-    }
+    } // ✅
     public void modificarEstacio(String dades) throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -52,7 +52,7 @@ public class ImplementsEstacio implements InterfaceEstacio
         if(statement.executeUpdate(query) == 1) System.out.println("Modificat Correcatament.");
         else System.out.println("Modificat Incorrectament.");
         statement.close();
-    }
+    } // ✅
     public void llistarEstacio() throws Exception
     {
         Statement statement = ConnexioBDD.conexioDB();
@@ -66,7 +66,7 @@ public class ImplementsEstacio implements InterfaceEstacio
             System.out.println("");
         }
         statement.close();
-    }
+    } // ✅
     /**
      * Metode per comprovar si una estacio esta insertada a la base de dades
      * @param idEstacio
@@ -92,5 +92,5 @@ public class ImplementsEstacio implements InterfaceEstacio
             return false;
         }
 
-    }
+    } // ✅
 }

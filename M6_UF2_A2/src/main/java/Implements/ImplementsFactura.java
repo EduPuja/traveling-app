@@ -15,7 +15,8 @@ import java.util.Random;
 public class ImplementsFactura implements InterfaceFactura {
 
     @Override
-    public void llistarFactura() throws Exception {
+    public void llistarFactura() throws Exception
+    {
         Statement statement = ConnexioBDD.conexioDB();
         String query = "Select num_factura,p.dni as dni_persona,preu_total,data_factura from factura f inner join persona p on f.id_persona = p.id_persona";
         ResultSet rs = statement.executeQuery(query);
@@ -27,7 +28,8 @@ public class ImplementsFactura implements InterfaceFactura {
         }
     } // ✅
     @Override
-    public void crearFactura(Factura creaF,int idB) throws Exception {
+    public void crearFactura(Factura creaF,int idB) throws Exception
+    {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
 
         Statement statement = ConnexioBDD.conexioDB();
@@ -60,7 +62,8 @@ public class ImplementsFactura implements InterfaceFactura {
         }
     } // ✅
     @Override
-    public void crearFacturaAdmin(Factura creaF) throws Exception {
+    public void crearFacturaAdmin(Factura creaF) throws Exception
+    {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
         Statement statement = ConnexioBDD.conexioDB();
         int nF = creaF.getNumFactura();
@@ -76,25 +79,27 @@ public class ImplementsFactura implements InterfaceFactura {
             int preu = lf.getPreu();
             updatePreu(preu,nF);
         }
-    }
-    private void updatePreu(int preu, int nF) throws Exception {
+    } // ✅
+    private void updatePreu(int preu, int nF) throws Exception
+    {
         Statement statement = ConnexioBDD.conexioDB();
         String query2 = "Update factura set preu_total="+ preu + " where num_factura="+nF;
 
         if(statement.executeUpdate(query2)==1) System.out.println("Factura creada");
         else System.out.println("Factura no creada.");
+    } // ✅
+    @Override
+    public void eliminarFactura(int idLinaFactura) throws Exception
+    {
+
     }
     @Override
-    public void eliminarFactura(int idLinaFactura) throws Exception {
+    public void modificarFactura(String dades) throws Exception
+    {
 
     }
-
-    @Override
-    public void modificarFactura(String dades) throws Exception {
-
-    }
-
-    public static int dniAid(String dni) throws Exception {
+    public static int dniAid(String dni) throws Exception
+    {
         Statement statement = ConnexioBDD.conexioDB();
 
         String query = "Select id_persona from persona where dni='"+dni+"'";
@@ -114,8 +119,9 @@ public class ImplementsFactura implements InterfaceFactura {
             return id;
         }
 
-    }
-    public static boolean comprovaNumFact(int numF) throws Exception {
+    } // ✅
+    public static boolean comprovaNumFact(int numF) throws Exception
+    {
         //comprovarUser en la bdd.
         Statement statement = ConnexioBDD.conexioDB();
 
@@ -138,5 +144,5 @@ public class ImplementsFactura implements InterfaceFactura {
             statement.close();
             return false;
         }
-    }
+    } // ✅
 }
