@@ -50,7 +50,7 @@ public class ImplementsUsuari implements InterfaceUsuari
             String dni = taula[0];
             String novaInfo = taula[1];
             String tipoInfo = taula[2];
-            String query = "UPDATE `persona` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `dni` = '" + dni + "'";
+            String query ="";
 
             if(novaInfo.contains("/"))
             {

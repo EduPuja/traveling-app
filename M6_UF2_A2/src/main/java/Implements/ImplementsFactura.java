@@ -9,6 +9,7 @@ import Objectes.Linia_Factura;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 
@@ -23,10 +24,11 @@ public class ImplementsFactura implements InterfaceFactura
         ResultSet rs = statement.executeQuery(query);
         while (rs.next()){
             System.out.println("NUMERO FACTURA: " + rs.getInt("num_factura"));
-            System.out.println("DNI PERSONA: " + rs.getInt("dni_persona"));
+            System.out.println("DNI PERSONA: " + rs.getString("dni_persona"));
             System.out.println("PREU TOTAL FACTURA: " + rs.getInt("preu_total"));
-            System.out.println("DATA FACTURA: " + rs.getInt("data_factura"));
+            System.out.println("DATA FACTURA: " + rs.getString("data_factura"));
         }
+        statement.close();
     } // ✅
     @Override
     public void crearFactura(Factura creaF,int idB) throws Exception
@@ -94,17 +96,12 @@ public class ImplementsFactura implements InterfaceFactura
     {
         Statement con = ConnexioBDD.conexioDB();
 
-        if(ImplementsEquipatge.comprovarEquipatge(idFactura))
+        String query= "DELETE FROM `factura` WHERE num_factura ="+idFactura;
+        if(con.executeUpdate(query) == 1)
         {
-            String query= "DELETE FROM `factura` WHERE num_factura ="+idFactura;
-            if(con.executeUpdate(query) == 1)
-            {
-                System.out.println("Factura Eliminadada");
-            }
-            else System.out.println("Factura NO elimant");
-
+            System.out.println("Factura Eliminadada");
         }
-        else System.out.println("Factrua not found ");
+        else System.out.println("Factura NO elimant");
 
         con.close();
     } // ✅
@@ -114,12 +111,23 @@ public class ImplementsFactura implements InterfaceFactura
         Statement statement = ConnexioBDD.conexioDB();
 
         if(!dades.equalsIgnoreCase("no")){
-            String taula [] = dades.split("/");
+            String taula [] = dades.split("#");
             String id_factura = taula[0];
             String novaInfo = taula[1];
             String tipoInfo = taula[2];
 
-            String query = "UPDATE `factura` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `id_factura` = '" + id_factura + "'";
+            String query ="";
+            if(novaInfo.contains("/"))
+            {
+                String tauladata [] = novaInfo.split("/");
+                int dia = Integer.parseInt(tauladata[0]);
+                int mes = Integer.parseInt(tauladata[1]);
+                int any = Integer.parseInt(tauladata[2]);
+                LocalDate data_naixLD = LocalDate.of(any,mes,dia);
+                java.sql.Date data_naixD = java.sql.Date.valueOf(data_naixLD);
+                query = "UPDATE `factura` SET `" + tipoInfo + "` ='" + data_naixD +"' WHERE `num_factura` = '" + id_factura + "'";
+            }
+            else query = "UPDATE `factura` SET `" + tipoInfo + "` ='" + novaInfo +"' WHERE `num_factura` = '" + id_factura + "'";
 
             if(statement.executeUpdate(query) == 1){
                 System.out.println("Modificacio de " + tipoInfo + " de factura completada.");

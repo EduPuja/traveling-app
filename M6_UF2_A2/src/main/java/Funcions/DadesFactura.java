@@ -112,14 +112,14 @@ public class DadesFactura {
             dades = dades + num_factura;
             do{
                 System.out.println("Entra una opcio: ");
-                System.out.println("1 - Modifica NUMERO FACTURA: ");
-                System.out.println("2 - Modifica DNI PERSONA: ");
-                System.out.println("3 - Modifica PREU TOTAL: ");
-                System.out.println("4 - Modifica DATA FACTURA: ");
+                //System.out.println("1 - Modifica NUMERO FACTURA: ");
+                //System.out.println("2 - Modifica DNI PERSONA: ");
+                System.out.println("1 - Modifica PREU TOTAL: ");
+                System.out.println("2 - Modifica DATA FACTURA: ");
                 int opcio = lector.nextInt();
                 lector.nextLine();
                 switch (opcio){
-                    case 1:
+                    /*case 1:
                         boolean menu3 = false;
                         do{
                             System.out.println("Enscull el nou numero factura: ");
@@ -128,7 +128,7 @@ public class DadesFactura {
                             if(ImplementsFactura.comprovaNumFact(num_factura2))System.out.println("Aquest num ja existeix.");
                             else  menu3 = true;
                         }while(!menu3);
-                        dades = dades + "/" + num_factura2 + "/num_factura";
+                        dades = dades + "#" + num_factura2 + "#num_factura";
                         menu2 = true;
                         break;
                     case 2:
@@ -143,20 +143,20 @@ public class DadesFactura {
                             else System.out.println("Aquest id no existeix.");
                         }while(!menu4);
                         id_persona = ImplementsFactura.dniAid(dni_persona);
-                        dades = dades + "/" + id_persona + "/id_persona";
+                        dades = dades + "#" + id_persona + "#id_persona";
                         menu2 = true;
-                        break;
-                    case 3:
+                        break;*/
+                    case 1:
                         System.out.println("Entra el nou preu:");
                         preu_total = lector.nextInt();
                         lector.nextLine();
-                        dades = dades + "/" + preu_total + "/preu_total";
+                        dades = dades + "#" + preu_total + "#preu_total";
                         menu2 = true;
                         break;
-                    case 4:
+                    case 2:
                         System.out.println("Entra la data de naixement nova de l'Usuari: ");
                         data_factura = lector.nextLine();
-                        dades = dades + "/" + data_factura + "/data_factura";
+                        dades = dades + "#" + data_factura + "#data_factura";
                         menu2 = true;
                         break;
                     case 5:

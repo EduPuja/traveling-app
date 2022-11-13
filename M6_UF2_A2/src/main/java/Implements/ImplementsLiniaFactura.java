@@ -112,4 +112,5 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
         }
         else con.close(); return false;
     } // ✅
+
 }
