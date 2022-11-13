@@ -16,9 +16,16 @@ public class ImplementsFactura implements InterfaceFactura {
 
     @Override
     public void llistarFactura() throws Exception {
-
-    }
-
+        Statement statement = ConnexioBDD.conexioDB();
+        String query = "Select num_factura,p.dni as dni_persona,preu_total,data_factura from factura f inner join persona p on f.id_persona = p.id_persona";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()){
+            System.out.println("NUMERO FACTURA: " + rs.getInt("num_factura"));
+            System.out.println("DNI PERSONA: " + rs.getInt("dni_persona"));
+            System.out.println("PREU TOTAL FACTURA: " + rs.getInt("preu_total"));
+            System.out.println("DATA FACTURA: " + rs.getInt("data_factura"));
+        }
+    } // ✅
     @Override
     public void crearFactura(Factura creaF,int idB) throws Exception {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
@@ -51,7 +58,7 @@ public class ImplementsFactura implements InterfaceFactura {
             int preu = lf.getPreu();
             updatePreu(preu,nF);
         }
-    }
+    } // ✅
     @Override
     public void crearFacturaAdmin(Factura creaF) throws Exception {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();

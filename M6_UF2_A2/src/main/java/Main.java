@@ -57,7 +57,7 @@ public class Main
                 }
             }
         }while (!menu);
-    }
+    } // main ✅
 
     /**
      * menu de admin nomes pot accedir l'admin :D
@@ -75,9 +75,8 @@ public class Main
             System.out.println("2.Gestio Billets");
             System.out.println("3.Gestio Equipatge");
             System.out.println("4.Gestio Factura");
-            System.out.println("5.Gestio Linia Factura");
-            System.out.println("6.Gestio Viatge");
-            System.out.println("7.Gestio Estacio");
+            System.out.println("5.Gestio Viatge");
+            System.out.println("6.Gestio Estacio");
             System.out.println("0.Log out");
 
             opcioMenu= lector.nextInt();
@@ -89,7 +88,7 @@ public class Main
                     gestioUsuaris();        // menu de gestrio usuari entra users modificar i elminar usuaris✅
                     break;
                 case 2:
-                    gestioBillets();        //TODO FALTA LA COMPRA
+                    gestioBillets();        // menu de gesito de bitllets ✅
                     break;
                 case 3:
                     gestioEquipatge();      // TODO falta this meode
@@ -103,7 +102,6 @@ public class Main
                 case 6:
                     gestioEstacio();     // gestio de cada estacio ✅
                     break;
-
                 case 0:
                     menu= true;
                     System.out.println("Has tencat la sessio Admin");
@@ -364,9 +362,8 @@ public class Main
             System.out.println("GESTIO BILLETS\n");
             System.out.println("Entra una opcio: ");
             System.out.println("1 - Llista Bitllets");
-            System.out.println("2 - Compra Bitllets");
-            System.out.println("3 - Eliminar Bittlets");
-            System.out.println("4 - Crear Bittlets");
+            System.out.println("2 - Eliminar Bittlets");
+            System.out.println("3 - Crear Bittlets");
             System.out.println("0 - Turn Back");
             opcio = lector.nextInt();
             lector.nextLine();
@@ -378,16 +375,11 @@ public class Main
                     daoB.llistarBitllets();
                     break;
                 case 2:
-                    // TODO FALTA ESTO COMPRA
-                    int bIdCompra = DadesBitllet.formCompraBitllet();
-                    daoB.compraBitllets(bIdCompra,dniUserLog);
-                    break;
-                case 3:
                     // ELIMINAR
                     int bIdElimina = DadesBitllet.formEliminarBitllet();
                     daoB.eliminarBitllets(bIdElimina);
                     break;
-                case 4:
+                case 3:
                     // CREAR
                     Billet bCrea = DadesBitllet.formCreaBitllet();
                     daoB.creaBitllets(bCrea);

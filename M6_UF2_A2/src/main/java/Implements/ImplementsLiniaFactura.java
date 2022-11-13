@@ -42,7 +42,7 @@ public class ImplementsLiniaFactura implements InterfaceLiniaFactura
     {
         Statement con = ConnexioBDD.conexioDB();
         String query = "INSERT INTO linia_factura(linia_factura,num_factura,id_persona,preu) VALUES ("+creaLF.getNumLinia()+","+creaLF.getLiniaFactura()+","+creaLF.getIdPersona()+","+creaLF.getPreu()+")";
-        System.out.println(query);
+        //System.out.println(query);
         if(con.executeUpdate(query) == 1) System.out.println("Se ha insertat una Linia factura :D");
         else System.out.println("No se ha insertat D: la linia factura");
         con.close(); // cerrar
