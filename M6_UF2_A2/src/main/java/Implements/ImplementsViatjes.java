@@ -11,102 +11,146 @@ public class ImplementsViatjes implements InterfaceViatjes
 {
 
 
-
-
     /**
-     * Metode per crear un nou viatge a la base de dades ✅
+     * Insertar viatge en la BBDD ✅
      * @param vNou
      * @throws Exception
      */
+    @Override
     public void nouViatje(Viatje vNou) throws Exception
     {
-       Statement con =ConnexioBDD.conexioDB();
-       String query = "INSERT INTO `viatges`(`id_viatge`, `id_origen`, `id_desti`, `pais`) VALUES ("+vNou.getIdViatge()+","+vNou.getIdOrigen()+","+vNou.getIdDesti()+","+vNou.getPais();
-        if(con.executeUpdate(query) ==1)
+        Statement con =ConnexioBDD.conexioDB();
+        if(vNou == null)
         {
-            System.out.println("Viatge Insertat correctament ");
+            String query = "INSERT INTO `viatges`(`id_viatge`, `id_origen`, `id_desti`, `pais`) VALUES ("+vNou.getIdViatge()+","+vNou.getIdOrigen()+","+vNou.getIdDesti()+","+vNou.getPais();
+            if(con.executeUpdate(query) ==1)
+            {
+                System.out.println("Viatge Insertat correctament ");
+            }
+            else  System.out.println("Viatge NO INSERTAT D:");
         }
-        else  System.out.println("Viatge NO INSERTAT D:");
+        else System.out.println("No insertat D: ");
+
+        con.close();
+
+    }
+
+    /**
+     * eliminar viatge base de dades✅
+     * @param idViatge
+     * @throws Exception
+     */
+    @Override
+    public void eliminarViatje(int idViatge) throws Exception
+    {
+        Statement con = ConnexioBDD.conexioDB();
+        if(comprovarViatge(idViatge))
+        {
+
+            String query = "DELETE FROM `viatges` WHERE id_viatge"+idViatge;
+            if(con.executeUpdate(query) ==1)
+            {
+                System.out.println("Viatge Eliminat");
+            }
+            else System.out.println("Viatge no eliminat");
+        }
+        else System.out.println("Aquest viatge no exgisiteix");
+
+        con.close();
+
+    }
+
+    /**
+     * Modificar viatge base de dades✅
+     * @param dades
+     * @throws Exception
+     */
+    @Override
+    public void modificarViatje(String dades) throws Exception
+    {
+        Statement con = ConnexioBDD.conexioDB();
+
+        if(!dades.equalsIgnoreCase("no"))
+        {
+            String taula [] = dades.split("/");
+            int idViatge = Integer.parseInt(taula[0]);
+            String newInfo = taula[1]; // id destio o id origen o pais
+            int tipoInfo = Integer.parseInt(taula[2]);
+
+            if(comprovarViatge(idViatge))
+            {
+                //
+                String query = "Update viatges set "+tipoInfo+"='"+newInfo+"' where id_viatge="+idViatge;
+                if(con.executeUpdate(query) == 1)
+                {
+                    System.out.println("VIATGE modificat");
+                }
+                else System.out.println("Viatge no modifcat");
+            }
+            else System.out.println("Viatge no exgisteix");
+
+
+            con.close();
+        }
+        else System.out.println("Modificacio Cancelada.");
+
+
         con.close();
     }
 
     /**
-     * Eliminar viatge ✅
-     * @param idViatge
+     * llistar viatges desde la base de dades✅
      * @throws Exception
      */
-    public void eliminarViatje(int idViatge) throws Exception
-    {
-       Statement statement=  ConnexioBDD.conexioDB();
-       if(comprovarViatge(idViatge))
-       {
-           String query = "DELETE FROM `viatges` WHERE id_viatge ="+idViatge;
-           if(statement.executeUpdate(query) == 1)
-           {
-               System.out.println("Viatge ELIMINAT");
-           }
-           else System.out.println("Viatge no Eliminat");
-       }
-       else System.out.println("Aquest viatge no exgisteix");
-
-       statement.close();
-    }
-
-    // TODO FALTA MODIFICAR VIATGE
-    public void modificarViatje(Viatje vUpdate) throws Exception
-    {
-        Statement statement= ConnexioBDD.conexioDB();
-
-        // todo comprovar que el viatge sigui el que has preguntat i un cop preguntat has de preguntar el que vol modifcar en cas de que sigui alguna de les opcions MENYS PAIS se ha d'anar a modifcar estacio
-
-
-        statement.close();
-    }
-
-    /**
-     * Metode de llistar un vaitge ✅
-     * @throws Exception
-     */
+    @Override
     public void llistarViatje() throws Exception
     {
-        Statement statement =ConnexioBDD.conexioDB();
 
-        String query = "SELECT * FROM `viatges`";
-        ResultSet rs = statement.executeQuery(query);
+        Statement con = ConnexioBDD.conexioDB();
+
+
+        // viatge  -  idViatge pais
+        // estacio -  descripciop
+        String query ="select v.id_viatge,e.descrip as origen,e2.descrip as desti ,v.pais FROM viatges v INNER JOIN estacio e ON e.id_estacio = v.id_origen INNER JOIN estacio e2 ON e2.id_estacio= v.id_desti ";
+
+        ResultSet rs = con.executeQuery(query);
+
         while (rs.next())
         {
-            System.out.println("ID_VIATGE: "+ rs.getInt("id_viatge"));
-            System.out.println("ID_ORIGEN: "+ rs.getInt("id_origen"));
-            System.out.println("ID_DESTI: "+ rs.getInt("id_desti"));
-            System.out.println("PAIS: "+ rs.getString("pais"));
+            System.out.println("ID_VIATGE: "+rs.getInt("id_viatge"));
+            System.out.println("ORIGEN : "+rs.getString("origen"));
+            System.out.println("DESTI "+rs.getString("desti"));
+            System.out.println("PAIS: "+rs.getString("pais"));
             System.out.println("");
         }
+
         rs.close();
-        statement.close();
+        con.close();
+
     }
 
     /**
-     * Metode que comprova un viatge a la base de dades ✅
+     * Comprovar un viatge ✅
      * @param idViatge
      * @return
      * @throws Exception
      */
     public static boolean comprovarViatge(int idViatge) throws Exception
     {
-        Statement statement = ConnexioBDD.conexioDB();
+        Statement con = ConnexioBDD.conexioDB();
+        String query = "Select * from viatges where id_viatge ="+idViatge;
 
-        String query = "select `id_viatge` from `viatges` where `id_viatge` ="+idViatge;
-
-        ResultSet resultSet = statement.executeQuery(query);
-
-        if(resultSet.next())
+        ResultSet rs = con.executeQuery(query);
+        if(rs.next())
         {
-            statement.close();
+            rs.close();
+            con.close();
             return true;
         }
         else
         {
-            statement.close();
+            rs.close();
+            con.close();
             return false;
         }
     }
