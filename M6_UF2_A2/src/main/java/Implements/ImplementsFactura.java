@@ -59,8 +59,8 @@ public class ImplementsFactura implements InterfaceFactura
                 if(!ImplementsLiniaFactura.consultarLiniaFactura(numLF)) nlf = true;
             }while (!nlf);
 
-            lf.setLiniaFactura(numLF);
-            lf.setNumLinia(nF);
+            lf.setLiniaFactura(nF);
+            lf.setNumLinia(numLF);
             lf.setIdPersona(idP);
             lf.setId_billet(idB);
             Equipatge e = DadesEquipatge.formCrearEquipatgeMenuUser();
