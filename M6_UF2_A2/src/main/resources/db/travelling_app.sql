@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 15:11:17
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.3.31
+-- Tiempo de generación: 14-11-2022 a las 18:48:18
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `m6_uf2_a2_edudani`
+-- Base de datos: `travelling_app`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `billets` (
-  `id_billet` int(11) NOT NULL,
+  `id_biillet` int(11) NOT NULL,
   `id_viatge` int(11) NOT NULL,
   `tipus_billet` varchar(30) NOT NULL,
   `preu` int(11) NOT NULL,
@@ -43,8 +43,8 @@ CREATE TABLE `billets` (
 
 CREATE TABLE `equipatge` (
   `id_equip` int(11) NOT NULL,
-  `num_factura` int(11) NOT NULL,
-  `linia_factura` int(11) NOT NULL,
+  `num_factura` int(11) DEFAULT NULL,
+  `linia_factura` int(11) DEFAULT NULL,
   `pes_kg` int(11) NOT NULL,
   `num_maletes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -70,7 +70,7 @@ CREATE TABLE `factura` (
   `num_factura` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
   `preu_total` int(11) NOT NULL,
-  `data_factura` date NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -80,11 +80,11 @@ CREATE TABLE `factura` (
 --
 
 CREATE TABLE `linia_factura` (
-  `linia_factura` int(11) NOT NULL,
+  `linia_factura` int(11) NOT NULL COMMENT 'ID de linia_factura',
   `num_factura` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `id_billet` int(11) NOT NULL,
-  `id_equip` int(11) NOT NULL,
+  `id_billet` int(11) DEFAULT NULL,
+  `id_equip` int(11) DEFAULT NULL,
   `preu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,7 +106,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_persona`, `dni`, `nom`, `data_naix`) VALUES
-(5, 'admin', 'admin', '2002-12-02');
+(1, '41531693H', 'Edu', '2022-11-11');
 
 -- --------------------------------------------------------
 
@@ -129,8 +129,8 @@ CREATE TABLE `viatges` (
 -- Indices de la tabla `billets`
 --
 ALTER TABLE `billets`
-  ADD PRIMARY KEY (`id_billet`),
-  ADD KEY `id_viatge` (`id_viatge`);
+  ADD PRIMARY KEY (`id_biillet`),
+  ADD KEY `id_viatgeFK` (`id_viatge`);
 
 --
 -- Indices de la tabla `equipatge`
@@ -158,19 +158,17 @@ ALTER TABLE `factura`
 --
 ALTER TABLE `linia_factura`
   ADD PRIMARY KEY (`linia_factura`),
-  ADD UNIQUE KEY `id_billet` (`id_billet`,`id_equip`),
-  ADD UNIQUE KEY `id_billet_2` (`id_billet`),
-  ADD UNIQUE KEY `id_Equip` (`id_equip`),
-  ADD UNIQUE KEY `id_Equip_2` (`id_equip`),
   ADD KEY `fk_num_factura` (`num_factura`),
-  ADD KEY `fk_id_persona` (`id_persona`);
+  ADD KEY `fk_id_persona` (`id_persona`),
+  ADD KEY `fk_id_equip` (`id_equip`),
+  ADD KEY `fk_id_billet` (`id_billet`);
 
 --
 -- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`id_persona`),
-  ADD UNIQUE KEY `dni` (`dni`);
+  ADD UNIQUE KEY `dni_unic` (`dni`);
 
 --
 -- Indices de la tabla `viatges`
@@ -188,43 +186,37 @@ ALTER TABLE `viatges`
 -- AUTO_INCREMENT de la tabla `billets`
 --
 ALTER TABLE `billets`
-  MODIFY `id_billet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_biillet` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `equipatge`
 --
 ALTER TABLE `equipatge`
-  MODIFY `id_equip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_equip` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `estacio`
 --
 ALTER TABLE `estacio`
-  MODIFY `id_estacio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_estacio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4939;
+  MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
-  MODIFY `linia_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3023;
+  MODIFY `linia_factura` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID de linia_factura';
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `viatges`
---
-ALTER TABLE `viatges`
-  MODIFY `id_viatge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -234,7 +226,7 @@ ALTER TABLE `viatges`
 -- Filtros para la tabla `billets`
 --
 ALTER TABLE `billets`
-  ADD CONSTRAINT `id_viatge` FOREIGN KEY (`id_viatge`) REFERENCES `viatges` (`id_viatge`);
+  ADD CONSTRAINT `id_viatgeFK` FOREIGN KEY (`id_viatge`) REFERENCES `viatges` (`id_viatge`);
 
 --
 -- Filtros para la tabla `equipatge`
@@ -253,8 +245,8 @@ ALTER TABLE `factura`
 -- Filtros para la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
-  ADD CONSTRAINT `fk_id_billet` FOREIGN KEY (`id_billet`) REFERENCES `billets` (`id_billet`),
-  ADD CONSTRAINT `fk_id_equip` FOREIGN KEY (`id_Equip`) REFERENCES `equipatge` (`id_equip`),
+  ADD CONSTRAINT `fk_id_billet` FOREIGN KEY (`id_billet`) REFERENCES `billets` (`id_biillet`),
+  ADD CONSTRAINT `fk_id_equip` FOREIGN KEY (`id_equip`) REFERENCES `equipatge` (`id_equip`),
   ADD CONSTRAINT `fk_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   ADD CONSTRAINT `fk_num_factura` FOREIGN KEY (`num_factura`) REFERENCES `factura` (`num_factura`);
 
@@ -262,7 +254,7 @@ ALTER TABLE `linia_factura`
 -- Filtros para la tabla `viatges`
 --
 ALTER TABLE `viatges`
-  ADD CONSTRAINT `fk_desti` FOREIGN KEY (`id_desti`) REFERENCES `estacio` (`id_estacio`),
+  ADD CONSTRAINT `fk_desti` FOREIGN KEY (`id_desti`) REFERENCES `equipatge` (`id_equip`),
   ADD CONSTRAINT `fk_origen` FOREIGN KEY (`id_origen`) REFERENCES `estacio` (`id_estacio`);
 COMMIT;
 

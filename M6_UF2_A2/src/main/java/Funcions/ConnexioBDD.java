@@ -18,7 +18,7 @@ public class ConnexioBDD
         // url on esta la base de dades
 
         //Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String url = "jdbc:mysql://localhost:3306/m6_uf2_a2_edudani";       // Per ara ho fem amb localhost ja que tenim la mateix arxiu bbdd
+        String url = "jdbc:mysql://localhost:3306/travelling_app";       // Per ara ho fem amb localhost ja que tenim la mateix arxiu bbdd
         // usuari base de dades
         String user = "admin";
         // contrasenya base de dades
