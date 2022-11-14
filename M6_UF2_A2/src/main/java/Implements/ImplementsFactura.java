@@ -68,13 +68,14 @@ public class ImplementsFactura implements InterfaceFactura
             e.setNumFactura(nF);
             InterfaceEquipatge daoE = new ImplementsEquipatge();
             daoE.afegirEquipatgeUser(e);
-            int idE = ImplementsEquipatge.idEReturn(nF,numLF);
+            int idE = ImplementsEquipatge.idEReturn(nF,-1);
             lf.setId_equip(idE);
             lf.setPreu(ImplementsBitllets.preuBitllet(idB));
 
             daoLF.crearLiniaFactura(lf);
             int preu = lf.getPreu();
             updatePreu(preu,nF);
+            ImplementsEquipatge.updateLiniaFact(numLF,nF);
         }
         statement.close();
     } // ✅

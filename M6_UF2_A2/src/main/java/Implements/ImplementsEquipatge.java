@@ -11,6 +11,14 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 {
 
 
+    public static void updateLiniaFact(int numLF, int nF) throws Exception {
+        Statement statement = ConnexioBDD.conexioDB();
+        String query2 = "Update equipatge set linia_factura="+ numLF + " where num_factura="+nF;
+
+        if(statement.executeUpdate(query2)==1) System.out.println("Update fet");
+        else System.out.println("Update no fet.");
+    }
+
     /**
      * Insertar equipatge base de dades ✅
      *
@@ -124,7 +132,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
         if(e!=null)
         {
-            String insertQuery = "INSERT INTO `equipatge`(`num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+","+e.getLiniaFactura()+","+e.getPesKg()+","+e.getNumMaletes()+")";
+            String insertQuery = "INSERT INTO `equipatge`(`num_factura`, `pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+",-1,"+e.getPesKg()+","+e.getNumMaletes()+")";
             if(statement.executeUpdate(insertQuery) ==1)
             {
                 System.out.println("Equipatge insertat");
