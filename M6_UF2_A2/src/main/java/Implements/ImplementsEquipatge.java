@@ -118,6 +118,23 @@ public class ImplementsEquipatge implements InterfaceEquipatge
         con.close();
     } // ✅
 
+    @Override
+    public void afegirEquipatgeUser(Equipatge e) throws Exception {
+        Statement statement = ConnexioBDD.conexioDB();
+
+        if(e!=null)
+        {
+            String insertQuery = "INSERT INTO `equipatge`(`num_factura`, `linia_factura`, `pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+","+e.getLiniaFactura()+","+e.getPesKg()+","+e.getNumMaletes()+")";
+            if(statement.executeUpdate(insertQuery) ==1)
+            {
+                System.out.println("Equipatge insertat");
+            }
+            else System.out.println("Equipatge NO insertat");
+        }
+        else System.out.println("Equipatge Error No inserat");
+        statement.close();
+    }
+
     /**
      * Metode que comprova a la base de dades si hi ha un equipatge  ✅
      * @param idEquipatge
@@ -145,4 +162,25 @@ public class ImplementsEquipatge implements InterfaceEquipatge
             return  false;
         }
     } // ✅
+    public static int idEReturn(int num_fact,int idLF) throws Exception {
+        Statement con = ConnexioBDD.conexioDB();
+        int idE = -1;
+        String query = "select id_equip from equipatge where num_factura ="+num_fact+ " and linia_factura="+ idLF+"";
+
+        ResultSet rs = con.executeQuery(query);
+
+        if(rs.next())
+        {
+            idE = rs.getInt("id_equip");
+            rs.close();
+            con.close();
+            return  idE;
+        }
+        else
+        {
+            rs.close();
+            con.close();
+            return  idE;
+        }
+    }
 }

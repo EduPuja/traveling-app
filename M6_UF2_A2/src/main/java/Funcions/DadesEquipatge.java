@@ -194,5 +194,32 @@ public class DadesEquipatge
 
         return -1;
     }
+
+    public static Equipatge formCrearEquipatgeMenuUser()
+    {
+
+        // interfaces dao per poder llistar les factures i lina factures
+        InterfaceFactura daoFactura = new ImplementsFactura();
+        InterfaceLiniaFactura daoLinaFactura = new ImplementsLiniaFactura();
+
+        Equipatge equipatge = new Equipatge(); // objecte equipatge
+
+        boolean okaIdEquip = false;
+        boolean okNumFact = false;
+        boolean okaLinaFactura = false;
+
+        System.out.println("Digues el pes del equipatge");
+        int pesKg = lector.nextInt();
+        lector.nextLine();
+
+        System.out.println("Digues les maletes que portes");
+        int numMaletes = lector.nextInt();
+        lector.nextLine();
+
+        equipatge.setPesKg(pesKg);
+        equipatge.setNumMaletes(numMaletes);
+
+        return equipatge;
+    }
 }
 

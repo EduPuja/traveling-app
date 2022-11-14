@@ -1,9 +1,12 @@
 package Implements;
 
 import Funcions.ConnexioBDD;
+import Funcions.DadesEquipatge;
 import Funcions.DadesLiniaFactura;
+import Interfaces.InterfaceEquipatge;
 import Interfaces.InterfaceFactura;
 import Interfaces.InterfaceLiniaFactura;
+import Objectes.Equipatge;
 import Objectes.Factura;
 import Objectes.Linia_Factura;
 
@@ -56,9 +59,17 @@ public class ImplementsFactura implements InterfaceFactura
                 if(!ImplementsLiniaFactura.consultarLiniaFactura(numLF)) nlf = true;
             }while (!nlf);
 
-            lf.setLiniaFactura(nF);
-            lf.setNumLinia(numLF);
+            lf.setLiniaFactura(numLF);
+            lf.setNumLinia(nF);
             lf.setIdPersona(idP);
+            lf.setId_billet(idB);
+            Equipatge e = DadesEquipatge.formCrearEquipatgeMenuUser();
+            e.setLiniaFactura(numLF);
+            e.setNumFactura(nF);
+            InterfaceEquipatge daoE = new ImplementsEquipatge();
+            daoE.afegirEquipatgeUser(e);
+            int idE = ImplementsEquipatge.idEReturn(nF,numLF);
+            lf.setId_equip(idE);
             lf.setPreu(ImplementsBitllets.preuBitllet(idB));
 
             daoLF.crearLiniaFactura(lf);

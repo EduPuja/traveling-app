@@ -7,6 +7,25 @@ public class Linia_Factura
     private int idPersona;
     private int preu;
 
+    private int id_billet;
+    private int id_equip;
+
+    public int getId_billet() {
+        return id_billet;
+    }
+
+    public void setId_billet(int id_billet) {
+        this.id_billet = id_billet;
+    }
+
+    public int getId_equip() {
+        return id_equip;
+    }
+
+    public void setId_equip(int id_equip) {
+        this.id_equip = id_equip;
+    }
+
     /**
      * Construcor buit
      */

@@ -8,4 +8,6 @@ public interface InterfaceEquipatge
     public void eliminarEquipatge(int idEquipatge) throws Exception;
     public void modificarEquipatge(String dades) throws  Exception;
     public void llistarEquipatge() throws Exception;
+
+    public void afegirEquipatgeUser(Equipatge e)throws Exception;
 }
