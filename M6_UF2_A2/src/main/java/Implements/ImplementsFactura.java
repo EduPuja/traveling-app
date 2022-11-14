@@ -72,6 +72,7 @@ public class ImplementsFactura implements InterfaceFactura
             daoLF.crearLiniaFactura(lf);
             int preu = lf.getPreu();
             updatePreu(preu,nF);
+            e.setLiniaFactura(nF);
             InterfaceEquipatge daoE = new ImplementsEquipatge();
             daoE.afegirEquipatgeUser(e);
             int idE = ImplementsEquipatge.idEReturn(nF);
