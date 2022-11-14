@@ -68,7 +68,7 @@ public class ImplementsFactura implements InterfaceFactura
             e.setNumFactura(nF);
             InterfaceEquipatge daoE = new ImplementsEquipatge();
             daoE.afegirEquipatgeUser(e);
-            int idE = ImplementsEquipatge.idEReturn(nF,-1);
+            int idE = ImplementsEquipatge.idEReturn(nF);
             lf.setId_equip(idE);
             lf.setPreu(ImplementsBitllets.preuBitllet(idB));
 

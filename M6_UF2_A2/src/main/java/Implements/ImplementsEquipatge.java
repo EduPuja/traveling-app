@@ -132,7 +132,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
         if(e!=null)
         {
-            String insertQuery = "INSERT INTO `equipatge`(`num_factura`,`linia_factura`,`pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+","+(-1)+","+e.getPesKg()+","+e.getNumMaletes()+")";
+            String insertQuery = "INSERT INTO `equipatge`(`num_factura`,`pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+","+e.getPesKg()+","+e.getNumMaletes()+")";
             if(statement.executeUpdate(insertQuery) ==1)
             {
                 System.out.println("Equipatge insertat");
@@ -170,10 +170,10 @@ public class ImplementsEquipatge implements InterfaceEquipatge
             return  false;
         }
     } // ✅
-    public static int idEReturn(int num_fact,int idLF) throws Exception {
+    public static int idEReturn(int num_fact) throws Exception {
         Statement con = ConnexioBDD.conexioDB();
         int idE = -1;
-        String query = "select id_equip from equipatge where num_factura ="+num_fact+ " and linia_factura="+ idLF+"";
+        String query = "select id_equip from equipatge where num_factura ="+num_fact+ "";
 
         ResultSet rs = con.executeQuery(query);
 
