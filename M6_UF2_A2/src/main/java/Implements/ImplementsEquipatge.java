@@ -132,7 +132,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
         if(e!=null)
         {
-            String insertQuery = "INSERT INTO `equipatge`(`num_factura`, `pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+",-1,"+e.getPesKg()+","+e.getNumMaletes()+")";
+            String insertQuery = "INSERT INTO `equipatge`(`num_factura`, `pes_kg`, `num_maletes`) VALUES ("+e.getNumFactura()+",-111,"+e.getPesKg()+","+e.getNumMaletes()+")";
             if(statement.executeUpdate(insertQuery) ==1)
             {
                 System.out.println("Equipatge insertat");
