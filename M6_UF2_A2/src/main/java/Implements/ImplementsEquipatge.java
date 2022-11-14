@@ -11,7 +11,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 {
 
 
-    public static void updateLiniaFact(int numLF, int nF) throws Exception {
+    public static void updateLiniaFact(int numLF, int nF, int idE) throws Exception {
         Statement statement = ConnexioBDD.conexioDB();
         String query2 = "Update equipatge set linia_factura="+ numLF + " where num_factura="+nF;
 

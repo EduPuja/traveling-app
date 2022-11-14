@@ -10,6 +10,14 @@ import java.sql.Statement;
 public class ImplementsLiniaFactura implements InterfaceLiniaFactura
 {
 
+    public static void updateIdEquipatge(int idE, int numLF, int nF) throws Exception {
+        Statement statement = ConnexioBDD.conexioDB();
+        String query2 = "Update linia_factura set linia_factura="+ numLF + " id_equip="+idE+" where num_factura="+nF;
+
+        if(statement.executeUpdate(query2)==1) System.out.println("Update fet");
+        else System.out.println("Update no fet.");
+    }
+
     /**
      * Metode per llistar totes les linia factura de la taula
      * @throws Exception

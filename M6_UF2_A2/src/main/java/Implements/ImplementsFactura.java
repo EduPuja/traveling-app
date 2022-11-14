@@ -66,16 +66,17 @@ public class ImplementsFactura implements InterfaceFactura
             Equipatge e = DadesEquipatge.formCrearEquipatgeMenuUser();
             e.setLiniaFactura(numLF);
             e.setNumFactura(nF);
-            InterfaceEquipatge daoE = new ImplementsEquipatge();
-            daoE.afegirEquipatgeUser(e);
-            int idE = ImplementsEquipatge.idEReturn(nF);
-            lf.setId_equip(idE);
+
             lf.setPreu(ImplementsBitllets.preuBitllet(idB));
 
             daoLF.crearLiniaFactura(lf);
             int preu = lf.getPreu();
             updatePreu(preu,nF);
-            ImplementsEquipatge.updateLiniaFact(numLF,nF);
+            InterfaceEquipatge daoE = new ImplementsEquipatge();
+            daoE.afegirEquipatgeUser(e);
+            int idE = ImplementsEquipatge.idEReturn(nF);
+            ImplementsEquipatge.updateLiniaFact(numLF,nF,idE);
+            ImplementsLiniaFactura.updateIdEquipatge(idE,numLF,nF);
         }
         statement.close();
     } // ✅
