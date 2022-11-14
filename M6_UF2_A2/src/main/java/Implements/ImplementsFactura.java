@@ -84,7 +84,7 @@ public class ImplementsFactura implements InterfaceFactura
     @Override
     public void crearFacturaAdmin(Factura creaF) throws Exception
     {
-        InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
+        /*InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
 
         Statement statement = ConnexioBDD.conexioDB();
         int nF = creaF.getNumFactura();
@@ -123,8 +123,8 @@ public class ImplementsFactura implements InterfaceFactura
             ImplementsEquipatge.updateLiniaFact(numLF,nF,idE);
             ImplementsLiniaFactura.updateIdEquipatge(idE,numLF,nF);
         }
-        statement.close();
-        /*InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
+        statement.close();*/
+        InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
         Statement statement = ConnexioBDD.conexioDB();
         int nF = creaF.getNumFactura();
         int idP = creaF.getIdPersona();
@@ -139,7 +139,7 @@ public class ImplementsFactura implements InterfaceFactura
             int preu = lf.getPreu();
             updatePreu(preu,nF);
         }
-        statement.close();*/
+        statement.close();
     } // ✅
     private void updatePreu(int preu, int nF) throws Exception
     {

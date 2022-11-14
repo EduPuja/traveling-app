@@ -338,9 +338,9 @@ public class Main
         {
             System.out.println("GESTIO FACUTRA\n");
             System.out.println("1.Llistar factures");
-            System.out.println("2.Alta factura");
-            System.out.println("3.Baixa factura");
-            System.out.println("4.Modifciar factura");
+            //System.out.println("2.Alta factura");
+            System.out.println("2.Baixa factura");
+            System.out.println("3.Modifciar factura");
             System.out.println("0.Turn back");
             opcio=lector.nextInt();
             lector.nextLine();
@@ -350,15 +350,15 @@ public class Main
                 case 1:
                     daoF.llistarFactura();
                     break;
-                case 2:
+                /*case 2:
                     Factura f = DadesFactura.fromAltaFacturaAdmin();
                     daoF.crearFacturaAdmin(f);
-                    break;
-                case 3:
+                    break;*/
+                case 2:
                     int idF = DadesFactura.fromBaixaFactura();
                     daoF.eliminarFactura(idF);
                     break;
-                case 4:
+                case 3:
                     String dades = DadesFactura.fromUpdateFactura();
                     daoF.modificarFactura(dades);
                     break;
