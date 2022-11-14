@@ -75,7 +75,7 @@ public class ImplementsFactura implements InterfaceFactura
             e.setLiniaFactura(nF);
             InterfaceEquipatge daoE = new ImplementsEquipatge();
             daoE.afegirEquipatgeUser(e);
-            int idE = ImplementsEquipatge.idEReturn(nF);
+            int idE = ImplementsEquipatge.idEReturn(numLF);
             ImplementsEquipatge.updateLiniaFact(numLF,nF,idE);
             ImplementsLiniaFactura.updateIdEquipatge(idE,numLF,nF);
         }
@@ -85,6 +85,46 @@ public class ImplementsFactura implements InterfaceFactura
     public void crearFacturaAdmin(Factura creaF) throws Exception
     {
         InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
+
+        Statement statement = ConnexioBDD.conexioDB();
+        int nF = creaF.getNumFactura();
+        int idP = creaF.getIdPersona();
+        Date dataF = creaF.getData();
+
+        String query = "Insert into factura(num_factura,id_persona,preu_total,data_factura) values("+nF+","+idP+","+(-1)+",'"+dataF+"')";
+
+        if(statement.executeUpdate(query) == 1)
+        {
+            Linia_Factura lf = DadesLiniaFactura.fromAltaLinaFactura();
+
+            boolean nlf = false;
+            Random rdm = new Random();
+            int numLF;
+            do{
+                numLF = rdm.nextInt(5000);
+                if(!ImplementsLiniaFactura.consultarLiniaFactura(numLF)) nlf = true;
+            }while (!nlf);
+
+            nF = lf.getNumLinia();
+            int idB = lf.getId_billet();
+            Equipatge e = DadesEquipatge.formCrearEquipatgeMenuUser();
+            e.setLiniaFactura(numLF);
+            e.setNumFactura(nF);
+
+            lf.setPreu(ImplementsBitllets.preuBitllet(idB));
+
+            daoLF.crearLiniaFactura(lf);
+            int preu = lf.getPreu();
+            updatePreu(preu,nF);
+            e.setLiniaFactura(nF);
+            InterfaceEquipatge daoE = new ImplementsEquipatge();
+            daoE.afegirEquipatgeUser(e);
+            int idE = ImplementsEquipatge.idEReturn(numLF);
+            ImplementsEquipatge.updateLiniaFact(numLF,nF,idE);
+            ImplementsLiniaFactura.updateIdEquipatge(idE,numLF,nF);
+        }
+        statement.close();
+        /*InterfaceLiniaFactura daoLF = new ImplementsLiniaFactura();
         Statement statement = ConnexioBDD.conexioDB();
         int nF = creaF.getNumFactura();
         int idP = creaF.getIdPersona();
@@ -99,7 +139,7 @@ public class ImplementsFactura implements InterfaceFactura
             int preu = lf.getPreu();
             updatePreu(preu,nF);
         }
-        statement.close();
+        statement.close();*/
     } // ✅
     private void updatePreu(int preu, int nF) throws Exception
     {

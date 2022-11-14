@@ -40,12 +40,13 @@ public class Linia_Factura
      * @param idPersona
      * @param preu
      */
-    public Linia_Factura(int liniaFactura,int numLinia, int idPersona, int preu)
+    public Linia_Factura(int liniaFactura,int numLinia, int idPersona, int preu,int id_billet)
     {
         this.liniaFactura=liniaFactura;
         this.numLinia = numLinia;
         this.idPersona = idPersona;
         this.preu = preu;
+        this.id_billet = id_billet;
     }
 
     /**

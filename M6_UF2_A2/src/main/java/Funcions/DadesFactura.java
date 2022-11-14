@@ -41,15 +41,13 @@ public class DadesFactura {
     {
         boolean menu = false;
         String dni;
-        int num_factura;
         Factura f = new Factura();
         boolean menu2 = false;
+        Random rdm = new Random();
+        int num_factura;
         do{
-            System.out.println("Entra el numero de la factura: ");
-            num_factura = lector.nextInt();
-            lector.nextLine();
-            if(ImplementsFactura.comprovaNumFact(num_factura)) System.out.println("Numero de la factura.");
-            else menu2 = true;
+            num_factura = rdm.nextInt(5000);
+            if(!ImplementsFactura.comprovaNumFact(num_factura)) menu2 = true;
         }while(!menu2);
         do{
             System.out.println("Entra el dni de l'usuari: ");

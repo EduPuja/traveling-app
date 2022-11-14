@@ -21,18 +21,10 @@ public class DadesLiniaFactura
      */
     public static Linia_Factura fromAltaLinaFactura() throws Exception
     {
-        int linaFactnum;
+        int linaFactnum = -1;
         int numFactura;
         String dni;
         int bitllet;
-        boolean menulf= false;
-        do{
-            System.out.println("Digues el numero de la linia factura: ");
-            linaFactnum = lector.nextInt();
-            lector.nextLine();
-            if(ImplementsLiniaFactura.consultarLiniaFactura(linaFactnum)) System.out.println("Numero de linia factura ja existeix.");
-            else menulf = true;;
-        }while(!menulf);
         boolean menuf= false;
         do{
             System.out.println("Digues el num de la factura: ");
@@ -60,7 +52,7 @@ public class DadesLiniaFactura
 
         int preu = ImplementsBitllets.preuBitllet(bitllet);
 
-        Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura, ImplementsFactura.dniAid(dni),preu); // objecte
+        Linia_Factura linaFact = new Linia_Factura(linaFactnum,numFactura, ImplementsFactura.dniAid(dni),preu,bitllet); // objecte
 
         return linaFact;
 

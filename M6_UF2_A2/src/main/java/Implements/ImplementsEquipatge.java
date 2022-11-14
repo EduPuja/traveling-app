@@ -13,7 +13,7 @@ public class ImplementsEquipatge implements InterfaceEquipatge
 
     public static void updateLiniaFact(int numLF, int nF, int idE) throws Exception {
         Statement statement = ConnexioBDD.conexioDB();
-        String query2 = "Update equipatge set linia_factura="+ numLF + " where num_factura="+nF;
+        String query2 = "Update equipatge set linia_factura="+ nF + " where num_factura="+numLF;
 
         if(statement.executeUpdate(query2)==1) System.out.println("Update fet");
         else System.out.println("Update no fet.");
