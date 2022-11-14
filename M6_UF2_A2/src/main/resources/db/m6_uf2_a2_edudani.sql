@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2022 a las 15:03:09
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 14-11-2022 a las 15:11:17
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,6 +83,8 @@ CREATE TABLE `linia_factura` (
   `linia_factura` int(11) NOT NULL,
   `num_factura` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
+  `id_billet` int(11) NOT NULL,
+  `id_equip` int(11) NOT NULL,
   `preu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,6 +100,13 @@ CREATE TABLE `persona` (
   `nom` varchar(50) NOT NULL,
   `data_naix` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`id_persona`, `dni`, `nom`, `data_naix`) VALUES
+(5, 'admin', 'admin', '2002-12-02');
 
 -- --------------------------------------------------------
 
@@ -149,6 +158,10 @@ ALTER TABLE `factura`
 --
 ALTER TABLE `linia_factura`
   ADD PRIMARY KEY (`linia_factura`),
+  ADD UNIQUE KEY `id_billet` (`id_billet`,`id_equip`),
+  ADD UNIQUE KEY `id_billet_2` (`id_billet`),
+  ADD UNIQUE KEY `id_Equip` (`id_equip`),
+  ADD UNIQUE KEY `id_Equip_2` (`id_equip`),
   ADD KEY `fk_num_factura` (`num_factura`),
   ADD KEY `fk_id_persona` (`id_persona`);
 
@@ -175,43 +188,43 @@ ALTER TABLE `viatges`
 -- AUTO_INCREMENT de la tabla `billets`
 --
 ALTER TABLE `billets`
-  MODIFY `id_billet` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_billet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `equipatge`
 --
 ALTER TABLE `equipatge`
-  MODIFY `id_equip` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_equip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `estacio`
 --
 ALTER TABLE `estacio`
-  MODIFY `id_estacio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estacio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4939;
 
 --
 -- AUTO_INCREMENT de la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
-  MODIFY `linia_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `linia_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3023;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `viatges`
 --
 ALTER TABLE `viatges`
-  MODIFY `id_viatge` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_viatge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
@@ -240,6 +253,8 @@ ALTER TABLE `factura`
 -- Filtros para la tabla `linia_factura`
 --
 ALTER TABLE `linia_factura`
+  ADD CONSTRAINT `fk_id_billet` FOREIGN KEY (`id_billet`) REFERENCES `billets` (`id_billet`),
+  ADD CONSTRAINT `fk_id_equip` FOREIGN KEY (`id_Equip`) REFERENCES `equipatge` (`id_equip`),
   ADD CONSTRAINT `fk_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`),
   ADD CONSTRAINT `fk_num_factura` FOREIGN KEY (`num_factura`) REFERENCES `factura` (`num_factura`);
 
